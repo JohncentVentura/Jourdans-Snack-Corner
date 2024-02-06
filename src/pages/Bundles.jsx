@@ -2,7 +2,11 @@ import React from 'react'
 
 const Bundles = () => {
   return (
-    <div>Bundle</div>
+    <>
+      <div className="container">
+        <div>Bundles Page</div>
+      </div>
+    </>
   )
 }
 

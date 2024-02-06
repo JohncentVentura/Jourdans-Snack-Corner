@@ -2,7 +2,11 @@ import React from 'react'
 
 const Beverages = () => {
   return (
-    <div>Beverages</div>
+    <>
+      <div className="container">
+        <div>Beverages Page</div>
+      </div>
+    </>
   )
 }
 

@@ -2,7 +2,11 @@ import React from 'react'
 
 const Snacks = () => {
   return (
-    <div>Snacks</div>
+    <>
+      <div className="container">
+        <div>Snacks Page</div>
+      </div>
+    </>
   )
 }
 

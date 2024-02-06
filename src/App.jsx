@@ -11,18 +11,28 @@ function App() {
   return (
     <>
       <Navbar />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/meals" element={<Meals />} />
-        <Route path="/snacks" element={<Snacks />} />
-        <Route path="/beverages" element={<Beverages />} />
-        <Route path="/bundles" element={<Bundles />} />
-      </Routes>
 
-      <footer>Footer</footer>
+      <main style={{ paddingTop: "6rem" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/meals" element={<Meals />} />
+          <Route path="/snacks" element={<Snacks />} />
+          <Route path="/beverages" element={<Beverages />} />
+          <Route path="/bundles" element={<Bundles />} />
+        </Routes>
+      </main>
     </>
   );
 }
+
+const Footer = () => {
+  return (
+    <>
+      <footer className="">
+        <p>Footer</p>
+      </footer>;
+    </>
+  );
+};
 
 export default App;
