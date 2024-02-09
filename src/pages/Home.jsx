@@ -1,21 +1,17 @@
 import React from "react";
+import { UtilsBGImage } from "../Utilities";
 
 const Home = () => {
   return (
     <>
-      <div className="container-fluid p-0 overflow-x-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1495195129352-aeb325a55b65?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="BG"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            zIndex: -10,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
+      <div
+        className="container-fluid position-relative px-0 vh-100 overflow-hidden"
+        style={{ paddingTop: "6rem", paddingBottom: "6rem" }}
+      >
+        <UtilsBGImage
+          src={
+            "https://images.unsplash.com/photo-1495195129352-aeb325a55b65?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds"
+          }
         />
         <div className="row">
           <div className="col-md-1 col-0"></div>
@@ -28,13 +24,11 @@ const Home = () => {
           </div>
           <div className="col-md-5 col-12 d-flex flex-column justify-content-center align-items-md-start align-items-center">
             <div className="display-1">Business Slogan</div>
-            <p className="fs-4">Business Subtitle</p>
+            <div className="fs-4">Business Subtitle</div>
           </div>
           <div className="col-md-1 col-0"></div>
-        </div>
+        </div>  
       </div>
-
-      <div className="container-fluid"></div>
     </>
   );
 };

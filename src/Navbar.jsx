@@ -7,10 +7,16 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <header
-        className="navbar navbar-expand-md fixed-top px-3 bg-dark bg-opacity-75"
-      >
-        <nav className="container">
+      <header className="navbar navbar-expand-sm fixed-top px-3 bg-dark bg-opacity-75">
+        <nav className="container-fluid justify-content-sm-center">
+          <Link to="/" className="navbar-brand m-0">
+            <img
+              src="/logo_1.png"
+              alt="Logo.png"
+              style={{ width: "5rem", height: "5rem" }}
+            />
+          </Link>
+
           <button
             type="button"
             className="navbar-toggler text-light border-light"
@@ -32,67 +38,21 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <Link to="/" className="navbar-brand m-0">
-            <img
-              src="/logo_1.png"
-              alt="Logo.png"
-              style={{ width: "4rem", height: "4rem" }}
-            />
-          </Link>
-
-          <button
-            type="button"
-            className="navbar-toggler text-light border-light"
-            data-bs-toggle="collapse"
-            data-bs-target="#nav-search"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-search"
-              viewBox="0 0 16 16"
-            >
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-            </svg>
-          </button>
-
-          <div className="collapse navbar-collapse" id="nav-links">
-            <ul className="navbar-nav nav-underline ms-3">
-              <NavLink to="/" className="nav-link text-light">
+          <div className="collapse navbar-collapse flex-grow-0 ms-4" id="nav-links">
+            <ul className="navbar-nav nav-underline">
+              <NavLink to="/" className="nav-link text-light fs-5">
                 Home
               </NavLink>
-              <NavLink to="/meals" className="nav-link text-light">
-                Meals
+              <NavLink to="/about" className="nav-link text-light fs-5">
+                About
               </NavLink>
-              <NavLink to="/snacks" className="nav-link text-light">
-                Snacks
+              <NavLink to="/food" className="nav-link text-light fs-5">
+                Food
               </NavLink>
-              <NavLink to="/beverages" className="nav-link text-light">
-                Beverages
-              </NavLink>
-              <NavLink to="/bundles" className="nav-link text-light">
-                Bundles
+              <NavLink to="/contact" className="nav-link text-light fs-5">
+                Contact
               </NavLink>
             </ul>
-          </div>
-
-          <div
-            className="collapse navbar-collapse justify-content-center"
-            id="nav-search"
-          >
-            <form action="" className="d-flex" role="search">
-              <input
-                type="search"
-                className="form-control ms-3 me-3"
-                placeholder="🔍"
-                aria-label="Search"
-              />
-              <button type="submit" className="btn btn-outline-light">
-                Search
-              </button>
-            </form>
           </div>
         </nav>
       </header>
@@ -115,3 +75,40 @@ function NavLink({ to, children, ...props }) {
 }
 
 export default Navbar;
+
+/*
+          <button
+            type="button"
+            className="navbar-toggler text-light border-light"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav-search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </button>
+
+          <div
+            className="collapse navbar-collapse justify-content-center"
+            id="nav-search"
+          >
+            <form action="" className="d-flex" role="search">
+              <input
+                type="search"
+                className="form-control ms-3 me-3"
+                placeholder="🔍"
+                aria-label="Search"
+              />
+              <button type="submit" className="btn btn-outline-light">
+                Search
+              </button>
+            </form>
+          </div>
+*/
