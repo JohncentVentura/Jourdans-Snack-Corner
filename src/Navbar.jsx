@@ -3,6 +3,7 @@ import React from "react";
 //useMatch is used to compare the current path we are on to whatever path we want to
 //useResolvedPath is used to take relative or absolute path, combines it with the current path we are on, and gives the actual full path that you would be accessing
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { UtilPaths } from "./Utilities";
 
 const Navbar = () => {
   return (
@@ -40,17 +41,17 @@ const Navbar = () => {
 
           <div className="collapse navbar-collapse flex-grow-0 ms-4" id="nav-links">
             <ul className="navbar-nav nav-underline">
-              <NavLink to="/" className="nav-link text-light fs-5">
+              <NavLink to={UtilPaths.home} className="nav-link text-light fs-5">
                 Home
               </NavLink>
-              <NavLink to="/about" className="nav-link text-light fs-5">
-                About
+              <NavLink to={UtilPaths.aboutUs} className="nav-link text-light fs-5">
+                About Us
               </NavLink>
-              <NavLink to="/food" className="nav-link text-light fs-5">
-                Food
+              <NavLink to={UtilPaths.menu} className="nav-link text-light fs-5">
+                Menu
               </NavLink>
-              <NavLink to="/contact" className="nav-link text-light fs-5">
-                Contact
+              <NavLink to={UtilPaths.contacts} className="nav-link text-light fs-5">
+                Contacts
               </NavLink>
             </ul>
           </div>

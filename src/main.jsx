@@ -1,14 +1,16 @@
+//Default imports     
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./index.css";
+//import "./index.css"; //Deprecated, use import "../sass/main.css"; 
 
-// Bootstrap CSS
+// imports Bootstrap CSS, Bootstrap Bundle JS, SASS for both CSS & Bootstrap Customization
 import "bootstrap/dist/css/bootstrap.min.css";
-// Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter } from "react-router-dom";
+import "../sass/main.css"; //MUST BE imported after Bootstrap CSS & Bootstrap Bundle JS to override bootstrap
 
+//React imports
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,6 +19,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+
 
 /*
 

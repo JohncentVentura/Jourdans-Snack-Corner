@@ -1,32 +1,42 @@
-import React from "react";
+import { React, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Food from "./pages/Food";
-import Contact from "./pages/Contact";
-import FoodMeals from "./pages/FoodMeals";
-import FoodSnacks from "./pages/FoodSnacks";
-import FoodBeverages from "./pages/FoodBeverages";
-import FoodBundles from "./pages/FoodBundles";
+import AboutUs from "./pages/AboutUs";
+import Menu from "./pages/Menu";
+import Contacts from "./pages/Contacts";
+import MenuMeals from "./pages/MenuMeals";
+import MenuSnacks from "./pages/MenuSnacks";
+import MenuBeverages from "./pages/MenuBeverages";
+import MenuBundles from "./pages/MenuBundles";
+import { UtilPaths } from "./Utilities";
 
 function App() {
   return (
     <>
       <Navbar />
-
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/food" element={<Food />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/food/meals" element={<FoodMeals />} />
-        <Route path="/food/snacks" element={<FoodSnacks />} />
-        <Route path="/food/beverages" element={<FoodBeverages />} />
-        <Route path="/food/bundles" element={<FoodBundles />} />
+        <Route path={UtilPaths.home} element={<Home />} />
+        <Route path={UtilPaths.aboutUs} element={<AboutUs />} />
+        <Route path={UtilPaths.menu} element={<Menu />} />
+        <Route path={UtilPaths.contacts} element={<Contacts />} />
+        <Route path={UtilPaths.menuMeals} element={<MenuMeals />} />
+        <Route path={UtilPaths.menuSnacks} element={<MenuSnacks />} />
+        <Route path={UtilPaths.menuBeverages} element={<MenuBeverages />} />
+        <Route path={UtilPaths.menuBundles} element={<MenuBundles />} />
       </Routes>
     </>
   );
+}
+
+const Footer = () => {
+  <>
+    <footer>
+      <div>
+      <a href="https://www.freepik.com/free-photo/fast-food-dish-top-view-meat-burger-potato-chips-wedges-take-away-composition-french-fries-hamburger-mayonnaise-ketchup-sauces-yellow-background-menu-receipt-background-top-view_28990348.htm#query=fast%20foods&position=30&from_view=search&track=ais&uuid=c419c7a1-d682-4754-9371-229b111ce5ee">Image by YuliiaKa</a> on Freepik
+      </div>
+    </footer>
+  </>
 }
 
 export default App;
