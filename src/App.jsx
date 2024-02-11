@@ -14,6 +14,7 @@ import { UtilPaths } from "./Utilities";
 function App() {
   return (
     <>
+      <div className="breakpoint position-absolute fixed-top display-3 ff-bubblegum-sans text-danger"></div>
       <Navbar />
       <Routes>
         <Route path={UtilPaths.home} element={<Home />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path={UtilPaths.menuBeverages} element={<MenuBeverages />} />
         <Route path={UtilPaths.menuBundles} element={<MenuBundles />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
@@ -33,11 +35,16 @@ const Footer = () => {
   <>
     <footer>
       <div>
-      <a href="https://www.freepik.com/free-photo/fast-food-dish-top-view-meat-burger-potato-chips-wedges-take-away-composition-french-fries-hamburger-mayonnaise-ketchup-sauces-yellow-background-menu-receipt-background-top-view_28990348.htm#query=fast%20foods&position=30&from_view=search&track=ais&uuid=c419c7a1-d682-4754-9371-229b111ce5ee">Image by YuliiaKa</a> on Freepik
+        Image by{" "}
+        <a href="https://www.freepik.com/free-photo/view-assortment-with-delicious-food-copy-space_5618651.htm#query=fast%20food%20background&position=25&from_view=search&track=ais&uuid=98769e85-003f-488c-a0e5-1b24f15700f3">
+          Freepik
+        </a>
+        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
       </div>
+      
     </footer>
-  </>
-}
+  </>;
+};
 
 export default App;
 

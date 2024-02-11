@@ -45,28 +45,28 @@ const Menu = () => {
           <div className="col-md-2 col-5">
             <FoodLink
               to={UtilPaths.menuMeals}
-              imgSrc="./Meals.png"
+              imgSrc="./meals.png"
               text="Meals"
             ></FoodLink>
           </div>
           <div className="col-md-2 col-5">
             <FoodLink
               to={UtilPaths.menuSnacks}
-              imgSrc="./Snacks.png"
+              imgSrc="./snacks.png"
               text="Snacks"
             ></FoodLink>
           </div>
           <div className="col-md-2 col-5">
             <FoodLink
               to={UtilPaths.menuBeverages}
-              imgSrc="./Beverages.png"
+              imgSrc="./beverages.png"
               text="Beverages"
             ></FoodLink>
           </div>
           <div className="col-md-2 col-5">
             <FoodLink
               to={UtilPaths.menuBundles}
-              imgSrc="./Bundles.png"
+              imgSrc="./bundles.png"
               text="Bundles"
             ></FoodLink>
           </div>

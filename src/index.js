@@ -1,10 +1,10 @@
-getBreakpoint(); //Statring window size
+printBreakpoint(); //Statring window size
 
 window.addEventListener("resize", () => {
-  getBreakpoint();
+  printBreakpoint();
 });
 
-function getBreakpoint() {
+function printBreakpoint() {
   if (window.innerWidth >= 1400) {
     console.log("XXL");
   } else if (window.innerWidth >= 1200) {

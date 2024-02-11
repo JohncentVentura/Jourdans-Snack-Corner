@@ -2,47 +2,142 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Open Sans", sans-serif;
   list-style-type: none;
   transition: all 0.4s ease-in-out;
-  font-family: "Open Sans", sans-serif;
 }
 
-.display-1,
-.display-2,
-.display-3,
-.display-4,
-.display-5,
-.display-6 {
+.ff-bubblegum-sans {
   font-family: "Bubblegum Sans", sans-serif;
-  /*font-weight: 400;
-    font-style: normal;*/
+  font-weight: 400;
+  font-style: normal;
+} 
+
+.navbar-brand img{
+  width: 5rem;
+  height: 5rem;
 }
 
+//Colors
 $primary: #b97e3c;
-$font-size-base: 1rem;
 
-$display-font-sizes: (
-  1: 5rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem,
+//Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.5,
+  2: $spacer,
+  3: $spacer * 2,
+  4: $spacer * 4,
+  5: $spacer * 8,
+  navX: $spacer * 16,
+  navY: $spacer * 6
 );
 
+//Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...
+$font-sizes: (
+  1: 0.8rem,
+  2: 1rem,
+  3: 1.2rem,
+  4: 1.4rem,
+  5: 1.8rem,
+  6: 2rem,
+  7: 5rem
+);
+
+// Default (landscape devices, 1px and up)
+@media (min-width: 1px) {
+  .breakpoint::after{
+    content: "DF";
+  }
+}
+
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+  .breakpoint::after{
+    content: "SM"
+  }
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .breakpoint::after{
+    content: "MD"
+  }
+
+  $font-size-7: 15rem;
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .breakpoint::after{
+    content: "LG";
+  }
+}
 
 // X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .breakpoint::after{
+    content: "XL";
+  }
+}
 
 // XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+  .breakpoint::after{
+    content: "XXL";
+  }
+}
 
+
+//Utilities
+$utilities: ();
+$utilities: map-merge(
+  (
+    "width": (
+      property: width,
+      class: w,
+      values: (
+        10: 10%,
+        20: 20%,
+        30: 30%,
+        40: 40%,
+        50: 50%,
+        60: 60%,
+        70: 70%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        auto: auto,
+      ),
+    ),
+    "height": (
+      property: height,
+      class: h,
+      values: (
+        10: 10%,
+        20: 20%,
+        30: 30%,
+        40: 40%,
+        50: 50%,
+        60: 60%,
+        70: 70%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        auto: auto,
+      ),
+    ),
+    "font-size": (
+      responsive: true,
+      //rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes
+    ),
+  ),
+  $utilities
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap-utilities";
 @import "../node_modules/bootstrap/scss/bootstrap"; //Overrides default values from bootstrap
