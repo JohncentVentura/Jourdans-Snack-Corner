@@ -11,11 +11,6 @@
   font-family: "Bubblegum Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-} 
-
-.navbar-brand img{
-  width: 5rem;
-  height: 5rem;
 }
 
 //Colors
@@ -25,70 +20,80 @@ $primary: #b97e3c;
 $spacer: 1rem;
 $spacers: (
   0: 0,
-  1: $spacer * 0.5,
-  2: $spacer,
-  3: $spacer * 2,
-  4: $spacer * 4,
-  5: $spacer * 8,
-  navX: $spacer * 16,
-  navY: $spacer * 6
+  1: 0.5rem,
+  2: 1rem,
+  3: 2rem,
+  4: 4rem,
+  5: 8rem,
+  navX: 16rem,
+  navY1: 6rem,
+  navY2: 5rem
 );
 
 //Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...
 $font-sizes: (
   1: 0.8rem,
   2: 1rem,
-  3: 1.2rem,
-  4: 1.4rem,
-  5: 1.8rem,
+  3: 1.25rem,
+  4: 1.5rem,
+  5: 1.75rem,
   6: 2rem,
-  7: 5rem
+  7: 3rem,
+  8: 4rem,
+  9: 5rem,
 );
 
 // Default (landscape devices, 1px and up)
 @media (min-width: 1px) {
-  .breakpoint::after{
+  .breakpoint::after {
     content: "DF";
+  }
+
+  .navbar-brand img {
+    width: 6rem;
+    height: 6rem;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .breakpoint::after{
-    content: "SM"
+  .breakpoint::after {
+    content: "SM";
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .breakpoint::after{
-    content: "MD"
+  .breakpoint::after {
+    content: "MD";
   }
-
-  $font-size-7: 15rem;
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .breakpoint::after{
+  .breakpoint::after {
     content: "LG";
+  }
+
+  .navbar-brand img {
+    width: 5rem;
+    height: 5rem;
   }
 }
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .breakpoint::after{
+  .breakpoint::after {
     content: "XL";
   }
 }
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) {
-  .breakpoint::after{
+  .breakpoint::after {
     content: "XXL";
   }
 }
-
 
 //Utilities
 $utilities: ();
@@ -133,7 +138,7 @@ $utilities: map-merge(
       //rfs: true,
       property: font-size,
       class: fs,
-      values: $font-sizes
+      values: $font-sizes,
     ),
   ),
   $utilities

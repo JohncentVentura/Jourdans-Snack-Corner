@@ -10,12 +10,12 @@ const Home = () => {
   return (
     <>
       <UtilCreateSection
-        style={{ padding: "0 0 0 0", height: "100vh" }}
+        style={{ height: "100vh" }}
         imgSrcCover={"/home_bg.jpg"}
       >
         <div className="row h-100">
-          <div className="col-xxl-8 col-md-9 col-sm-10 col-11 d-flex flex-column justify-content-center">
-            <div className="fs-7 ff-bubblegum-sans text-dark">
+          <div className="col-lg-8 col-md-9 col-sm-10 col-11 d-flex flex-column justify-content-center">
+            <div className="fs-xl-9 fs-lg-8 fs-7 ff-bubblegum-sans text-dark">
               Where each Snack leaves an Impact
             </div>
             <div className="mt-2 fs-4 text-dark">
@@ -38,7 +38,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="col-xxl-4 col-md-3 col-sm-2 col-1"></div>
+          <div className="col-lg-4 col-md-3 col-sm-2 col-1"></div>
         </div>
       </UtilCreateSection>
       <UtilCreateSection

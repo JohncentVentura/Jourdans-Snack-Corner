@@ -8,11 +8,10 @@ import { UtilCreateNav, UtilPaths } from "./Utilities";
 const Navbar = () => {
   return (
     <>
-      <header className="navbar navbar-expand-md fixed-top p-0 bg-dark bg-opacity-75 ">
+      <header className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <UtilCreateNav>
           <Link to="/" className="navbar-brand m-0 p-0">
             <img src="/logo_1.png" alt="Logo.png" />
-            
           </Link>
 
           <button
@@ -21,13 +20,10 @@ const Navbar = () => {
             data-bs-toggle="collapse"
             data-bs-target="#nav-links"
           >
-            <i className="fas fa-bars"></i>
+            <i className="fas fa-bars fs-md-6 fs-5"></i>
           </button>
 
-          <div
-            className="collapse navbar-collapse flex-grow-0"
-            id="nav-links"
-          >
+          <div className="collapse navbar-collapse flex-grow-0" id="nav-links">
             <ul className="navbar-nav nav-underline">
               <NavLink to={UtilPaths.home}>Home</NavLink>
               <NavLink to={UtilPaths.aboutUs}>About Us</NavLink>
@@ -48,7 +44,10 @@ function NavLink({ to, children }) {
 
   return (
     <li className={isActive ? "active nav-item" : "nav-item"}>
-      <Link to={to} className="nav-link ms-2 fs-5 ff-bubblegum-sans text-light">
+      <Link
+        to={to}
+        className="nav-link ms-2 fs-xl-6 fs-lg-5 fs-4 ff-bubblegum-sans text-light text-center"
+      >
         {children}
       </Link>
     </li>

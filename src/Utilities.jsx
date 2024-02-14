@@ -33,7 +33,7 @@ export const UtilCreateSection = ({
         />
       )}
 
-      <div className={`container-fluid ${SectionAndNavPaddingX} pt-sm-0 pt-navY`} {...props}>
+      <div className={`container-fluid ${SectionAndNavPaddingX} pt-sm-0 pt-lg-navY1 pt-navY2`} {...props}>
         {children}
       </div>
     </section>
