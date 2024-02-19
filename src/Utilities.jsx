@@ -42,11 +42,11 @@ export const UtilCreateSection = ({
 
 export const UtilCreateNav = ({ children, ...props }) => {
   return (
-    <nav
-      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-1 d-flex justify-content-between`}
+    <div
+      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-2 d-flex justify-content-between`}
       {...props}
     >
       {children}
-    </nav>
+    </div>
   );
 };

@@ -8,17 +8,20 @@ import { UtilCreateNav, UtilPaths } from "./Utilities";
 const Navbar = () => {
   return (
     <>
-      <header className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
+      <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <UtilCreateNav>
-          <Link to="/" className="navbar-brand m-0 p-0">
+          <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
             <img src="/logo_1.png" alt="Logo.png" />
           </Link>
 
           <button
-            type="button"
             className="navbar-toggler text-light"
+            type="button"
             data-bs-toggle="collapse"
             data-bs-target="#nav-links"
+            aria-controls="nav-links"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <i className="fas fa-bars fs-md-6 fs-5"></i>
           </button>
@@ -32,7 +35,7 @@ const Navbar = () => {
             </ul>
           </div>
         </UtilCreateNav>
-      </header>
+      </nav>
     </>
   );
 };

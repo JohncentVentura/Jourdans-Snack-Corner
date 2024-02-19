@@ -11,20 +11,16 @@ const Home = () => {
     <>
       <UtilCreateSection
         style={{ height: "100vh" }}
-        imgSrcCover={"/home_bg.jpg"}
+        imgSrcCover={
+          "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
       >
         <div className="row h-100">
-          <div className="col-lg-8 col-md-9 col-sm-10 col-11 d-flex flex-column justify-content-center">
-            <div className="fs-xl-9 fs-lg-8 fs-7 ff-bubblegum-sans text-dark">
+          <div className="col-lg-2 col-1"></div>
+          <div className="col-lg-8 col-10 d-flex flex-column justify-content-center">
+            <img src="/logo_2.png" alt="" className="home-img"/>
+            <div className="fs-xl-8 fs-lg-7 fs-6 m-3 ff-bubblegum-sans text-light text-center">
               Where each Snack leaves an Impact
-            </div>
-            <div className="mt-2 fs-4 text-dark">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ab
-              rerum distinctio eius facilis dolorum eaque esse autem, beatae
-              aliquam? Doloribus illum reprehenderit deleniti maxime natus vero
-              distinctio blanditiis? Aut, maiores alias. Molestiae, quisquam!
-              Laudantium, tempore vel impedit assumenda vitae in accusamus quasi
-              inventore cum magni repudiandae sint. Harum, dolor!
             </div>
             <div className="row mt-3">
               <div className="col-12">
@@ -37,8 +33,8 @@ const Home = () => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="col-lg-4 col-md-3 col-sm-2 col-1"></div>
+          </div>  
+          <div className="col-lg-2 col-1"></div>
         </div>
       </UtilCreateSection>
       <UtilCreateSection

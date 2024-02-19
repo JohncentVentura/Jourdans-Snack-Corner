@@ -14,10 +14,10 @@
 }
 
 //Colors
-$primary: #b97e3c;
+$primary: #c81a24;
+$secondary: #0ea18f;
 
 //Spacing
-$spacer: 1rem;
 $spacers: (
   0: 0,
   1: 0.5rem,
@@ -27,7 +27,7 @@ $spacers: (
   5: 8rem,
   navX: 16rem,
   navY1: 6rem,
-  navY2: 5rem
+  navY2: 6rem
 );
 
 //Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...
@@ -50,8 +50,8 @@ $font-sizes: (
   }
 
   .navbar-brand img {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
   }
 }
 
