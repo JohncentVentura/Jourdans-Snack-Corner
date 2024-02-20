@@ -14,18 +14,29 @@
   font-style: normal;
 }
 
+.home-img {
+  width: 90%;
+  height: 60%;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
 @media (min-width: 1px) {
   .breakpoint::after {
     content: "DF";
   }
   .navbar-brand img {
-    width: 5rem;
+    width: 10rem;
     height: 5rem;
   }
 }
 @media (min-width: 576px) {
   .breakpoint::after {
     content: "SM";
+  }
+  .navbar-brand img {
+    width: 14rem;
+    height: 5rem;
   }
 }
 @media (min-width: 768px) {
@@ -36,10 +47,6 @@
 @media (min-width: 992px) {
   .breakpoint::after {
     content: "LG";
-  }
-  .navbar-brand img {
-    width: 5rem;
-    height: 5rem;
   }
 }
 @media (min-width: 1200px) {

@@ -16,13 +16,13 @@ const Home = () => {
         }
       >
         <div className="row h-100">
-          <div className="col-lg-2 col-1"></div>
-          <div className="col-lg-8 col-10 d-flex flex-column justify-content-center">
-            <img src="/logo_2.png" alt="" className="home-img"/>
-            <div className="fs-xl-8 fs-lg-7 fs-6 m-3 ff-bubblegum-sans text-light text-center">
+          <div className="col-xl-1 col-0"></div>
+          <div className="col-xl-10 col-12 d-flex flex-column justify-content-center align-items-center">
+            <img src="/logo_2.2.png" alt="" className="home-img"/>
+            <div className="fs-xl-7 fs-lg-6 fs-5 mt-2 ff-bubblegum-sans text-light text-center">
               Where each Snack leaves an Impact
             </div>
-            <div className="row mt-3">
+            <div className="row mt-2">
               <div className="col-12">
                 <button
                   type="button"
@@ -34,7 +34,7 @@ const Home = () => {
               </div>
             </div>
           </div>  
-          <div className="col-lg-2 col-1"></div>
+          <div className="col-xl-1 col-0"></div>
         </div>
       </UtilCreateSection>
       <UtilCreateSection

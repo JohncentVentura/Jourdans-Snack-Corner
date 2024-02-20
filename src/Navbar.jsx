@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <UtilCreateNav>
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
-            <img src="/logo_1.png" alt="Logo.png" />
+            <img src="/logo_2.3.png" alt="navbar-brand" />
           </Link>
 
           <button
@@ -49,7 +49,7 @@ function NavLink({ to, children }) {
     <li className={isActive ? "active nav-item" : "nav-item"}>
       <Link
         to={to}
-        className="nav-link ms-2 fs-xl-6 fs-lg-5 fs-4 ff-bubblegum-sans text-light text-center"
+        className="nav-link ms-2 fs-xl-5 fs-4 ff-bubblegum-sans text-light text-center"
       >
         {children}
       </Link>
