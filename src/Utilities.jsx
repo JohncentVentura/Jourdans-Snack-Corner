@@ -34,7 +34,7 @@ export const UtilCreateSection = ({
       )}
 
       <div
-        className={`container-fluid ${SectionAndNavPaddingX} pt-lg-navY1 pt-md-navY2 pt-sm-0`}
+        className={`container-fluid ${SectionAndNavPaddingX} pt-navY`}
         {...props}
       >
         {children}
@@ -46,7 +46,7 @@ export const UtilCreateSection = ({
 export const UtilCreateNav = ({ children, ...props }) => {
   return (
     <div
-      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-1 d-flex justify-content-between`}
+      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-2 d-flex justify-content-between`}
       {...props}
     >
       {children}

@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <UtilCreateNav>
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
-            <img src="/logo_2.3.png" alt="navbar-brand" />
+            <img src="/icon.png" alt="navbar-brand" />
           </Link>
 
           <button
@@ -40,7 +40,7 @@ const Navbar = () => {
   );
 };
 
-function NavLink({ to, children }) {
+const NavLink = ({ to, children }) => {
   const resolvedPath = useResolvedPath(to);
   //useMatch() parameters requires an object that contains the path we want to access, and an optional boolean that tells the entire path must match
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -58,40 +58,3 @@ function NavLink({ to, children }) {
 }
 
 export default Navbar;
-
-/*
-          <button
-            type="button"
-            className="navbar-toggler text-light border-light"
-            data-bs-toggle="collapse"
-            data-bs-target="#nav-search"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-search"
-              viewBox="0 0 16 16"
-            >
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-            </svg>
-          </button>
-
-          <div
-            className="collapse navbar-collapse justify-content-center"
-            id="nav-search"
-          >
-            <form action="" className="d-flex" role="search">
-              <input
-                type="search"
-                className="form-control ms-3 me-3"
-                placeholder="🔍"
-                aria-label="Search"
-              />
-              <button type="submit" className="btn btn-outline-light">
-                Search
-              </button>
-            </form>
-          </div>
-*/

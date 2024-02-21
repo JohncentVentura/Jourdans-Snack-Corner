@@ -15,25 +15,26 @@ const Home = () => {
           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       >
-        <div className="row h-100">
+        <div className="row pt-3 pb-navY h-100 w-100">
           <div className="col-xl-1 col-0"></div>
-          <div className="col-xl-10 col-12 d-flex flex-column justify-content-center align-items-center">
-            <img src="/logo_2.2.png" alt="" className="home-img"/>
-            <div className="fs-xl-7 fs-lg-6 fs-5 mt-2 ff-bubblegum-sans text-light text-center">
+          <div className="col-xl-10 col-12 d-flex flex-column justify-content-start align-items-center">
+            <img src="/logo_2.2.png" alt="" className="home-img" />
+            <div className="fs-xl-7 fs-lg-7 fs-md-6 fs-sm-5 fs-4 mt-2 ff-bubblegum-sans text-light text-center">
               Where each Snack leaves an Impact
             </div>
-            <div className="row mt-2">
-              <div className="col-12">
-                <button
-                  type="button"
-                  className="btn btn-primary d-flex align-items-center fs-3"
-                >
+            <div className="row mt-3 w-100">
+              <div className="col-12 d-flex justify-content-evenly">
+                <SetHomeButton color="btn-primary">
                   <i className="fas fa-phone-alt"></i>
-                  <div className="ms-1 d-inline-block">Call Us Now</div>
-                </button>
+                  <div className="ms-1 d-inline-block">Eat with us</div>
+                </SetHomeButton>
+                <SetHomeButton color="btn-secondary">
+                  <i className="fas fa-phone-alt"></i>
+                  <div className="ms-1 d-inline-block">Work with us</div>
+                </SetHomeButton>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="col-xl-1 col-0"></div>
         </div>
       </UtilCreateSection>
@@ -49,23 +50,16 @@ const Home = () => {
   );
 };
 
-function MenuLink({ to, children }) {
-  const resolvedPath = useResolvedPath(to);
-  //useMatch() parameters requires an object that contains the path we want to access, and an optional boolean that tells the entire path must match
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-  const menuLinkClass =
-    "d-flex flex-column justify-content-center align-items-center";
-
+const SetHomeButton = ({ color, children }) => {
   return (
-    <Link
-      to={to}
-      className={isActive ? `active ${menuLinkClass}` : `${menuLinkClass}`}
-      styles={{ width: "2rem", height: "2rem" }}
+    <button
+      type="button"
+      className={`btn ${color} d-flex align-items-center fs-lg-4 fs-sm-3 fs-2 text-light`}
     >
       {children}
-    </Link>
+    </button>
   );
-}
+};
 
 export default Home;
 

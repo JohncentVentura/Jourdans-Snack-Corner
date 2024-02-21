@@ -14,11 +14,11 @@
 }
 
 .home-img{
-  width: 90%;
-  height: 60%;
-  object-fit: fill  ;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
-
+  
 //Colors
 $primary: #c81a24;
 $secondary: #0ea18f;
@@ -32,8 +32,7 @@ $spacers: (
   4: 4rem,
   5: 8rem,
   navX: 16rem,
-  navY1: 6rem,
-  navY2: 6rem
+  navY: 7rem,
 );
 
 //Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...
@@ -56,7 +55,7 @@ $font-sizes: (
   }
 
   .navbar-brand img {
-    width: 10rem;
+    width: 4.5rem;
     height: 5rem;
   }
 }
@@ -67,10 +66,7 @@ $font-sizes: (
     content: "SM";
   }
 
-  .navbar-brand img {
-    width: 14rem;
-    height: 5rem;
-  }
+  
 }
 
 // Medium devices (tablets, 768px and up)
