@@ -11,7 +11,7 @@ export const UtilPaths = {
   menuBundles: "/menu/bundles",
 };
 
-const SectionAndNavPaddingX = "px-xxl-navX px-md-5 px-sm-4 px-3";
+const SectionAndNavPaddingX = "px-xxl-7 px-xl-6 px-lg-5 px-sm-4 px-3";
 
 export const UtilCreateSection = ({
   imgSrcFill,
@@ -34,7 +34,7 @@ export const UtilCreateSection = ({
       )}
 
       <div
-        className={`container-fluid ${SectionAndNavPaddingX} pt-navY`}
+        className={`container-fluid ${SectionAndNavPaddingX} pt-navHeight`}
         {...props}
       >
         {children}
@@ -46,7 +46,7 @@ export const UtilCreateSection = ({
 export const UtilCreateNav = ({ children, ...props }) => {
   return (
     <div
-      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-2 d-flex justify-content-between`}
+      className={`container-fluid m-0 ${SectionAndNavPaddingX} py-1 w-100 h-navHeight d-flex justify-content-between`}
       {...props}
     >
       {children}
