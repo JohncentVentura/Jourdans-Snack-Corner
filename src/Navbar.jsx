@@ -3,13 +3,15 @@ import React from "react";
 //useMatch is used to compare the current path we are on to whatever path we want to
 //useResolvedPath is used to take relative or absolute path, combines it with the current path we are on, and gives the actual full path that you would be accessing
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { UtilCreateNav, UtilPaths } from "./Utilities";
+import { UtilContainerPadding, UtilPaths } from "./Utilities";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
-        <UtilCreateNav>
+      <nav className="navbar navbar-expand-lg fixed-top p-0 h-navHeight bg-dark bg-opacity-75">
+        <div
+          className={`container-fluid m-0 ${UtilContainerPadding} py-1 d-flex justify-content-between`}
+        >
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
             <img src="/icon.png" alt="navbar-brand" />
           </Link>
@@ -34,7 +36,7 @@ const Navbar = () => {
               <NavLink to={UtilPaths.contacts}>Contacts</NavLink>
             </ul>
           </div>
-        </UtilCreateNav>
+        </div>
       </nav>
     </>
   );
@@ -49,12 +51,12 @@ const NavLink = ({ to, children }) => {
     <li className={isActive ? "active nav-item" : "nav-item"}>
       <Link
         to={to}
-        className="nav-link ms-2 fs-xl-5 fs-4 ff-bubblegum-sans text-light text-center"
+        className="nav-link ms-2 fs-xl-5 fs-4 title-font text-light text-center"
       >
         {children}
       </Link>
     </li>
   );
-}
+};
 
 export default Navbar;

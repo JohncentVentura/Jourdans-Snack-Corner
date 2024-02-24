@@ -10,34 +10,42 @@ const Home = () => {
   return (
     <>
       <UtilCreateSection
-        style={{ height: "100vh" }}
+        style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}
         imgSrcCover={
           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       >
-        <div className="row pt-3 pb-5 px-2 h-100 w-100">
-          <div className="col-1"></div>
-          <div className="col-10 d-flex flex-column justify-content-start align-items-center">
-            <img src="/logo_2.2.png" alt="" className="home-img" />
-            <div className="fs-xl-7 fs-md-6 fs-sm-5 fs-4 mt-2 ff-bubblegum-sans text-light text-center">
+        <div className="row">
+          <div className="col-4 p-0 ">
+            <img src="/icon.png" alt="" />
+          </div>
+          <div className="col-8 p-0 ">
+            <img src="/logo_2.4.png" alt="" />
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-12 p-0">
+            <div className="fs-xl-7 fs-md-6 fs-sm-5 fs-4 title-font text-light text-center">
               Where each Snack leaves an Impact
             </div>
-            <div className="row mt-3 w-100">
-              <div className="col-12 d-flex justify-content-evenly">
-                <CreateHomeButton color="btn-primary">
-                  <i className="fas fa-phone-alt"></i>
-                  <div className="ms-1 d-inline-block">Eat with us</div>
-                </CreateHomeButton>
-                <CreateHomeButton color="btn-secondary">
-                  <i className="fas fa-phone-alt"></i>
-                  <div className="ms-1 d-inline-block">Work with us</div>
-                </CreateHomeButton>
-              </div>
-            </div>
           </div>
-          <div className="col-1"></div>
+        </div>
+
+        <div className="row mt-3 w-100">
+          <div className="col-12 p-0 d-flex justify-content-evenly">
+            <CreateHomeButton color="btn-primary">
+              <i className="fas fa-phone-alt"></i>
+              <div className="ms-1 d-inline-block">Eat with us</div>
+            </CreateHomeButton>
+            <CreateHomeButton color="btn-secondary">
+              <i className="fas fa-phone-alt"></i>
+              <div className="ms-1 d-inline-block">Work with us</div>
+            </CreateHomeButton>
+          </div>
         </div>
       </UtilCreateSection>
+      
       <UtilCreateSection
         style={{ paddingTop: "6rem", paddingBottom: "6rem" }}
         imgSrcFill={

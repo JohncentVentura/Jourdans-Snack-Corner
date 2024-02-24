@@ -14,7 +14,7 @@ import { UtilPaths } from "./Utilities";
 function App() {
   return (
     <>
-      <div className="breakpoint position-absolute fixed-top display-3 ff-bubblegum-sans text-danger"></div>
+      <div className="breakpoint position-absolute fixed-top display-3 title-font text-danger"></div>
       <Navbar />
       <Routes>
         <Route path={UtilPaths.home} element={<Home />} />
