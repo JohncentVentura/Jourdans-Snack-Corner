@@ -26,7 +26,7 @@ const Home = () => {
 
         <div className="row mt-2 h-10">
           <div className="col-12 p-0 d-flex justify-content-center align-items-center">
-            <div className="fs-xl-7 fs-md-6 fs-sm-5 fs-4 title-font text-light text-center">
+            <div className="fs-xl-7 fs-md-6 fs-sm-5 fs-4 title-font text-light">
               Where each Snack leaves an Impact
             </div>
           </div>

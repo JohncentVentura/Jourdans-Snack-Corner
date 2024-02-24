@@ -21,11 +21,6 @@ img {
      object-fit: contain;
 }
 
-.navbar-brand img {
-  width: 5.5rem;
-  height: 5.5rem;
-}
-
 @media (min-width: 1px) {
   .breakpoint::after {
     content: "DF";

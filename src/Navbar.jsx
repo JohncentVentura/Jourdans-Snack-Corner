@@ -13,7 +13,7 @@ const Navbar = () => {
           className={`container-fluid m-0 ${UtilContainerPadding} py-1 d-flex justify-content-between`}
         >
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
-            <img src="/icon.png" alt="navbar-brand" />
+            <img src="/icon.png" alt="navbar-brand" style={{width: "4.7rem", heigth: "4.7rem"}}/>
           </Link>
 
           <button
