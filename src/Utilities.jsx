@@ -11,7 +11,7 @@ export const UtilPaths = {
   menuBundles: "/menu/bundles",
 };
 
-export const UtilContainerPadding = "px-xxl-7 px-xl-6 px-lg-5 px-sm-4 px-3";
+export const UtilContainerPaddingX = "px-xxl-7 px-xl-6 px-lg-5 px-sm-4 px-3";
 
 export const UtilCreateSection = ({
   imgSrcFill,
@@ -34,7 +34,7 @@ export const UtilCreateSection = ({
       )}
 
       <div
-        className={`container-fluid ${UtilContainerPadding} pt-navHeight`}
+        className={`container-fluid ${UtilContainerPaddingX} pt-navHeight`}
         {...props}
       >
         {children}

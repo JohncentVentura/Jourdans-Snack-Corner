@@ -1,4 +1,4 @@
-$navHeight: 7rem;
+$navHeight: 6.3rem;
 
 * {
   box-sizing: border-box;
@@ -58,6 +58,7 @@ $utilities: ();
 $utilities: map-merge(
   (
     "width": (
+      responsive: true,
       property: width,
       class: w,
       values: (
@@ -75,6 +76,7 @@ $utilities: map-merge(
       ),
     ),
     "height": (
+      responsive: true,
       property: height,
       class: h,
       values: (
