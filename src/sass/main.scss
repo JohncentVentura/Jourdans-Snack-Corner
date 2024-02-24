@@ -1,0 +1,151 @@
+$navHeight: 6.3rem;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  list-style-type: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.title-font {
+  font-family: "Bubblegum Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+//Colors
+$primary: #c81a24;
+$secondary: #0ea18f;
+
+//Spacing
+$spacers: (
+  0: 0,
+  1: 0.5rem,
+  2: 1rem,
+  3: 2rem,
+  4: 4rem,
+  5: 8rem,
+  6: 12rem,
+  7: 16rem,
+  8: 20rem,
+  9: 25rem,
+  navHeight: $navHeight,
+);
+
+//Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...
+$font-sizes: (
+  1: 0.8rem,
+  2: 1rem,
+  3: 1.25rem,
+  4: 1.5rem,
+  5: 1.75rem,
+  6: 2rem,
+  7: 3rem,
+  8: 4rem,
+  9: 5rem,
+);
+
+//Utilities
+$utilities: ();
+$utilities: map-merge(
+  (
+    "width": (
+      responsive: true,
+      property: width,
+      class: w,
+      values: (
+        10: 10%,
+        20: 20%,
+        30: 30%,
+        40: 40%,
+        50: 50%,
+        60: 60%,
+        70: 70%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        auto: auto,
+      ),
+    ),
+    "height": (
+      responsive: true,
+      property: height,
+      class: h,
+      values: (
+        10: 10%,
+        20: 20%,
+        30: 30%,
+        40: 40%,
+        50: 50%,
+        60: 60%,
+        70: 70%,
+        80: 80%,
+        90: 90%,
+        100: 100%,
+        navHeight: $navHeight,
+        auto: auto,
+      ),
+    ),
+    "font-size": (
+      responsive: true,
+      //rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes,
+    ),
+  ),
+  $utilities
+);
+
+// Default (landscape devices, 1px and up)
+@media (min-width: 1px) {
+  .breakpoint::after {
+    content: "DF";
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .breakpoint::after {
+    content: "SM";
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .breakpoint::after {
+    content: "MD";
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .breakpoint::after {
+    content: "LG";
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .breakpoint::after {
+    content: "XL";
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .breakpoint::after {
+    content: "XXL";
+  }
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap-utilities";
+@import "../node_modules/bootstrap/scss/bootstrap"; //Overrides default values from bootstrap
