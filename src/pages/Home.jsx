@@ -10,30 +10,30 @@ const Home = () => {
   return (
     <>
       <UtilCreateSection
-        style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}
+        style={{ height: "100vh"}}
         imgSrcCover={
           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        }
+        } 
       >
-        <div className="row">
-          <div className="col-4 p-0 ">
+        <div className="row mt-4 h-50">  
+          <div className="col-4 p-0 h-100">
             <img src="/icon.png" alt="" />
           </div>
-          <div className="col-8 p-0 ">
-            <img src="/logo_2.4.png" alt="" />
+          <div className="col-8 p-0 h-100">
+            <img src="/logo_2.4.png" alt="" />  
           </div>
         </div>
 
-        <div className="row mt-3">
-          <div className="col-12 p-0">
+        <div className="row mt-2 h-10">
+          <div className="col-12 p-0 d-flex justify-content-center align-items-center">
             <div className="fs-xl-7 fs-md-6 fs-sm-5 fs-4 title-font text-light text-center">
               Where each Snack leaves an Impact
             </div>
           </div>
         </div>
 
-        <div className="row mt-3 w-100">
-          <div className="col-12 p-0 d-flex justify-content-evenly">
+        <div className="row mt-2 p-2 w-100 h-10">
+          <div className="col-12 p-0 d-flex justify-content-evenly align-items-center">
             <CreateHomeButton color="btn-primary">
               <i className="fas fa-phone-alt"></i>
               <div className="ms-1 d-inline-block">Eat with us</div>

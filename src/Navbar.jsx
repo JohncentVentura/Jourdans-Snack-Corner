@@ -8,7 +8,7 @@ import { UtilContainerPadding, UtilPaths } from "./Utilities";
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top p-0 h-navHeight bg-dark bg-opacity-75">
+      <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <div
           className={`container-fluid m-0 ${UtilContainerPadding} py-1 d-flex justify-content-between`}
         >
