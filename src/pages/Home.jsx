@@ -15,42 +15,44 @@ const Home = () => {
           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       >
-        {/* Displays Logo when screen is Medium and below */}
-        <div className="row mt-3 h-sm-30 h-20 d-lg-none d-block">
-          <div className="col-12 p-0 h-100">
+        {/* Displays Logo & Title if screen width is LG or above */}
+        <div className="row mt-xxl-5 mt-xl-10 mt-20 h-auto d-lg-block d-none">
+          <div className="col-12 h-100">
+            <img src="/logo_2.2.png" alt="" />
+          </div>
+        </div>
+
+        {/* Displays Logo if screen width is MD or below */}
+        <div className="row mt-10 h-30 d-lg-none d-block">
+          <div className="col-12 h-100">
             <img src="/icon.png" alt="" />
           </div>
         </div>
-        
-        {/* Responsive Display of Title and Logo */}
-        <div className="row mt-lg-4 mt-3 h-lg-50 h-sm-30 h-20"> 
-          {/* Displays Logo when screen is Large and above */}
-          <div className="col-4 p-0 h-100 d-lg-block d-none">
-            <img src="/icon.png" alt="" />
-          </div>
-          {/* Responsive Title */}
-          <div className="col-lg-8 col-md-12 p-0 h-100">
+
+        {/* Displays Title if screen width is MD or below */}
+        <div className="row mt-sm-2 mt-1 h-30 d-lg-none d-block">
+          <div className="col-12 h-100">
             <img src="/logo_2.4.png" alt="" />
           </div>
         </div>
 
-        <div className="row mt-md-1 mt-0 h-10">
-          <div className="col-12 p-0 d-flex justify-content-center align-items-center">
-            <div className="fs-lg-7 fs-md-6 fs-sm-5 fs-3 title-font text-light">
+        <div className="row mt-sm-2 mt-1">
+          <div className="col-12 d-flex justify-content-center align-items-center">
+            <div className="fs-xxl-7 fs-xl-6 fs-lg-5 fs-sm-4 fs-2 title-font text-light">
               Where each Snack leaves an Impact
-            </div>  
+            </div>
           </div>
         </div>
 
-        <div className="row mt-xl-2 mt-lg-1 mt-0 mx-auto w-100 h-10">
-          <div className="col-12 p-0 d-flex justify-content-evenly align-items-center">
+        <div className="row mt-lg-2 mt-3 mx-auto w-100">
+          <div className="col-12 d-flex justify-content-evenly align-items-center">
             <CreateHomeButton btnColor="btn-primary">
               <i className="fas fa-phone-alt"></i>
-              <div className="ms-1 d-inline-block">Eat with us</div>
+              <div className="ms-sm-2 ms-1 d-inline-block">Eat with us</div>
             </CreateHomeButton>
             <CreateHomeButton btnColor="btn-secondary">
               <i className="fas fa-phone-alt"></i>
-              <div className="ms-1 d-inline-block">Work with us</div>
+              <div className="ms-sm-2 ms-1 d-inline-block">Work with us</div>
             </CreateHomeButton>
           </div>
         </div>
@@ -72,7 +74,7 @@ const CreateHomeButton = ({ btnColor, children }) => {
   return (
     <button
       type="button"
-      className={`btn ${btnColor} d-flex align-items-center fs-lg-4 fs-sm-3 fs-2 text-light`}
+      className={`btn ${btnColor} d-flex align-items-center fs-xl-3 fs-md-2 fs-1 text-light`}
     >
       {children}
     </button>
@@ -90,4 +92,23 @@ export default Home;
               ></lord-icon>
               <div>Meals</div>
             </MenuLink>
+
+
+         
+        <div className="row mt-3 h-30 d-lg-none d-block">
+        <div className="col-12 p-0 h-100">
+          <img src="/icon.png" alt="" />
+        </div>
+      </div>
+
+      <div className="row mt-lg-0 mt-3 h-lg-50 h-30">
+        
+        <div className="col-4 p-0 h-100 d-lg-block d-none">
+          <img src="/icon.png" alt="" />
+        </div>
+        
+        <div className="col-lg-8 col-md-12 p-0 h-100">
+          <img src="/logo_2.4.png" alt="" />
+        </div>
+      </div>   
 */

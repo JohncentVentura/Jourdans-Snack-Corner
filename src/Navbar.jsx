@@ -10,10 +10,11 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
         <div
-          className={`container-fluid m-0 ${UtilContainerPaddingX} py-1 d-flex justify-content-between`}
-        > 
+          className={`container-fluid m-0 ${UtilContainerPaddingX} py-2 d-flex justify-content-between`}
+        >
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
-            <img src="/icon.png" alt="navbar-brand" style={{width: "4.3rem", heigth: "4.3rem"}}/>
+            {/* Navbar width & height depends on .navbar-brand img width & height */}
+            <img src="/icon.png" alt="navbar-brand"/>
           </Link>
 
           <button
@@ -25,7 +26,7 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fas fa-bars fs-sm-6 fs-5"></i>
+            <i className="fas fa-bars fs-sm-5 fs-4"></i>
           </button>
 
           <div className="collapse navbar-collapse flex-grow-0" id="nav-links">
@@ -51,7 +52,7 @@ const NavLink = ({ to, children }) => {
     <li className={isActive ? "active nav-item" : "nav-item"}>
       <Link
         to={to}
-        className="nav-link ms-2 fs-lg-5 fs-4 title-font text-light text-center"
+        className="nav-link ms-2 fs-xl-4 fs-sm-3 fs-2 title-font text-light text-center"
       >
         {children}
       </Link>

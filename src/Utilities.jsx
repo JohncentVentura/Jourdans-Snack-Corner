@@ -11,7 +11,7 @@ export const UtilPaths = {
   menuBundles: "/menu/bundles",
 };
 
-export const UtilContainerPaddingX = "px-xxl-7 px-xl-6 px-lg-5 px-sm-4 px-3";
+export const UtilContainerPaddingX = "px-lg-20 px-10";
 
 export const UtilCreateSection = ({
   imgSrcFill,
@@ -21,6 +21,7 @@ export const UtilCreateSection = ({
 }) => {
   return (
     <section className="position-relative top-0 overflow-x-hidden">
+      <div className="debug-breakpoint"></div>
       {imgSrcFill !== undefined ? (
         <img
           src={imgSrcFill}
@@ -34,7 +35,7 @@ export const UtilCreateSection = ({
       )}
 
       <div
-        className={`container-fluid ${UtilContainerPaddingX} pt-navHeight`}
+        className={`container-fluid ${UtilContainerPaddingX}`}
         {...props}
       >
         {children}

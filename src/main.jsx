@@ -20,10 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 
-
-
 /*
-
 …or create a new repository on the command line
 git init
 git add README.md
@@ -36,5 +33,4 @@ git push -u origin main
 git remote add origin https://github.com/JohncentVentura/Jourdans-Snack-Corner.git
 git branch -M main
 git push -u origin main
-
 */
