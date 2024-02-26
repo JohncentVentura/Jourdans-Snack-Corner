@@ -44,7 +44,7 @@ export const UtilCreateSection = ({
 
 export const UtilCreateContainer = ({ children, ...props }) => {
   return (
-    <div className={`container-fluid ${UtilContainerPaddingX} w-100 h-100`} {...props}>
+    <div className={`container-fluid position-relative top-0 start-0 ${UtilContainerPaddingX} w-100 h-100`} {...props}>
       {children}
     </div>
   );
