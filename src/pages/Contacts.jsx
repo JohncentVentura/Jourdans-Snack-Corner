@@ -16,7 +16,7 @@ const Contacts = () => {
         }
       >
         <UtilCreateContainer>
-        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Contact Form</div>
+        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Contact Fill-up Form</div>
         </UtilCreateContainer>
       </UtilCreateSection>
 
@@ -27,7 +27,7 @@ const Contacts = () => {
         }
       >
         <UtilCreateContainer>
-        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Franchising Form</div>
+        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Franchising Fill-up Form</div>
         </UtilCreateContainer>
       </UtilCreateSection>
     </>

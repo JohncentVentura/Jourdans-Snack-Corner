@@ -17,7 +17,7 @@ const Menu = () => {
         }
       >
         <UtilCreateContainer>
-        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Menu with Chalk Theme</div>
+        <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Menu (Chalk Theme)</div>
         </UtilCreateContainer>
       </UtilCreateSection>
 

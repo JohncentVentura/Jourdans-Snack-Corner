@@ -18,6 +18,8 @@ const bestSellerNames = [
   "Burger with Fries",
   "Lumpiang Shanghai",
 ];
+const openHoursDays = ["Monday - Friday", "Saturday - Sunday", "Holidays"];
+const openHourTimes = ["8am - 4pm", "7am - 5pm", "8am - 2pm"];
 
 const Home = () => {
   return (
@@ -85,67 +87,46 @@ const Home = () => {
             }
             style={{ transform: "scaleY(-1)" }}
           ></UtilCreateBgImg>
-          <div className="row pt-xxl-20 pt-lg-30 pt-40">
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-primary text-center ">
+          <div className="row pt-md-30 pt-sm-40 pt-50">
+            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center ">
               Welcome Customer
             </div>
-            <div className="col-12 mt-lg-5 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-              debitis adipisci! Officiis natus hic quasi cum harum saepe aperiam
-              eius obcaecati? Placeat quia recusandae nobis tenetur facere
-              similique quaerat in aut. Molestiae, repellat, et temporibus dolor
-              cupiditate magni hic fugit ducimus quis mollitia, aliquid quidem
-              ipsam est veniam modi dicta autem quo! Iure debitis tempora nemo
-              culpa natus velit? Ad fuga amet ullam inventore nostrum ipsum
-              excepturi qui eum, dolorum distinctio quisquam nulla, laboriosam
-              hic incidunt, ex esse! Dolorem, natus?
+            <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark">
+              Welcome to Jourdan`s Snack Corner, your ultimate destination for
+              irresistible snacks that`ll tantalize your taste buds! Dive into a
+              world of crunchy, savory, and downright delicious treats that are
+              perfect for any occasion. Get ready to snack smarter and satisfy
+              your cravings with our handpicked selection. Let the snacking
+              begin!
             </div>
           </div>
         </UtilCreateContainer>
 
         <UtilCreateContainer>
-          <div className="row mt-20 d-flex justify-content-evenly">
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center ">
+          <div className="row mt-20">
+            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-primary text-center ">
               Best Seller
             </div>
 
-            {bestSellerImages.map((element, index) => (
-              <>
-                {/*Displays Best Seller Images per column if screen width is small or higher */}
-                <div className="row d-flex justify-content-center align-items-center">
-                  <div
-                    className="col-sm-4 col-12 mt-lg-5 mt-3 d-sm-block d-none"
-                    key={`bestSellerImages-${index}`}
-                  >
-                    <img src={element} alt="" className="" />
+            <div className="row text-center">
+              {bestSellerImages.map((element, index) => (
+                <div
+                  className="col-sm-4 col-12 mt-lg-6 mt-3 mb-sm-0 mb-3 h-sm-70"
+                  key={element + index}
+                >
+                  <div >
+                    <img
+                      src={element}
+                      alt={element}
+                      className="border border-5 border-primary rounded-5 w-sm-100 h-sm-100 w-60 h-100 object-fit-cover"
+                    />
+                  </div>
+                  <div className="mt-2 fs-sm-2 fs-1">
+                    {bestSellerNames[index]}
                   </div>
                 </div>
-
-                <div className="row d-flex justify-content-center align-items-center">
-                  <div
-                    className="col-sm-4 col-12 mt-2 text-center d-sm-block d-none"
-                    key={`bestSellerNames-${index}`}
-                  >
-                    <div className="fs-sm-2 fs-1">{bestSellerNames[index]}</div>
-                  </div>
-                </div>
-
-                {/*Displays Best Seller Images per row if screen width is default */}
-                <div
-                  className="col-sm-4 col-12 mt-lg-5 mt-3 d-sm-none d-block"
-                  key={`bestSellerImages-${index}`}
-                >
-                  <img src={element} alt="" className="" />
-                </div>
-
-                <div
-                  className="col-sm-4 col-12 mt-2 text-center d-sm-none d-block"
-                  key={`bestSellerNames-${index}`}
-                >
-                  <div className="fs-sm-2 fs-1">{bestSellerNames[index]}</div>
-                </div>
-              </>
-            ))}
+              ))}
+            </div>
           </div>
         </UtilCreateContainer>
 
@@ -156,22 +137,21 @@ const Home = () => {
             }
             style={{ transform: "scaleX(-1)" }}
           ></UtilCreateBgImg>
-          <div className="row mt-20 pb-sm-40 pb-30">
-            <div className="col-12 fs-xl-7 fs-6 ff-title text-primary text-center">
+          <div className="row mt-20 pb-sm-40 pb-50">
+            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center">
               Open Hours
             </div>
-            <div className="col-6 mt-lg-5 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center">
-              Monday - Friday
-            </div>
-            <div className="col-6 mt-lg-5 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center">
-              Saturday - Sunday
-            </div>
-            <div className="col-6 mt-2 fs-xl-3 fs-sm-2 fs-1 text-dark text-center">
-              8am - 5pm
-            </div>
-            <div className="col-6 mt-2 fs-xl-3 fs-sm-2 fs-1 text-dark text-center">
-              10am - 4pm
-            </div>
+
+            {openHoursDays.map((element, index) => (
+              <div className="col-md-4 col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center" key={element + index}>
+                <div className="fs-xl-3 fs-sm-2 fs-1 text-dark">
+                  {element}
+                </div>
+                <div className="mt-2 mb-md-0 mb-2 fs-xl-3 fs-sm-2 fs-1 text-dark">
+                  {openHourTimes[index]}
+                </div>
+              </div>
+            ))}
           </div>
         </UtilCreateContainer>
       </UtilCreateSection>
@@ -183,7 +163,9 @@ const Home = () => {
         }
       >
         <UtilCreateContainer>
-          <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">Shop Location</div>
+          <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">
+            Shop Location
+          </div>
         </UtilCreateContainer>
       </UtilCreateSection>
     </>
