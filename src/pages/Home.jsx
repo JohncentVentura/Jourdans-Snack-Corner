@@ -18,8 +18,8 @@ const bestSellerNames = [
   "Burger with Fries",
   "Lumpiang Shanghai",
 ];
-const openHoursDays = ["Monday - Friday", "Saturday - Sunday", "Holidays"];
-const openHourTimes = ["8am - 4pm", "7am - 5pm", "8am - 2pm"];
+const openHoursDays = ["Sunday - Saturday", "Holidays"];
+const openHourTimes = ["10am - 4pm", "Closed"];
 
 const Home = () => {
   return (
@@ -114,7 +114,7 @@ const Home = () => {
                   className="col-sm-4 col-12 mt-lg-6 mt-3 mb-sm-0 mb-3 h-sm-70"
                   key={element + index}
                 >
-                  <div >
+                  <div>
                     <img
                       src={element}
                       alt={element}
@@ -143,10 +143,11 @@ const Home = () => {
             </div>
 
             {openHoursDays.map((element, index) => (
-              <div className="col-md-4 col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center" key={element + index}>
-                <div className="fs-xl-3 fs-sm-2 fs-1 text-dark">
-                  {element}
-                </div>
+              <div
+                className="col-md-6 col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center"
+                key={element + index}
+              >
+                <div className="fs-xl-3 fs-sm-2 fs-1 text-dark">{element}</div>
                 <div className="mt-2 mb-md-0 mb-2 fs-xl-3 fs-sm-2 fs-1 text-dark">
                   {openHourTimes[index]}
                 </div>
@@ -157,14 +158,28 @@ const Home = () => {
       </UtilCreateSection>
 
       <UtilCreateSection
-        style={{ height: "100vh" }}
         bgImgSrc={
           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       >
         <UtilCreateContainer>
-          <div className="pt-30 fs-xl-7 fs-sm-6 fs-5 ff-title text-center text-light">
-            Shop Location
+          <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-light text-center ">
+            Our Location
+          </div>
+          <div className="col-12 fs-xl-3 fs-sm-2 fs-1 text-light text-center ">
+            4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio, Pangasinan
+          </div>
+        </UtilCreateContainer>
+
+        <UtilCreateContainer>
+          <div className="col-12">
+            <img src="/loc_3d.png" alt="" />
+          </div>
+        </UtilCreateContainer>
+
+        <UtilCreateContainer>
+          <div className="col-12">
+            <img src="/loc_layer.png" alt="" />
           </div>
         </UtilCreateContainer>
       </UtilCreateSection>
