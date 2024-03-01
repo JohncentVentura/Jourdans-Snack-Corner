@@ -30,6 +30,7 @@ const Home = () => {
         }
         style={{ height: "100vh" }}
       >
+        {/*Overrided UtilCreateContainer className*/}
         <UtilCreateContainer
           className={`container-fluid ${UtilContainerPaddingX} w-100 h-100 header-container`}
         >
@@ -163,23 +164,36 @@ const Home = () => {
         }
       >
         <UtilCreateContainer>
-          <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-light text-center ">
-            Our Location
-          </div>
-          <div className="col-12 fs-xl-3 fs-sm-2 fs-1 text-light text-center ">
-            4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio, Pangasinan
-          </div>
-        </UtilCreateContainer>
-
-        <UtilCreateContainer>
-          <div className="col-12">
-            <img src="/loc_3d.png" alt="" />
+          <div className="row mt-30">
+            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 text-light text-center">
+              <i className="fas fa-map-marker-alt "></i>
+            </div>
+            <div className="col-12 mt-1 fs-xl-7 fs-sm-6 fs-5 ff-title text-light text-center">
+              Our Location
+            </div>
           </div>
         </UtilCreateContainer>
 
         <UtilCreateContainer>
-          <div className="col-12">
-            <img src="/loc_layer.png" alt="" />
+          <div className="row mt-10">
+            <div className="col-12 border border-5 border-primary rounded-1">
+              <img src="/loc_layer.png" alt="" />
+            </div>
+            <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-light text-center">
+              We are located at 4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio,
+              Pangasinan.
+            </div>
+          </div>
+        </UtilCreateContainer>
+
+        <UtilCreateContainer>
+          <div className="row mt-20">
+            <div className="col-12 border border-5 border-primary rounded-1">
+              <img src="/loc_3d.png" alt="" />
+            </div>
+            <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-light text-center">
+              Enter inside the food district to dine in or take out.
+            </div>
           </div>
         </UtilCreateContainer>
       </UtilCreateSection>

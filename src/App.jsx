@@ -31,19 +31,21 @@ function App() {
 }
 
 const Footer = () => {
-  <>
-    <footer>
-      <div>
-        <a href="https://www.freepik.com/free-photo/view-assortment-with-delicious-food-copy-space_5618651.htm#query=fast%20food%20background&position=25&from_view=search&track=ais&uuid=98769e85-003f-488c-a0e5-1b24f15700f3">
-          Freepik
-        </a>
-        <a href="https://www.freepik.com/free-vector/realistic-tomato-juice-splash-composition-with-slices-whole-fruits-tomato-with-liquid-juice-splashes_6871547.htm#fromView=search&page=1&position=9&uuid=c624fb6a-121c-45ea-8c40-fd53a41a52d1">
-          Image by macrovector on Freepik
-        </a>
-        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
-      </div>
-    </footer>
-  </>;
+  return (
+    <>
+      <footer style={{height: "14rem"}}>
+        <div>
+          <a href="https://www.freepik.com/free-photo/view-assortment-with-delicious-food-copy-space_5618651.htm#query=fast%20food%20background&position=25&from_view=search&track=ais&uuid=98769e85-003f-488c-a0e5-1b24f15700f3">
+            Freepik
+          </a>
+          <a href="https://www.freepik.com/free-vector/realistic-tomato-juice-splash-composition-with-slices-whole-fruits-tomato-with-liquid-juice-splashes_6871547.htm#fromView=search&page=1&position=9&uuid=c624fb6a-121c-45ea-8c40-fd53a41a52d1">
+            Image by macrovector on Freepik
+          </a>
+          <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+        </div>
+      </footer>
+    </>
+  );
 };
 
 export default App;
