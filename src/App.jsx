@@ -9,7 +9,13 @@ import MenuMeals from "./pages/MenuMeals";
 import MenuSnacks from "./pages/MenuSnacks";
 import MenuBeverages from "./pages/MenuBeverages";
 import MenuBundles from "./pages/MenuBundles";
-import { UtilPaths } from "./Utilities";
+import {
+  UtilPaths,
+  UtilContainerPaddingX,
+  UtilCreateSection,
+  UtilCreateContainer,
+  UtilCreateBgImg,
+} from "./Utilities";
 
 function App() {
   return (
@@ -33,15 +39,12 @@ function App() {
 const Footer = () => {
   return (
     <>
-      <footer style={{height: "14rem"}}>
-        <div>
-          <a href="https://www.freepik.com/free-photo/view-assortment-with-delicious-food-copy-space_5618651.htm#query=fast%20food%20background&position=25&from_view=search&track=ais&uuid=98769e85-003f-488c-a0e5-1b24f15700f3">
-            Freepik
-          </a>
-          <a href="https://www.freepik.com/free-vector/realistic-tomato-juice-splash-composition-with-slices-whole-fruits-tomato-with-liquid-juice-splashes_6871547.htm#fromView=search&page=1&position=9&uuid=c624fb6a-121c-45ea-8c40-fd53a41a52d1">
-            Image by macrovector on Freepik
-          </a>
-          <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+      <footer className="container-fluid position-relative top-0 start-0 px-0 w-100 h-100 bg-warning overflow-x-hidden">
+        <div className="row pb-10">
+          <div className="col-12 fs-lg-7 fs-sm-5 fs-3 text-center ff-title">Footer</div>
+          <div className="col-12 text-center">
+            <a href="https://lordicon.com/" className="text-dark">Icons by Lordicon.com</a>
+          </div>
         </div>
       </footer>
     </>

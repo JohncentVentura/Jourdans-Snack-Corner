@@ -187,7 +187,7 @@ const Home = () => {
         </UtilCreateContainer>
 
         <UtilCreateContainer>
-          <div className="row mt-20">
+          <div className="row mt-20 mb-30">
             <div className="col-12 border border-5 border-primary rounded-1">
               <img src="/loc_3d.png" alt="" />
             </div>

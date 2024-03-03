@@ -32,6 +32,7 @@ img {
 //Colors
 $primary: #c81a24;
 $secondary: #0ea18f;
+$warning: #c8b630;
 
 //Spacing, 0-9 for rem & 10-100 for %
 $spacers: (
@@ -144,6 +145,10 @@ $utilities: map-merge(
   .header-container {
     padding-top: $navImgSize + 1.2rem;
   }
+
+  footer{      
+    height: 7rem;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -159,6 +164,10 @@ $utilities: map-merge(
 
   .header-container {
     padding-top: $navImgSize + 2.1rem;
+  }
+
+  footer{      
+    height: 14rem;
   }
 }
 
