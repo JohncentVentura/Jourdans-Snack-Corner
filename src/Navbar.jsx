@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 //A <Link> is an element that lets the user navigate to another page by clicking or tapping on it. In react-router-dom, a <Link> renders an accessible <a> element with a real href that points to the resource it's linking to.
 //useMatch is used to compare the current path we are on to whatever path we want to
 //useResolvedPath is used to take relative or absolute path, combines it with the current path we are on, and gives the actual full path that you would be accessing
@@ -12,6 +12,8 @@ import {
 } from "./Utilities";
 
 const Navbar = () => {
+  //withRouter(ScrollToTop);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top p-0 bg-dark bg-opacity-75">
@@ -20,7 +22,7 @@ const Navbar = () => {
         >
           <Link to={UtilPaths.home} className="navbar-brand m-0 p-0">
             {/* Navbar width & height depends on .navbar-brand img width & height */}
-            <img src="/icon.png" alt="navbar-brand"/>
+            <img src="/icon.png" alt="navbar-brand" />
           </Link>
 
           <button
@@ -65,5 +67,18 @@ const NavLink = ({ to, children }) => {
     </li>
   );
 };
+
+export function ScrollToTop({ history }) {
+  useEffect(() => {
+      const unlisten = history.listen(() => {
+          window.scrollTo(0, 0);
+      });
+      return () => {
+          unlisten();
+      };
+  }, [history]);
+
+  return null;
+}
 
 export default Navbar;

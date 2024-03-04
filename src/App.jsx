@@ -41,9 +41,29 @@ const Footer = () => {
     <>
       <footer className="container-fluid position-relative top-0 start-0 px-0 w-100 h-100 bg-warning overflow-x-hidden">
         <div className="row pb-10">
-          <div className="col-12 fs-lg-7 fs-sm-5 fs-3 text-center ff-title">Footer</div>
+          <div className="col-12 fs-lg-7 fs-sm-5 fs-3 text-center ff-title">
+            Footer
+          </div>
           <div className="col-12 text-center">
-            <a href="https://lordicon.com/" className="text-dark">Icons by Lordicon.com</a>
+            4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio, Pangasinan • 09999999999
+          </div>
+          
+          <ul className={`col-12 mb-0 ${UtilContainerPaddingX} d-flex justify-content-evenly align-items-center`}>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Menu</li>
+              <li>Contacts</li>
+          </ul>
+
+          <div className="col-12 text-center">
+            ⓒ Jourdans Snack Corner 2020 • All Rights Reserved • Design by
+            Johncent Ventura
+          </div>
+
+          <div className="col-12 text-center">
+            <a href="https://lordicon.com/" className="text-dark">
+              Icons by Lordicon.com
+            </a>
           </div>
         </div>
       </footer>

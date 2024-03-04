@@ -89,6 +89,14 @@ const Home = () => {
             style={{ transform: "scaleY(-1)" }}
           ></UtilCreateBgImg>
           <div className="row pt-md-30 pt-sm-40 pt-50">
+            <div className="col-12 fs-xl-9 fs-sm-8 fs-7">
+              <lord-icon
+                src="https://cdn.lordicon.com/pkvlegzp.json"
+                trigger="hover"
+                colors="primary:#121331,secondary:#0ea18f"
+                style={{ width: "100%", height: "100%" }}
+              ></lord-icon>
+            </div>
             <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center ">
               Welcome Customer
             </div>
@@ -164,9 +172,14 @@ const Home = () => {
         }
       >
         <UtilCreateContainer>
-          <div className="row mt-30">
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 text-light text-center">
-              <i className="fas fa-map-marker-alt "></i>
+          <div className="row mt-20">
+            <div className="col-12 px-40 fs-xl-7 fs-sm-6 fs-5 text-light text-center">
+              <lord-icon
+                src="https://cdn.lordicon.com/surcxhka.json"
+                trigger="hover"
+                colors="primary:#ffffff,secondary:#ffffff"
+                style={{ width: "100%", height: "100%" }}
+              ></lord-icon>
             </div>
             <div className="col-12 mt-1 fs-xl-7 fs-sm-6 fs-5 ff-title text-light text-center">
               Our Location
@@ -176,7 +189,7 @@ const Home = () => {
 
         <UtilCreateContainer>
           <div className="row mt-10">
-            <div className="col-12 border border-5 border-primary rounded-1">
+            <div className="col-12 px-0 border border-5 border-primary rounded-1">
               <img src="/loc_layer.png" alt="" />
             </div>
             <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-light text-center">
@@ -188,7 +201,7 @@ const Home = () => {
 
         <UtilCreateContainer>
           <div className="row mt-20 mb-30">
-            <div className="col-12 border border-5 border-primary rounded-1">
+            <div className="col-12 px-0 border border-5 border-primary rounded-1">
               <img src="/loc_3d.png" alt="" />
             </div>
             <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-light text-center">
