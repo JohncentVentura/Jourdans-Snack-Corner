@@ -1,2 +1,2 @@
 # Jourdas Snack Corner
-Ongoing project for a local food business..
+Ongoing side project for a local food business..
