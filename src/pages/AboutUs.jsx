@@ -19,7 +19,7 @@ const AboutUs = () => {
         bgImgSrc={
           "https://plus.unsplash.com/premium_photo-1670740967112-24fb66d024e1?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
-        className="position-relative top-0 start-0 px-0 overflow-x-hidden bg-img-blur"
+        bgImgAddOns={"bg-img-blur"}
       >
         {/*Overrided UtilCreateContainer className*/}
         <UtilCreateContainer
@@ -34,9 +34,11 @@ const AboutUs = () => {
               That is why we are committed to using only the finest ingredients,
               sourced locally whenever possible, to create mouthwatering dishes
               that leave you craving more from juicy burgers and crispy fries to
-              savory sandwiches and satisfying salads, our menu has something
+              savory dishes and refreshing beverages, our menu has something
               for everyone. Each item is made to order with care and attention,
-              ensuring that every bite is a burst of deliciousness.
+              ensuring that every bite is a burst of deliciousness. Thank you for choosing
+              Jourdans Snack Corner, we can not wait to welcome you in and show
+              you why we are your new favorite fast food joint in town!
             </div>
             <div className="col-4 mt-lg-3 mt-1 text-light fs-10">
               <lord-icon
@@ -61,13 +63,6 @@ const AboutUs = () => {
                 colors="primary:#ffffff,secondary:#ffffff"
                 style={{ width: "100%", height: "100%" }}
               ></lord-icon>
-            </div>
-            <div className="col-12 mt-lg-3 mt-1 fs-xl-3 fs-sm-2 fs-1 text-light">
-              But it is not just about the food, it is about the experience. Our
-              friendly staff is here to greet you with a smile and make sure
-              your visit is nothing short of fantastic. Thank you for choosing
-              Jourdans Snack Corner, we can not wait to welcome you in and show
-              you why we are your new favorite fast food joint in town!
             </div>
           </div>
         </UtilCreateContainer>

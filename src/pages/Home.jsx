@@ -12,12 +12,10 @@ import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 defineElement(lottie.loadAnimation); // define "lord-icon" custom element with default properties
 
+const bestSellerNames = ["Fried Chicken", "Burger with Fries", "Dumplings"];
+
 const bestSellerImages = ["/meals.png", "/snacks.png", "/bundles.png"];
-const bestSellerNames = [
-  "Fried Chicken",
-  "Burger with Fries",
-  "Lumpiang Shanghai",
-];
+const bestSellerColors = ["primary", "secondary", "warning", "primary"];
 const openHoursDays = ["Sunday - Saturday", "Holidays"];
 const openHourTimes = ["10am - 4pm", "Closed"];
 
@@ -35,7 +33,7 @@ const Home = () => {
           className={`container-fluid ${UtilContainerPaddingX} w-100 h-100 header-container`}
         >
           {/* Displays Logo & Title if screen width is LG or above */}
-          <div className="row mt-xxl-6 mt-xl-10 mt-20 h-auto d-lg-block d-none">
+          <div className="row mt-xxl-7 mt-10 h-auto d-lg-block d-none">
             <div className="col-12 h-100">
               <img src="/logo_2.2.png" alt="" />
             </div>
@@ -71,7 +69,7 @@ const Home = () => {
               </CreateHomeButton>
             </div>
             <div className="col-sm-6 col-12 mt-sm-0 mt-2 d-flex justify-content-center align-items-center">
-              <CreateHomeButton btnColor="btn-secondary">
+              <CreateHomeButton btnColor="btn btn-secondary">
                 <i className="fas fa-phone-alt"></i>
                 <div className="ms-sm-2 ms-1 d-inline-block">Work with us</div>
               </CreateHomeButton>
@@ -80,88 +78,48 @@ const Home = () => {
         </UtilCreateContainer>
       </UtilCreateSection>
 
-      <UtilCreateSection bgImgSrc={"bg-light"}>
+      <UtilCreateSection bgColor={"bg-light"}>
         <UtilCreateContainer>
-          <UtilCreateBgImg
-            bgImgSrc={
-              "https://img.freepik.com/free-psd/chalk-italian-food-isolated_23-2150788278.jpg?t=st=1708946988~exp=1708950588~hmac=90b4daacc3ffedda817af342914dee8222577b38a0457c14f970a5fc54962b00&w=1380"
-            }
-            style={{ transform: "scaleY(-1)" }}
-          ></UtilCreateBgImg>
-          <div className="row pt-md-30 pt-sm-40 pt-50">
+          <div className="row mt-20">
             <div className="col-12 fs-xl-9 fs-sm-8 fs-7">
               <lord-icon
                 src="https://cdn.lordicon.com/pkvlegzp.json"
-                trigger="hover"
-                colors="primary:#121331,secondary:#0ea18f"
+                trigger="loop"
+                colors="primary:#121331,secondary:#121331"
                 style={{ width: "100%", height: "100%" }}
               ></lord-icon>
             </div>
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center ">
-              Welcome Customer
-            </div>
-            <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark">
-              Welcome to Jourdan`s Snack Corner, your ultimate destination for
-              irresistible snacks that`ll tantalize your taste buds! Dive into a
-              world of crunchy, savory, and downright delicious treats that are
-              perfect for any occasion. Get ready to snack smarter and satisfy
-              your cravings with our handpicked selection. Let the snacking
-              begin!
+            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-dark text-center">
+              Featured Menu Items
             </div>
           </div>
-        </UtilCreateContainer>
 
-        <UtilCreateContainer>
-          <div className="row mt-20">
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-primary text-center ">
-              Best Seller
-            </div>
-
-            <div className="row text-center">
-              {bestSellerImages.map((element, index) => (
-                <div
-                  className="col-sm-4 col-12 mt-lg-6 mt-3 mb-sm-0 mb-3 h-sm-70"
-                  key={element + index}
-                >
-                  <div>
-                    <img
-                      src={element}
-                      alt={element}
-                      className="border border-5 border-primary rounded-5 w-sm-100 h-sm-100 w-60 h-100 object-fit-cover"
-                    />
-                  </div>
-                  <div className="mt-2 fs-sm-2 fs-1">
-                    {bestSellerNames[index]}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </UtilCreateContainer>
-
-        <UtilCreateContainer>
-          <UtilCreateBgImg
-            bgImgSrc={
-              "https://img.freepik.com/free-psd/chalk-italian-food-isolated_23-2150788278.jpg?t=st=1708946988~exp=1708950588~hmac=90b4daacc3ffedda817af342914dee8222577b38a0457c14f970a5fc54962b00&w=1380"
-            }
-            style={{ transform: "scaleX(-1)" }}
-          ></UtilCreateBgImg>
-          <div className="row mt-20 pb-sm-40 pb-50">
-            <div className="col-12 fs-xl-7 fs-sm-6 fs-5 ff-title text-secondary text-center">
-              Open Hours
-            </div>
-
-            {openHoursDays.map((element, index) => (
+          <div className="row justify-content-evenly">
+            {bestSellerImages.map((element, index) => (
               <div
-                className="col-md-6 col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-dark text-center"
+                className={`col-xl-3 col-sm-5 col-7 mt-lg-6 mt-3 border border-1 border-${bestSellerColors[index]} rounded-5 px-0 bg-${bestSellerColors[index]}`}
                 key={element + index}
               >
-                <div className="fs-xl-3 fs-sm-2 fs-1 text-dark">{element}</div>
-                <div className="mt-2 mb-md-0 mb-2 fs-xl-3 fs-sm-2 fs-1 text-dark">
-                  {openHourTimes[index]}
+                <div className={`h-20 fs-2 pt-2 text-center text-light`}>
+                  {bestSellerNames[index]}
+                </div>
+                <div className={`h-80 p-10`}>
+                  <img
+                    src={element}
+                    alt={element}
+                    className="object-fit-cover"
+                  />
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="row mt-lg-6 mt-3 mb-20">
+            <div className="col-12 d-flex justify-content-center align-items-center">
+              <CreateHomeButton btnColor="btn-primary">
+                <div className="d-inline-block">View Menu</div>
+              </CreateHomeButton>
+            </div>
           </div>
         </UtilCreateContainer>
       </UtilCreateSection>
@@ -176,30 +134,34 @@ const Home = () => {
             <div className="col-12 px-40 fs-xl-7 fs-sm-6 fs-5 text-light text-center">
               <lord-icon
                 src="https://cdn.lordicon.com/surcxhka.json"
-                trigger="hover"
+                trigger="loop"
                 colors="primary:#ffffff,secondary:#ffffff"
                 style={{ width: "100%", height: "100%" }}
               ></lord-icon>
             </div>
             <div className="col-12 mt-1 fs-xl-7 fs-sm-6 fs-5 ff-title text-light text-center">
-              Our Location
+              Our Store
+            </div>
+            <div className="col-12 mt-1 fs-xl-3 fs-sm-3 fs-2 text-light text-center">
+              Always open 10:00 am to 4:00 pm
             </div>
           </div>
-        </UtilCreateContainer>
 
-        <UtilCreateContainer>
           <div className="row mt-10">
-            <div className="col-12 px-0 border border-5 border-primary rounded-1">
+            <a
+              href="https://www.google.com/maps/place/SONIC+PRINT+SHOP/@16.1106293,120.5415025,17z/data=!3m1!4b1!4m6!3m5!1s0x339113441ea5fd3b:0x898d955fde706c87!8m2!3d16.1106242!4d120.5440774!16s%2Fg%2F11stytk36h?entry=ttu"
+              className="col-12 px-0 border border-5 border-primary rounded-1"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src="/loc_layer.png" alt="" />
-            </div>
+            </a>
             <div className="col-12 mt-lg-6 mt-3 fs-xl-3 fs-sm-2 fs-1 text-light text-center">
               We are located at 4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio,
               Pangasinan.
             </div>
           </div>
-        </UtilCreateContainer>
 
-        <UtilCreateContainer>
           <div className="row mt-20 mb-30">
             <div className="col-12 px-0 border border-5 border-primary rounded-1">
               <img src="/loc_3d.png" alt="" />
@@ -237,4 +199,31 @@ export default Home;
               <div>Meals</div>
             </MenuLink>
 
+
+            <UtilCreateBgImg
+            bgImgSrc={
+              "https://img.freepik.com/free-psd/chalk-italian-food-isolated_23-2150788278.jpg?t=st=1708946988~exp=1708950588~hmac=90b4daacc3ffedda817af342914dee8222577b38a0457c14f970a5fc54962b00&w=1380"
+            }
+            style={{ transform: "scaleY(-1)" }}
+          ></UtilCreateBgImg>
+
+          <div className="row text-center">
+            {bestSellerImages.map((element, index) => (
+              <div
+                className="col-sm-4 col-12 mt-lg-6 mt-3 mb-sm-0 mb-3 h-sm-70"
+                key={element + index}
+              >
+                <div>
+                  <img
+                    src={element}
+                    alt={element}
+                    className="border border-5 border-primary rounded-5 w-sm-100 h-sm-100 w-60 h-100 object-fit-cover"
+                  />
+                </div>
+                <div className="mt-2 fs-sm-2 fs-1">
+                  {bestSellerNames[index]}
+                </div>
+              </div>
+            ))}
+          </div>
 */

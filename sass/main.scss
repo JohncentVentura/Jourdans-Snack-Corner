@@ -21,14 +21,14 @@ img {
   object-fit: contain;
 }
 
-.bg-img-blur img{
+.bg-img-blur{
   filter: blur(10px);
 }
 
 //Colors
 $primary: #c81a24;
 $secondary: #0ea18f;
-$warning: #c8b630;
+$warning  : #c8b630;
 
 //Spacing, 0-9 for rem & 10-100 for %
 $spacers: (
@@ -39,7 +39,7 @@ $spacers: (
   4: 2rem,
   5: 2.5rem,
   6: 3rem,
-  7: 3.5rem,
+  7: 3.5rem,  
   8: 4rem,
   9: 4.5rem,
   10: 10%,
@@ -52,6 +52,7 @@ $spacers: (
   80: 80%,
   90: 90%,
   100: 100%,
+  115: 12.5%
 );
 
 //Font Sizes, set "font-size" responsive: true in $utilities to use fs-lg, fs-md, etc...

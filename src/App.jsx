@@ -39,20 +39,23 @@ function App() {
 const Footer = () => {
   return (
     <>
-      <footer className="container-fluid position-relative top-0 start-0 px-0 w-100 h-100 bg-warning overflow-x-hidden">
+      <footer className="container-fluid position-relative top-0 start-0 px-0 w-100 h-100 bg-secondary overflow-x-hidden">
         <div className="row pb-10">
           <div className="col-12 fs-lg-7 fs-sm-5 fs-3 text-center ff-title">
             Footer
           </div>
           <div className="col-12 text-center">
-            4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio, Pangasinan • 09999999999
+            4G6V+6JW, Manaoag - Pozzorubio Rd, Pozorrubio, Pangasinan •
+            09999999999
           </div>
-          
-          <ul className={`col-12 mb-0 ${UtilContainerPaddingX} d-flex justify-content-evenly align-items-center`}>
-              <li>Home</li>
-              <li>About us</li>
-              <li>Menu</li>
-              <li>Contacts</li>
+
+          <ul
+            className={`col-12 mb-0 ${UtilContainerPaddingX} d-flex justify-content-evenly align-items-center`}
+          >
+            <li>Home</li>
+            <li>About us</li>
+            <li>Menu</li>
+            <li>Contacts</li>
           </ul>
 
           <div className="col-12 text-center">
@@ -63,6 +66,13 @@ const Footer = () => {
           <div className="col-12 text-center">
             <a href="https://lordicon.com/" className="text-dark">
               Icons by Lordicon.com
+            </a>
+          </div>
+
+          <div className="col-12 text-center">
+            <a href="https://www.google.com/maps/place/SONIC+PRINT+SHOP/@16.1106293,120.5415025,17z/data=!3m1!4b1!4m6!3m5!1s0x339113441ea5fd3b:0x898d955fde706c87!8m2!3d16.1106242!4d120.5440774!16s%2Fg%2F11stytk36h?entry=ttu"
+            className="text-dark">
+              Map by Google Maps
             </a>
           </div>
         </div>
