@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { PagePaths } from "./Paths";
+import { Footer } from "./components/Components";
 import Navbar from "./components/Navbar";
 import Home from "./home/Home";
+import About from "./home/About";
+import Menu from "./home/Menu";
+import Contact from "./home/Contact";
 import Login from "./home/Login";
 import Dashboard from "./components/Dashboard";
 import Products from "./products/Products";
@@ -11,7 +15,6 @@ import CreateProduct from "./products/CreateProduct";
 import ReadProduct from "./products/ReadProduct";
 import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
-import { useState } from "react";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -43,9 +46,9 @@ function App() {
       <Navbar isLogin={isLogin} />
       <Routes location={location} key={location.pathname}>
         <Route path={PagePaths.home} element={<Home />}></Route>
-        <Route path={PagePaths.aboutUs} element={<Home />}></Route>
-        <Route path={PagePaths.menu} element={<Home />}></Route>
-        <Route path={PagePaths.contact} element={<Home />}></Route>
+        <Route path={PagePaths.about} element={<About />}></Route>
+        <Route path={PagePaths.menu} element={<Menu />}></Route>
+        <Route path={PagePaths.contact} element={<Contact />}></Route>
         <Route path={PagePaths.login} element={<Login />}></Route>
 
         <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
@@ -67,6 +70,7 @@ function App() {
           element={<DeleteProduct />}
         ></Route>
       </Routes>
+      <Footer />
     </>
   );
 }

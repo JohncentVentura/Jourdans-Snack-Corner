@@ -3,6 +3,8 @@ export const ImagePaths = {
     logo1: "/logo 1.png",
     logo2: "/logo 2.png",
     logo3: "/logo 3.png",
+    snacks: "/snacks chicken burger and chips.png",
+    delivery: "/delivery.png"
 }
 
 export const PagePaths = {
@@ -10,7 +12,7 @@ export const PagePaths = {
     
     //home pages
     home: "/",
-    aboutUs: "/about-us",
+    about: "/about-us",
     menu: "/menu",
     contact: "/contact",
     login: "/login",

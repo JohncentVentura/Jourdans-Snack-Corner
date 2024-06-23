@@ -39,7 +39,7 @@ const Navbar = ({ isLogin }) => {
             ) : (
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
                 <ListItemLink to={PagePaths.home}>Home</ListItemLink>
-                <ListItemLink to={PagePaths.aboutUs}>About</ListItemLink>
+                <ListItemLink to={PagePaths.about}>About</ListItemLink>
                 <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
                 <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
                 <ListItemLink to={PagePaths.login}>Login</ListItemLink>
