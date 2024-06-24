@@ -1,6 +1,16 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import { ImagePaths } from "../Paths";
-import { CardIcon, CardImgOverlay, Section } from "../components/Components";
+import {
+  Section,
+  LordIcon,
+  SmDiv,
+  LgDiv,
+  TitleDiv,
+  CardIconLink,
+  CardIcon,
+  CardImgOverlay,
+} from "../components/Components";
 
 //Lordicon imports
 import lottie from "lottie-web";
@@ -12,13 +22,10 @@ const titles = ["Our Shop", "Our Food", "Our Service"];
 const Home = () => {
   return (
     <>
-      <Section
-        className="d-flex justify-content-center align-items-center"
-        style={{ height: "70vh" }}
-      >
+      <Section className="flex-row" style={{ height: "70vh" }}>
         <img
-          src={ImagePaths.bgTitle}
-          alt={ImagePaths.bgTitle}
+          src={ImagePaths.homeTitle}
+          alt={ImagePaths.homeTitle}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -28,25 +35,28 @@ const Home = () => {
             alt={ImagePaths.logo3}
             className="object-fit-contain"
           />
-          <div className="text-light ff-bubblegum fs-4xl">
+          <div className="text-light ff-bubblegum fs-5xl">
             Delivering Deliciousness in a Dash
           </div>
           <div className="w-50 d-flex justify-content-between align-items-center">
-            <button type="button" className="btn btn-primary fs-lg">
+            <button type="button" className="btn btn-primary fs-2xl">
               Order Now
             </button>
-            <button type="button" className="btn btn-outline-light fs-lg">
+            <button type="button" className="btn btn-outline-light fs-2xl">
               Learn More
             </button>
           </div>
         </div>
       </Section>
 
-      <Section className="py-5 bg-light-subtle d-flex justify-content-center align-items-start gap-5">
+      <Section className="flex-row py-5 bg-light-subtle">
         {titles.map((title, key) => (
-          <CardIcon
+          <CardIconLink
             key={`${title}-${key}`}
+            className={`col-4 px-1 border-0`}
             lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
+            lordIconClrs={"primary:#000000,secondary:#35aa90"}
+            lordIconSize={5}
             cardTitle={title}
             cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
             cardLink={`#`}
@@ -55,25 +65,54 @@ const Home = () => {
         ))}
       </Section>
 
-      <Section className="py-5 bg-primary d-flex flex-column justify-content-center align-items-center">
-        <div className="text-light ff-bubblegum fs-4xl">
+      <Section className="flex-column py-5 bg-primary">
+        <TitleDiv className="text-light ff-bubblegum">
           Featured Menu Items
-        </div>
+        </TitleDiv>
 
-        <div className="pt-5 d-flex justify-content-center align-items-start gap-5">
+        <div className="pt-5 d-flex justify-content-center align-items-start">
           {titles.map((title, key) => (
             <CardImgOverlay
               key={`${title}-${key}`}
+              className={`text-light col-4 border-0 px-2 bg-primary`}
+              cardLink={`/`}
               imgSrc={ImagePaths.snacks}
               cardTitle={title}
-              cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
             />
           ))}
         </div>
       </Section>
 
-      <Section className="py-5 bg-light-subtle">
-        <div className="card mb-3 col-12 ">
+      <Section className="flex-column py-5">
+        <img
+          src={ImagePaths.homeAbout}
+          alt={ImagePaths.homeAbout}
+          className="position-absolute z-n1 object-fit-cover"
+        />
+
+        <TitleDiv className="text-light ff-bubblegum">Open Hours</TitleDiv>
+        <CardIcon
+          className="border-0 w-50 bg-transparent text-light d-flex flex-row justify-content-center align-items-center"
+          lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
+          lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
+          lordIconSize={7}
+          cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
+        />
+
+        <TitleDiv className="mt-5 text-light ff-bubblegum">Payment Methods</TitleDiv>
+        <CardIcon
+          className="border-0 w-50 bg-transparent text-light text-end d-flex flex-row-reverse justify-content-center align-items-center"
+          lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
+          lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
+          lordIconSize={7}
+          cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
+        />
+      </Section>
+
+      <Section className="flex-column py-5 bg-secondary">
+        <TitleDiv className="text-light ff-bubblegum">Delivering Areas</TitleDiv>
+
+        <div className="mt-5 card mb-3 col-12 ">
           <div className="row g-0">
             <div className="col-6">
               <img
@@ -84,43 +123,30 @@ const Home = () => {
             </div>
             <div className="col-6">
               <div className="card-body">
-                <lord-icon
-                  src={"https://cdn.lordicon.com/pkvlegzp.json"}
-                  trigger="loop"
-                  colors="primary:#000000,secondary:#35aa90"
-                  style={{ width: "4rem", height: "4rem" }}
-                ></lord-icon>
-                <h5 className="card-title ff-bubblegum fs-3xl">Delivery Coverage</h5>
-                <p className="card-text fs-base">
+                <LordIcon
+                  lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
+                  lordIconClrs={"primary:#000000,secondary:#35aa90"}
+                  lordIconSize={5}
+                />
+                <div className="card-title ff-bubblegum fs-4xl">
+                  We are currently able to deliver around Pozorrubio,
+                  Pangasinan.
+                </div>
+                <div className="card-text fs-xl">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Aperiam beatae eveniet numquam aspernatur molestiae laboriosam
                   deleniti dignissimos praesentium deserunt, tempore cumque,
                   debitis commodi cupiditate! Fugiat nesciunt quis esse
                   voluptates accusantium!
-                </p>
-                <a href="#" className="card-link">
+                </div>
+                <Link to="#" className="card-link fs-xl">
                   Get Direction
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </Section>
-
-      <Section className="py-5 bg-dark d-flex justify-content-center align-items-start gap-5">
-      {titles.map((title, key) => (
-          <CardIcon
-            key={`${title}-${key}`}
-            lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
-            cardTitle={title}
-            cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
-            cardLink={`#`}
-            cardLinkText={`Click Here!`}
-          />
-        ))}
-      </Section>
-
-
     </>
   );
 };

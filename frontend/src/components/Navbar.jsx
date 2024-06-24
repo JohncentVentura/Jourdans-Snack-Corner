@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { ImagePaths, PagePaths } from "../Paths";
+import { paddingX } from "./Components";
 
 const Navbar = ({ isLogin }) => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top bg-dark bg-opacity-75">
-        <div className="container-fluid">
+      <nav className={`navbar navbar-expand-lg fixed-top ${paddingX} bg-dark bg-opacity-75`}>
+        <div className="container-fluid p-0 d-flex justify-content-between align-items-center">
           <Link className="navbar-brand" to={PagePaths.home}>
             <img
               src={ImagePaths.logo1}
@@ -28,7 +29,7 @@ const Navbar = ({ isLogin }) => {
             <span className="navbar-toggler-icon navbar-dark"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarToggler">
+          <div className="collapse navbar-collapse flex-grow-0" id="navbarToggler">
             {isLogin ? (
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
                 <ListItemLink to={PagePaths.dashboard}>Dashboard</ListItemLink>
@@ -59,7 +60,7 @@ const ListItemLink = ({ to, children }) => {
 
   return (
     <li className={isActive ? "active nav-item" : "nav-item"}>
-      <Link to={to} className="nav-link ff-bubblegum fs-3xl text-light">
+      <Link to={to} className="nav-link ff-bubblegum fs-4xl text-light">
         {children}
       </Link>
     </li>

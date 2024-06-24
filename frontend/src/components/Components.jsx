@@ -1,6 +1,51 @@
 /* eslint-disable react/prop-types */
-export const CardIcon = ({
+import { Link } from "react-router-dom";
+
+export const paddingX = "px-20";
+
+export const Section = ({ className, children, ...props }) => {
+  return (
+    <>
+      <section
+        className={`position-relative container-fluid ${paddingX} d-flex justify-content-center align-items-center ${className}`}
+        {...props}
+      >
+        {children}
+      </section>
+    </>
+  );
+};
+
+export const LordIcon = ({ lordIconSrc, lordIconClrs, lordIconSize }) => {
+  return (
+    <>
+      <lord-icon
+        src={lordIconSrc}
+        trigger="loop"
+        colors={lordIconClrs}
+        style={{ width: `${lordIconSize}rem`, height: `${lordIconSize}rem` }}
+      ></lord-icon>
+    </>
+  );
+};
+
+export const SmDiv = ({ className, children }) => {
+  return <div className={`fs-xl ${className}`}>{children}</div>;
+};
+
+export const LgDiv = ({ className, children }) => {
+  return <div className={`fs-4xl ${className}`}>{children}</div>;
+};
+
+export const TitleDiv = ({ className, children }) => {
+  return <div className={`fs-6xl ${className}`}>{children}</div>;
+};
+
+export const CardIconLink = ({
+  className,
   lordIconSrc,
+  lordIconClrs,
+  lordIconSize,
   cardTitle,
   cardText,
   cardLink,
@@ -8,56 +53,67 @@ export const CardIcon = ({
 }) => {
   return (
     <>
-      <div className="card col-4 border-0">
-        <div className="card-body d-flex flex-column align-items-start">
-          <lord-icon
-            src={lordIconSrc}
-            trigger="loop"
-            colors="primary:#000000,secondary:#35aa90"
-            style={{ width: "4rem", height: "4rem" }}
-          ></lord-icon>
-          <div className="card-title ff-bubblegum fs-3xl">{cardTitle}</div>
-          <div className="card-text fs-base">{cardText}</div>
-          <a href={cardLink} className="card-link">
+      <div className={`card ${className}`}>
+        <div className="card-body d-flex flex-column justify-content-center align-items-start">
+          <LordIcon
+            lordIconSrc={lordIconSrc}
+            lordIconClrs={lordIconClrs}
+            lordIconSize={lordIconSize}
+          />
+          <LgDiv className="card-title ff-bubblegum">{cardTitle}</LgDiv>
+          <SmDiv className="card-text">{cardText}</SmDiv>
+          <Link to={cardLink} className="card-link fs-xl">
             {cardLinkText}
-          </a>
+          </Link>
         </div>
       </div>
     </>
   );
 };
 
-export const CardImgOverlay = ({ imgSrc, cardTitle, cardText }) => {
+export const CardIcon = ({
+  className,
+  lordIconSrc,
+  lordIconClrs,
+  lordIconSize,
+  cardTitle,
+  cardText,
+}) => {
   return (
     <>
-      <div className="card text-bg-dark col-4">
+      <div className={`card ${className}`}>
+        <div className="col-2">
+          <LordIcon
+            lordIconSrc={lordIconSrc}
+            lordIconClrs={lordIconClrs}
+            lordIconSize={lordIconSize}
+          />
+        </div>
+        <div className="card-body col-10">
+          <LgDiv className="card-title ff-bubblegum">{cardTitle}</LgDiv>
+          <SmDiv className="card-text">{cardText}</SmDiv>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const CardImgOverlay = ({
+  className,
+  cardLink,
+  imgSrc,
+  cardTitle,
+  cardText,
+}) => {
+  return (
+    <>
+      <Link className={`card ${className}`} to={cardLink}>
         <img src={imgSrc} className="card-img" alt={imgSrc} />
         <div className="card-img-overlay">
-          <h5 className="card-title">{cardTitle}</h5>
-          <p className="card-text">{cardText}</p>
+          <LgDiv className="card-title text-center">{cardTitle}</LgDiv>
+          <SmDiv className="card-text">{cardText}</SmDiv>
         </div>
-      </div>
+      </Link>
     </>
   );
 };
-
-export const Section = ({ className, children, ...props }) => {
-  return (
-    <>
-      <section className={`container-fluid px-20 ${className}`} {...props}>
-        {children}
-      </section>
-    </>
-  );
-};
-
-export const Footer = () => {
-    return (
-      <>
-        <footer className="container-fluid px-20 py-5 bg-secondary">
-          <div className="text-center text-dark fs-base">Copyright © Jourdan`s Snack Corner 2024</div>
-        </footer>
-      </>
-    );
-  };
-  

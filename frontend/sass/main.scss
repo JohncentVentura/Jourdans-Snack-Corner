@@ -1,7 +1,7 @@
 //Custom Variables
 $navbarBrandImgSize: 4rem;
 
-//Sass Variables
+//Bootstrap Variables
 $primary: #bd3131; //#c81a24;
 $secondary: #35aa90; //#0ea18f;
 $success: #35aa90;
@@ -31,8 +31,8 @@ img {
   height: 100%;
 }
 
-section{
-  position: relative;
+.img-blur{
+  filter: blur(2px);
 }
 
 $font-sizes: (
@@ -54,6 +54,10 @@ $font-sizes: (
 //Spacing, used for margin, border, padding, etc...
 $spacers: (
   0: 0,
+  1: 1%,
+  2: 2%,
+  3: 3%,
+  4: 4%,
   5: 5%,
   10: 10%,
   15: 15%,
@@ -79,6 +83,10 @@ $spacers: (
 //Position, used for top, start, bottom, end, etc...
 $position-values: (
   0: 0,
+  1: 1%,
+  2: 2%,
+  3: 3%,
+  4: 4%,
   5: 5%,
   10: 10%,
   15: 15%,
@@ -111,6 +119,10 @@ $utilities: map-merge(
       class: w,
       values: (
         0: 0,
+        1: 1%,
+        2: 2%,
+        3: 3%,
+        4: 4%,
         5: 5%,
         10: 10%,
         15: 15%,
@@ -141,6 +153,10 @@ $utilities: map-merge(
       class: h,
       values: (
         0: 0,
+        1: 1%,
+        2: 2%,
+        3: 3%,
+        4: 4%,
         5: 5%,
         10: 10%,
         15: 15%,
