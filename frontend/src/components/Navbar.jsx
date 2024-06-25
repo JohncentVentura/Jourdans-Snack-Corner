@@ -60,7 +60,7 @@ const ListItemLink = ({ to, children }) => {
 
   return (
     <li className={isActive ? "active nav-item" : "nav-item"}>
-      <Link to={to} className="nav-link ff-bubblegum fs-4xl text-light">
+      <Link to={to} className="nav-link ff-bubblegum fs-3xl text-light">
         {children}
       </Link>
     </li>

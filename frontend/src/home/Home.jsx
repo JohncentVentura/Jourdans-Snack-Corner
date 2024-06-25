@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { ImagePaths } from "../Paths";
@@ -7,9 +8,13 @@ import {
   SmDiv,
   LgDiv,
   TitleDiv,
+  SubTitleDiv,
   CardIconLink,
   CardIcon,
   CardImgOverlay,
+  CardImgLeftHorizontal,
+  CardImgRightHorizontal,
+  CardImgButton
 } from "../components/Components";
 
 //Lordicon imports
@@ -17,19 +22,19 @@ import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 defineElement(lottie.loadAnimation); // define "lord-icon" custom element with default properties
 
-const titles = ["Our Shop", "Our Food", "Our Service"];
+const titles = ["Our Shop", "Our Food", "Our Work"];
 
 const Home = () => {
   return (
     <>
-      <Section className="flex-row" style={{ height: "70vh" }}>
+      <Section className="flex-row" style={{height: "70vh", }}>
         <img
           src={ImagePaths.homeTitle}
           alt={ImagePaths.homeTitle}
           className="position-absolute z-n1 object-fit-cover"
         />
 
-        <div className="col-8 d-flex flex-column justify-content-center align-items-center">
+        <div className="col-7 d-flex flex-column justify-content-center align-items-center">
           <img
             src={ImagePaths.logo3}
             alt={ImagePaths.logo3}
@@ -53,7 +58,7 @@ const Home = () => {
         {titles.map((title, key) => (
           <CardIconLink
             key={`${title}-${key}`}
-            className={`col-4 px-1 border-0`}
+            className={`col-4 px-2 border-0`}
             lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
             lordIconClrs={"primary:#000000,secondary:#35aa90"}
             lordIconSize={5}
@@ -66,15 +71,16 @@ const Home = () => {
       </Section>
 
       <Section className="flex-column py-5 bg-primary">
-        <TitleDiv className="text-light ff-bubblegum">
+        <TitleDiv className="text-light">
           Featured Menu Items
         </TitleDiv>
+        <SubTitleDiv className="text-light">Our customers love working with us</SubTitleDiv>
 
-        <div className="pt-5 d-flex justify-content-center align-items-start">
+        <div className="pt-5 px-5 d-flex justify-content-center align-items-start">
           {titles.map((title, key) => (
             <CardImgOverlay
               key={`${title}-${key}`}
-              className={`text-light col-4 border-0 px-2 bg-primary`}
+              className={`col-4 mx-2 text-light `}
               cardLink={`/`}
               imgSrc={ImagePaths.snacks}
               cardTitle={title}
@@ -90,7 +96,7 @@ const Home = () => {
           className="position-absolute z-n1 object-fit-cover"
         />
 
-        <TitleDiv className="text-light ff-bubblegum">Open Hours</TitleDiv>
+        <TitleDiv className="text-light">Open Hours</TitleDiv>
         <CardIcon
           className="border-0 w-50 bg-transparent text-light d-flex flex-row justify-content-center align-items-center"
           lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
@@ -99,7 +105,7 @@ const Home = () => {
           cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
         />
 
-        <TitleDiv className="mt-5 text-light ff-bubblegum">Payment Methods</TitleDiv>
+        <TitleDiv className="mt-5 text-light">Payment Methods</TitleDiv>
         <CardIcon
           className="border-0 w-50 bg-transparent text-light text-end d-flex flex-row-reverse justify-content-center align-items-center"
           lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
@@ -110,42 +116,20 @@ const Home = () => {
       </Section>
 
       <Section className="flex-column py-5 bg-secondary">
-        <TitleDiv className="text-light ff-bubblegum">Delivering Areas</TitleDiv>
+        <TitleDiv className="text-light">Delivering Areas</TitleDiv>
+        <SubTitleDiv className="text-light">Our customers love working with us</SubTitleDiv>
 
-        <div className="mt-5 card mb-3 col-12 ">
-          <div className="row g-0">
-            <div className="col-6">
-              <img
-                src={ImagePaths.delivery}
-                className="img-fluid rounded-start"
-                alt={ImagePaths.delivery}
-              />
-            </div>
-            <div className="col-6">
-              <div className="card-body">
-                <LordIcon
-                  lordIconSrc={"https://cdn.lordicon.com/pkvlegzp.json"}
-                  lordIconClrs={"primary:#000000,secondary:#35aa90"}
-                  lordIconSize={5}
-                />
-                <div className="card-title ff-bubblegum fs-4xl">
-                  We are currently able to deliver around Pozorrubio,
-                  Pangasinan.
-                </div>
-                <div className="card-text fs-xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aperiam beatae eveniet numquam aspernatur molestiae laboriosam
-                  deleniti dignissimos praesentium deserunt, tempore cumque,
-                  debitis commodi cupiditate! Fugiat nesciunt quis esse
-                  voluptates accusantium!
-                </div>
-                <Link to="#" className="card-link fs-xl">
-                  Get Direction
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CardImgLeftHorizontal
+          className="mt-5 col-12"
+          imgSrc={ImagePaths.delivery}
+          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
+          lordIconClrs={"primary:#000000,secondary:#35aa90"}
+          lordIconSize={5}
+          cardTitle={`We are currently able to deliver around Pozorrubio, Pangasinan.`}
+          cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
+          cardLink={`/`}
+          cardLinkText={`Get Direction`}
+        />
       </Section>
     </>
   );

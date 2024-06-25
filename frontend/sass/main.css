@@ -19,8 +19,16 @@ img {
   height: 100%;
 }
 
-.img-blur {
-  filter: blur(2px);
+section, div {
+  position: relative;
+}
+
+input, textarea {
+  font-family: "Open Sans", sans-serif;
+}
+
+textarea {
+  min-height: 25vh;
 }
 
 /*!
