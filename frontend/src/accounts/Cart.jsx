@@ -22,17 +22,17 @@ import {
   CardImgButton,
 } from "../components/Components";
 
-const Dashboard = () => {
+const Cart = () => {
   return (
     <>
       <Section className="flex-column pt-6">
-        <TitleDiv>Dashboard</TitleDiv>
+        <TitleDiv>Cart</TitleDiv>
         <button onClick={()=>{
-          LogoutAdmin();
+          LogoutCustomer();
         }}>Logout</button>
       </Section>
     </>
   );
 };
 
-export default Dashboard;
+export default Cart;

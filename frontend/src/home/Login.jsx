@@ -6,6 +6,10 @@ import axios from "axios";
 
 import { ImagePaths, PagePaths } from "../Paths";
 import {
+  LoginCustomer,
+  LoginAdmin,
+  LogoutCustomer,
+  LogoutAdmin,
   Section,
   LordIcon,
   SmDiv,
@@ -22,27 +26,33 @@ import {
 } from "../components/Components";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  //const formLogin = document.querySelector(".form-login");
+  //const inputEmail = document.querySelector(".input-email");
+  //const inputPassword = document.querySelector(".input-password");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = {
-      username,
-      password
-    }
-
     axios
-      .get(`${PagePaths.port}${PagePaths.login}`, data)
-      .then(() => {
-        console.log(data);
-        navigate(PagePaths.dashboard);
+      .post(`${PagePaths.port}${PagePaths.login}`, { email, password }) 
+      .then((res) => {
+        console.log(res);
+        if (res.data === "Login Admin") {
+          LoginAdmin();
+          navigate(PagePaths.dashboard);
+        } else if (res.data === "Login Customer") {
+          LoginCustomer();
+          navigate(`${PagePaths.cart}`);
+        } else if (res.data === "Incorrect Password") {
+          navigate(PagePaths.login);
+        } else if (res.data === "Invalid Email") {
+          navigate(PagePaths.login);
+        }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -55,9 +65,8 @@ const Login = () => {
         />
 
         <form
-          onSubmit={onSubmit}
-          action=""
-          className="login-form w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+          onSubmit={handleSubmit}
+          className="form-login w-100 h-100 d-flex flex-column justify-content-center align-items-center"
         >
           <LordIcon
             lordIconSrc={"https://cdn.lordicon.com/ebjjjrhp.json"}
@@ -66,29 +75,35 @@ const Login = () => {
           />
           <TitleDiv className="text-light">Sign In</TitleDiv>
           <SubTitleDiv className="text-light">
-            Authorized Personnel Only
+            Sign in with your email and password
           </SubTitleDiv>
+
           <input
-            className="mt-4 p-1 rounded-3 w-50 h-5 fs-lg"
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            className="input-email mt-4 p-1 rounded-3 w-50 h-5 fs-lg"
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
-            className="mt-2 p-1 rounded-3 w-50 h-5 fs-lg"
+            className="input-password mt-2 p-1 rounded-3 w-50 h-5 fs-lg"
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
-            className="submit-btn mt-2 w-50 btn btn-primary"
-            type="submit"
-          >
-            <SubTitleDiv className="p-1">Submit</SubTitleDiv>
+
+          <div className="mt-2 w-40 d-flex justify-content-center align-items-center">
+            <SmDiv className="me-2 text-light">Don't have an account?</SmDiv>
+            <LinkDiv className="text-secondary" link={PagePaths.createAccount}>
+              Register Here...
+            </LinkDiv>
+          </div>
+
+          <button className="mt-2 w-30 btn btn-secondary" type="submit">
+            <SubTitleDiv className="p-1 text-light">Submit</SubTitleDiv>
           </button>
         </form>
       </Section>

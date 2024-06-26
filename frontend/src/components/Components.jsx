@@ -3,6 +3,22 @@ import { Link } from "react-router-dom";
 
 export const paddingX = "px-lg-20 px-15";
 
+export function LoginCustomer(){
+  localStorage.setItem("customer acc", "true");
+}
+
+export function LoginAdmin(){
+  localStorage.setItem("admin acc", "true");
+}
+
+export function LogoutCustomer(){
+  localStorage.setItem("customer acc", "false");
+}
+
+export function LogoutAdmin(){
+  localStorage.setItem("admin acc", "false");
+}
+
 export const Section = ({ className, children, ...props }) => {
   return (
     <>

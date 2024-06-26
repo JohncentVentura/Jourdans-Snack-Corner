@@ -24,7 +24,11 @@ export const PagePaths = {
     about: "/about-us",
     menu: "/menu",
     contact: "/contact",
-    login: "/login",
+
+    //account pages
+    login: "/account/login",
+    cart: "/account",
+    createAccount: "/account/register",
     
     //admin pages
     dashboard: "/dashboard",

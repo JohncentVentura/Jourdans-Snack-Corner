@@ -16,6 +16,8 @@ import About from "./home/About";
 import Menu from "./home/Menu";
 import Contact from "./home/Contact";
 import Login from "./home/Login";
+import Register from "./accounts/Register";
+import Cart from "./accounts/Cart";
 import Dashboard from "./components/Dashboard";
 import Products from "./products/Products";
 import CreateProduct from "./products/CreateProduct";
@@ -24,41 +26,42 @@ import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  PrintBreakPoint();
+
+  const [isCustomerLogin, setIsCustomerLogin] = useState();
+  const [isAdminLogin, setIsAdminLogin] = useState();
   const location = useLocation();
+  const loginAcc = localStorage.getItem("customer acc");
+  const adminAcc = localStorage.getItem("admin acc");
 
   ScrollToTop();
-
   useEffect(() => {
-    printBreakpoint();
-    window.addEventListener("resize", () => printBreakpoint());
-
-    function printBreakpoint() {
-      if (window.innerWidth >= 1400) {
-        console.log("xxl desktop"); //Desktop
-      } else if (window.innerWidth >= 1200) {
-        console.log("xl laptop"); //Laptop
-      } else if (window.innerWidth >= 992) {
-        console.log("lg h-tablet"); //Horizontal Tablet
-      } else if (window.innerWidth >= 768) {
-        console.log("md v-tablet"); //Vertical Tablet
-      } else if (window.innerWidth >= 576) {
-        console.log("sm h-phone"); //Horizontal Phone
-      } else {
-        console.log("df v-phone"); //Vertical Phone
-      }
+    if (localStorage.getItem("customer acc") === "true") {
+      setIsCustomerLogin(true);
+    } else {
+      setIsCustomerLogin(false);
     }
-  });
+  }, [loginAcc]);
+  useEffect(() => {
+    if (localStorage.getItem("admin acc") === "true") {
+      setIsAdminLogin(true);
+    } else {
+      setIsAdminLogin(false);
+    }
+  }, [adminAcc]);
 
   return (
     <>
-      <Navbar isLogin={isLogin} />
+      <Navbar isCustomerLogin={isCustomerLogin} isAdminLogin={isAdminLogin} />
       <Routes location={location} key={location.pathname}>
         <Route path={PagePaths.home} element={<Home />}></Route>
         <Route path={PagePaths.about} element={<About />}></Route>
         <Route path={PagePaths.menu} element={<Menu />}></Route>
         <Route path={PagePaths.contact} element={<Contact />}></Route>
         <Route path={PagePaths.login} element={<Login />}></Route>
+
+        <Route path={PagePaths.createAccount} element={<Register />}></Route>
+        <Route path={`${PagePaths.cart}`} element={<Cart />}></Route>
 
         <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
         <Route path={PagePaths.products} element={<Products />}></Route>
@@ -89,6 +92,29 @@ export const ScrollToTop = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+};
+
+export const PrintBreakPoint = () => {
+  useEffect(() => {
+    printBreakpoint();
+    window.addEventListener("resize", () => printBreakpoint());
+
+    function printBreakpoint() {
+      if (window.innerWidth >= 1400) {
+        console.log("xxl desktop"); //Desktop
+      } else if (window.innerWidth >= 1200) {
+        console.log("xl laptop"); //Laptop
+      } else if (window.innerWidth >= 992) {
+        console.log("lg h-tablet"); //Horizontal Tablet
+      } else if (window.innerWidth >= 768) {
+        console.log("md v-tablet"); //Vertical Tablet
+      } else if (window.innerWidth >= 576) {
+        console.log("sm h-phone"); //Horizontal Phone
+      } else {
+        console.log("df v-phone"); //Vertical Phone
+      }
+    }
+  });
 };
 
 export default App;

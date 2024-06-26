@@ -1,9 +1,25 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { ImagePaths, PagePaths } from "../Paths";
-import { paddingX } from "./Components";
+import {
+  paddingX,
+  Section,
+  LordIcon,
+  SmDiv,
+  LgDiv,
+  TitleDiv,
+  SubTitleDiv,
+  LinkDiv,
+  CardIconLink,
+  CardIcon,
+  CardImgOverlay,
+  CardImgLeftHorizontal,
+  CardImgRightHorizontal,
+  CardImgButton,
+} from "../components/Components";
 
-const Navbar = ({ isLogin }) => {
+const Navbar = ({ isCustomerLogin, isAdminLogin }) => {
   return (
     <>
       <nav
@@ -30,21 +46,34 @@ const Navbar = ({ isLogin }) => {
             className="collapse navbar-collapse flex-grow-0"
             id="navbarToggler"
           >
-            {isLogin ? (
+            {isAdminLogin && !isCustomerLogin ? (
               <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
                 <ListItemLink to={PagePaths.dashboard}>Dashboard</ListItemLink>
                 <ListItemLink to={PagePaths.products}>Products</ListItemLink>
                 <ListItemLink to={PagePaths.orders}>Orders</ListItemLink>
                 <ListItemLink to={PagePaths.reports}>Reports</ListItemLink>
+                <ListItemLink to={PagePaths.home}>Logout</ListItemLink>
               </ul>
             ) : (
-              <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
-                <ListItemLink to={PagePaths.home}>Home</ListItemLink>
-                <ListItemLink to={PagePaths.about}>About</ListItemLink>
-                <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
-                <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
-                <ListItemLink to={PagePaths.login}>Login</ListItemLink>
-              </ul>
+              <>
+                {!isAdminLogin && isCustomerLogin? (
+                  <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
+                    <ListItemLink to={PagePaths.home}>Home</ListItemLink>
+                    <ListItemLink to={PagePaths.about}>About</ListItemLink>
+                    <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
+                    <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
+                    <ListItemLink to={PagePaths.cart}>Cart</ListItemLink>
+                  </ul>
+                ) : (
+                  <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
+                    <ListItemLink to={PagePaths.home}>Home</ListItemLink>
+                    <ListItemLink to={PagePaths.about}>About</ListItemLink>
+                    <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
+                    <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
+                    <ListItemLink to={PagePaths.login}>Login</ListItemLink>
+                  </ul>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -60,7 +89,10 @@ const ListItemLink = ({ to, children }) => {
 
   return (
     <li className={isActive ? "active nav-item" : "nav-item"}>
-      <Link to={to} className="nav-link text-light ff-bubblegum fs-lg-3xl fs-sm-2xl fs-xl">
+      <Link
+        to={to}
+        className="nav-link text-light ff-bubblegum fs-lg-3xl fs-sm-2xl fs-xl"
+      >
         {children}
       </Link>
     </li>
