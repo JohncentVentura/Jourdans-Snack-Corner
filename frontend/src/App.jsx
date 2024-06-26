@@ -3,6 +3,11 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
+//Lordicon imports
+import lottie from "lottie-web";
+import { defineElement } from "@lordicon/element";
+defineElement(lottie.loadAnimation); // define "lord-icon" custom element with default properties
+
 import { PagePaths } from "./Paths";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -21,6 +26,8 @@ import DeleteProduct from "./products/DeleteProduct";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const location = useLocation();
+
+  ScrollToTop();
 
   useEffect(() => {
     printBreakpoint();
@@ -76,5 +83,12 @@ function App() {
     </>
   );
 }
+
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+};
 
 export default App;

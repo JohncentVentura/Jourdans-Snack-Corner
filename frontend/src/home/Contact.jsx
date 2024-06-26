@@ -29,24 +29,29 @@ const Contact = () => {
 
         <form
           onSubmit={onSubmit}
-          className="submit-form w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+          className="contact-form w-100 h-100 d-flex flex-column justify-content-center align-items-center"
         >
+          <LordIcon
+            lordIconSrc={"https://cdn.lordicon.com/wzrwaorf.json"}
+            lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
+            lordIconSize={5}
+          />
           <TitleDiv className="text-light ff-bubblegum">Get in touch</TitleDiv>
           <SubTitleDiv className="text-light">
             We would love to hear from you
           </SubTitleDiv>
 
           <input
-            className="mt-5 p-1 rounded-3 w-65 h-5 fs-lg"
-            name="name"
+            className="mt-4 p-1 rounded-3 w-65 h-5 fs-lg"
             type="text"
+            name="name"
             placeholder="Full Name"
             required
           />
           <input
             className="mt-2 p-1 rounded-3 w-65 h-5 fs-lg"
-            name="email"
             type="email"
+            name="email"
             placeholder="Email Address"
             required
           />
@@ -56,8 +61,11 @@ const Contact = () => {
             placeholder="Message"
             required
           />
-          <button className="submit-btn mt-2 btn btn-primary" type="submit">
-            <SubTitleDiv className="p-1">Submit</SubTitleDiv>
+          <button
+            className="contact-btn mt-2 py-1 w-65 btn btn-primary"
+            type="submit"
+          >
+            <SubTitleDiv>Submit</SubTitleDiv>
           </button>
         </form>
       </Section>
@@ -67,7 +75,7 @@ const Contact = () => {
 
 const onSubmit = async (event) => {
   event.preventDefault();
-  const submitBtn = document.querySelector(".submit-btn");
+  const submitBtn = document.querySelector(".contact-btn");
   submitBtn.disabled = true;
   submitBtn.textContent = `Sending...`;
 
@@ -87,14 +95,14 @@ const onSubmit = async (event) => {
   }).then((res) => res.json());
 
   if (res.success) {
-    const form = document.querySelector(".submit-form");
+    const form = document.querySelector(".contact-form");
     await form.reset();
     submitBtn.disabled = false;
     submitBtn.textContent = `Submit`;
     console.log("Success", res);
     return true;
   } else {
-    const form = document.querySelector(".submit-form");
+    const form = document.querySelector(".contact-form");
     await form.reset();
     submitBtn.disabled = false;
     submitBtn.textContent = `Submit`;

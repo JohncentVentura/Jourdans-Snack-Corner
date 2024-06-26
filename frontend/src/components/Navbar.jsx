@@ -6,18 +6,15 @@ import { paddingX } from "./Components";
 const Navbar = ({ isLogin }) => {
   return (
     <>
-      <nav className={`navbar navbar-expand-lg fixed-top ${paddingX} bg-dark bg-opacity-75`}>
+      <nav
+        className={`navbar navbar-expand-lg fixed-top ${paddingX} py-sm-1 py-2 bg-dark bg-opacity-75`}
+      >
         <div className="container-fluid p-0 d-flex justify-content-between align-items-center">
-          <Link className="navbar-brand" to={PagePaths.home}>
-            <img
-              src={ImagePaths.logo1}
-              alt="Jourdan's Snack Corner"
-              style={{width: "4vw", height: "6vh"}}
-              className="object-fit-contain"
-            />
+          <Link className="navbar-brand p-0" to={PagePaths.home}>
+            <img src={ImagePaths.logo1} alt="Jourdan's Snack Corner" />
           </Link>
 
-          <button 
+          <button
             className="navbar-toggler navbar-dark"
             type="button"
             data-bs-toggle="collapse"
@@ -29,16 +26,19 @@ const Navbar = ({ isLogin }) => {
             <span className="navbar-toggler-icon navbar-dark"></span>
           </button>
 
-          <div className="collapse navbar-collapse flex-grow-0" id="navbarToggler">
+          <div
+            className="collapse navbar-collapse flex-grow-0"
+            id="navbarToggler"
+          >
             {isLogin ? (
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
+              <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
                 <ListItemLink to={PagePaths.dashboard}>Dashboard</ListItemLink>
                 <ListItemLink to={PagePaths.products}>Products</ListItemLink>
                 <ListItemLink to={PagePaths.orders}>Orders</ListItemLink>
                 <ListItemLink to={PagePaths.reports}>Reports</ListItemLink>
               </ul>
             ) : (
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
+              <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
                 <ListItemLink to={PagePaths.home}>Home</ListItemLink>
                 <ListItemLink to={PagePaths.about}>About</ListItemLink>
                 <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
@@ -60,7 +60,7 @@ const ListItemLink = ({ to, children }) => {
 
   return (
     <li className={isActive ? "active nav-item" : "nav-item"}>
-      <Link to={to} className="nav-link ff-bubblegum fs-3xl text-light">
+      <Link to={to} className="nav-link text-light ff-bubblegum fs-lg-3xl fs-sm-2xl fs-xl">
         {children}
       </Link>
     </li>

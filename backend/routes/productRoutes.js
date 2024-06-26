@@ -2,6 +2,19 @@ import express from "express";
 import { productModel } from "../models/productModel.js";
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  try {
+    const products = await productModel.find({});
+    return res.status(200).json({
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     if (!req.body.name || !req.body.price || !req.body.quantity) {
@@ -17,19 +30,6 @@ router.post("/", async (req, res) => {
 
     const product = await productModel.create(newProduct);
     return res.status(201).send(product);
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send({ message: error.message });
-  }
-});
-
-router.get("/", async (req, res) => {
-  try {
-    const products = await productModel.find({});
-    return res.status(200).json({
-      count: products.length,
-      data: products,
-    });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });

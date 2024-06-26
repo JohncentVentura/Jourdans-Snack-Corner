@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-export const paddingX = "px-15";
+export const paddingX = "px-lg-20 px-15";
 
 export const Section = ({ className, children, ...props }) => {
   return (
@@ -53,6 +53,18 @@ export const LinkDiv = ({ className, link, children }) => {
   );
 };
 
+export const ButtonDiv = ({ className, onClick, children }) => {
+  return (
+    <button
+      type="button"
+      className={`btn p-2 ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
+
 export const CardIconLink = ({
   className,
   lordIconSrc,
@@ -73,8 +85,8 @@ export const CardIconLink = ({
             lordIconSize={lordIconSize}
           />
           <LgDiv className="card-title ff-bubblegum">{cardTitle}</LgDiv>
-          <SmDiv className="card-text">{cardText}</SmDiv>
-          <LinkDiv className="card-link" link={cardLink}>
+          <SmDiv className="card-text mb-3">{cardText}</SmDiv>
+          <LinkDiv className="card-link text-primary" link={cardLink}>
             {cardLinkText}
           </LinkDiv>
         </div>
@@ -101,6 +113,7 @@ export const CardIcon = ({
             lordIconSize={lordIconSize}
           />
         </div>
+        <div className="col-1"></div>
         <div className="card-body col-10">
           <LgDiv className="card-title">{cardTitle}</LgDiv>
           <SmDiv className="card-text">{cardText}</SmDiv>
@@ -154,13 +167,13 @@ export const CardImgLeftHorizontal = ({
           </div>
           <div className="col-6">
             <div className="card-body">
+              <LgDiv className="card-title">{cardTitle}</LgDiv>
+              <SmDiv className="card-text mb-2">{cardText}</SmDiv>
               <LordIcon
                 lordIconSrc={lordIconSrc}
                 lordIconClrs={lordIconClrs}
                 lordIconSize={lordIconSize}
               />
-              <LgDiv className="card-title">{cardTitle}</LgDiv>
-              <SmDiv className="card-text">{cardText}</SmDiv>
               <LinkDiv className="card-link" link={cardLink}>
                 {cardLinkText}
               </LinkDiv>
@@ -228,9 +241,9 @@ export const CardImgButton = ({
         <img src={imgSrc} className="card-img-top" alt={imgSrc} />
         <div className="card-body">
           <LgDiv className="card-title">{cardTitle}</LgDiv>
-          <SmDiv className="card-text">{cardText}</SmDiv>
+          <SmDiv className="card-text mb-5">{cardText}</SmDiv>
           <LinkDiv className="btn btn-primary" link={cardLink}>
-            {cardLinkText}
+            <SmDiv>{cardLinkText}</SmDiv>
           </LinkDiv>
         </div>
       </div>

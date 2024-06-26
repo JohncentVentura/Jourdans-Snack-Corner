@@ -17,17 +17,12 @@ import {
   CardImgButton
 } from "../components/Components";
 
-//Lordicon imports
-import lottie from "lottie-web";
-import { defineElement } from "@lordicon/element";
-defineElement(lottie.loadAnimation); // define "lord-icon" custom element with default properties
-
 const titles = ["Our Shop", "Our Food", "Our Work"];
 
 const About = () => {
   return (
     <>
-      <Section className="flex-row" style={{height: "70vh", }}>
+      <Section className="flex-row" style={{height: "75vh", }}>
         <div
           id="carouselExampleCaptions"
           className="carousel slide position-absolute w-100 h-100"
@@ -139,7 +134,7 @@ const About = () => {
               cardTitle={title}
               cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
               cardLink={`/`}
-              cardLinkText={`Click Here!`}
+              cardLinkText={`View Post`}
             />
           ))}
         </div>
@@ -150,7 +145,7 @@ const About = () => {
         <SubTitleDiv className="text-light">Coming Soon...</SubTitleDiv>
 
         <CardImgRightHorizontal
-          className="mt-5 col-12"
+          className="mt-4 col-12"
           imgSrc={ImagePaths.delivery}
           lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
           lordIconClrs={"primary:#000000,secondary:#35aa90"}
