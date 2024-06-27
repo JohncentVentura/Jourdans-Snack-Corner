@@ -20,24 +20,23 @@ import {
 } from "../components/Components";
 
 const CreateProduct = () => {
+  const [type, setType] = useState("");
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const navigate = useNavigate();
 
-  const handleCreateProduct = () => {
-    const data = {
-      name,
-      description,
-      price,
-      quantity,
-    };
+  const handleCreateProduct = (event) => {
+    event.preventDefault();
 
     axios
-      .post(`${PagePaths.port}${PagePaths.products}`, data)
+      .post(`${PagePaths.port}${PagePaths.createProduct}`, {
+        type,
+        name,
+        price,
+        quantity,
+      })
       .then(() => {
-        console.log(data);
         navigate(PagePaths.products);
       })
       .catch((error) => {
@@ -47,13 +46,22 @@ const CreateProduct = () => {
 
   return (
     <>
-      <Section className="flex-column pt-6">
+      <Section className="flex-column pt-6 bg-secondary">
         <div>Create Product</div>
         <button>
           <Link to={PagePaths.products}>Return to Products</Link>
         </button>
 
         <form>
+          <label htmlFor="product-type-id">Type:</label>
+          <input
+            type="text"
+            id="product-type-id"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            required
+          />
+
           <label htmlFor="product-name-id">Name:</label>
           <input
             type="text"
@@ -81,17 +89,8 @@ const CreateProduct = () => {
             required
           />
 
-          <label htmlFor="product-description-id">Description:</label>
-          <input
-            type="text"
-            id="product-description-id"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-
           <button type="submit" onClick={handleCreateProduct}>
-            Create
+            Add
           </button>
         </form>
       </Section>

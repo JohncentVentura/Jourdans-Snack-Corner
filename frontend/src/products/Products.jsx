@@ -12,12 +12,14 @@ import {
   TitleDiv,
   SubTitleDiv,
   LinkDiv,
+  ButtonDiv,
   CardIconLink,
   CardIcon,
   CardImgOverlay,
   CardImgLeftHorizontal,
   CardImgRightHorizontal,
   CardImgButton,
+  ButtonLinkDiv,
 } from "../components/Components";
 
 const Products = () => {
@@ -29,7 +31,7 @@ const Products = () => {
       .get(`${PagePaths.port}${PagePaths.products}`)
       .then((res) => {
         setProductsCount(res.data.count);
-        setProducts(res.data.data);
+        setProducts(res.data.products);
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +46,7 @@ const Products = () => {
           <Link to={PagePaths.createProduct}>Create Product</Link>
         </button>
 
-        <ul>
+        <ul className="w-100">
           <li>
             <span>Number of Products: </span>
             <span>{productsCount}</span>
@@ -52,27 +54,28 @@ const Products = () => {
           <li>Name / Price / Quantity / Description</li>
           <br />
           {products.map((product, index) => (
-            <li key={`${product}-${index}`}>
+            <li
+              key={`${product}-${index}`}
+              className="w-50 d-flex justify-content-evenly"
+            >
+              <span>{product.type} / </span>
               <span>{product.name} / </span>
               <span>{product.price} / </span>
               <span>{product.quantity}</span>
-              <span>{product.description}</span>
-              <div>
-                <button>
-                  <Link to={`${PagePaths.readProduct}/${product._id}`}>
-                    Show
-                  </Link>
-                </button>
-                <button>
-                  <Link to={`${PagePaths.updateProduct}/${product._id}`}>
-                    Edit
-                  </Link>
-                </button>
-                <button>
-                  <Link to={`${PagePaths.deleteProduct}/${product._id}`}>
-                    Delete
-                  </Link>
-                </button>
+              <div className="d-flex">
+                <ButtonLinkDiv
+                  to={`${PagePaths.updateProduct}/${product._id}`}
+                  className="btn-primary text-light"
+                >
+                  Edit
+                </ButtonLinkDiv>
+
+                <ButtonLinkDiv
+                  to={`${PagePaths.deleteProduct}/${product._id}`}
+                  className="ms-5 btn-primary text-light"
+                >
+                  Delete
+                </ButtonLinkDiv>
               </div>
             </li>
           ))}

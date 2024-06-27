@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 //Lordicon imports
 import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 defineElement(lottie.loadAnimation); // define "lord-icon" custom element with default properties
 
-import { PagePaths } from "./Paths";
+import { KeyPaths, PagePaths } from "./Paths";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./home/Home";
@@ -26,33 +26,41 @@ import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
 
 function App() {
-  PrintBreakPoint();
+  //PrintBreakPoint();
+  ScrollToTop(); //Scroll to top when navigating pages
+  const location = useLocation();
 
+  const isCustomerLoginLocal = localStorage.getItem(KeyPaths.isCustomerLogin);
+  const isAdminLoginLocal = localStorage.getItem(KeyPaths.isAdminLogin);
   const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [isAdminLogin, setIsAdminLogin] = useState();
-  const location = useLocation();
-  const loginAcc = localStorage.getItem("customer acc");
-  const adminAcc = localStorage.getItem("admin acc");
+  const [loginID, setLoginID] = useState();
 
-  ScrollToTop();
+  //Handles states when customer login
   useEffect(() => {
-    if (localStorage.getItem("customer acc") === "true") {
-      setIsCustomerLogin(true);
-    } else {
-      setIsCustomerLogin(false);
-    }
-  }, [loginAcc]);
-  useEffect(() => {
-    if (localStorage.getItem("admin acc") === "true") {
+    if (localStorage.getItem(KeyPaths.isAdminLogin) === "true") {
+      setLoginID(localStorage.getItem(KeyPaths.loginID));
       setIsAdminLogin(true);
-    } else {
+    } else if (localStorage.getItem(KeyPaths.isCustomerLogin) === "true") {
+      setLoginID(localStorage.getItem(KeyPaths.loginID));
+      setIsCustomerLogin(true);
+    } else if (
+      localStorage.getItem(KeyPaths.isAdminLogin) === "false" ||
+      localStorage.getItem(KeyPaths.isCustomerLogin) === "false"
+    ) {
       setIsAdminLogin(false);
+      setIsCustomerLogin(false);
+      setLoginID("");
     }
-  }, [adminAcc]);
+  }, [isCustomerLoginLocal, isAdminLoginLocal]);
 
   return (
     <>
-      <Navbar isCustomerLogin={isCustomerLogin} isAdminLogin={isAdminLogin} />
+      <Navbar
+        isCustomerLogin={isCustomerLogin}
+        isAdminLogin={isAdminLogin}
+        loginID={loginID}
+      />
       <Routes location={location} key={location.pathname}>
         <Route path={PagePaths.home} element={<Home />}></Route>
         <Route path={PagePaths.about} element={<About />}></Route>
@@ -62,6 +70,7 @@ function App() {
 
         <Route path={PagePaths.createAccount} element={<Register />}></Route>
         <Route path={`${PagePaths.cart}`} element={<Cart />}></Route>
+        <Route path={`${PagePaths.cart}/:id`} element={<Cart />}></Route>
 
         <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
         <Route path={PagePaths.products} element={<Products />}></Route>

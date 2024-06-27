@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const accountSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
+    isAdmin: {
+      type: Boolean,
+      required: false,
     },
     email: {
       type: String,
@@ -14,9 +14,13 @@ const accountSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: false,
+    username: {
+      type: String,
+      required: true,
+    },
+    orders: {
+      type: Array,
+      required: true,
     },
   },
   {

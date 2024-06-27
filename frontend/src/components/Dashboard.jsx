@@ -1,12 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
-import { ImagePaths } from "../Paths";
+import { Link, useNavigate } from "react-router-dom";
+import { ImagePaths,KeyPaths,PagePaths} from "../Paths";
 import {
-  LoginCustomer,
-  LoginAdmin,
-  LogoutCustomer,
-  LogoutAdmin,
   Section,
   LordIcon,
   SmDiv,
@@ -23,13 +19,20 @@ import {
 } from "../components/Components";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Section className="flex-column pt-6">
         <TitleDiv>Dashboard</TitleDiv>
-        <button onClick={()=>{
-          LogoutAdmin();
-        }}>Logout</button>
+        <button
+          onClick={() => {
+            localStorage.setItem(KeyPaths.isAdminLogin, "false")
+            navigate(PagePaths.home);
+          }}
+        >
+          Logout
+        </button>
       </Section>
     </>
   );

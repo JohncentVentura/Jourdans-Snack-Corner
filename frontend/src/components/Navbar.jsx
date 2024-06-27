@@ -19,7 +19,7 @@ import {
   CardImgButton,
 } from "../components/Components";
 
-const Navbar = ({ isCustomerLogin, isAdminLogin }) => {
+const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
   return (
     <>
       <nav
@@ -56,13 +56,13 @@ const Navbar = ({ isCustomerLogin, isAdminLogin }) => {
               </ul>
             ) : (
               <>
-                {!isAdminLogin && isCustomerLogin? (
+                {!isAdminLogin && isCustomerLogin ? (
                   <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
                     <ListItemLink to={PagePaths.home}>Home</ListItemLink>
                     <ListItemLink to={PagePaths.about}>About</ListItemLink>
                     <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
                     <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
-                    <ListItemLink to={PagePaths.cart}>Cart</ListItemLink>
+                    <ListItemLink to={`${PagePaths.cart}/${loginID}`}>Cart</ListItemLink>
                   </ul>
                 ) : (
                   <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">

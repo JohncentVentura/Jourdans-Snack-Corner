@@ -2,24 +2,6 @@ import express from "express";
 import { accountModel } from "../models/accountModel.js";
 const router = express.Router();
 
-//For Signing in
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  await accountModel.findOne({ email: email }).then((user) => {
-    if (user) {
-      if (user.password === password && user.isAdmin) {
-        res.json("Login Admin");
-      } else if (user.password === password && !user.isAdmin) {
-        res.json("Login Customer");
-      } else {
-        res.json("Incorrect Password");
-      }
-    } else {
-      res.json("Invalid Email");
-    }
-  });
-});
-
 //For Signing up
 router.post("/register", async (req, res) => {
   await accountModel
@@ -28,10 +10,39 @@ router.post("/register", async (req, res) => {
     .catch((error) => res.status(500).json(error));
 });
 
-//???
-router.get("/cart/:id", async (req, res)=>{
-  const { id } = req.params;
-  await accountModel.findById(id)
-})
+//For Signing in
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    await accountModel.findOne({ email: email }).then((user) => {
+      if (user) {
+        if (user.password === password && user.isAdmin) {
+          res.status(200).json({ loginStatus: "Login Admin", user: user });
+        } else if (user.password === password && !user.isAdmin) {
+          res.status(200).json({ loginStatus: "Login Customer", user: user });
+        } else {
+          res.status(200).json({ loginStatus: "Incorrect Password" });
+        }
+      } else {
+        res.status(200).json({ loginStatus: "Invalid Email" });
+      }
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const account = await accountModel.findById(id);
+    return res.status(200).json(account);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ error: error.message });
+  }
+});
 
 export default router;

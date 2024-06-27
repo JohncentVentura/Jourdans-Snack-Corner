@@ -20,19 +20,19 @@ import {
 } from "../components/Components";
 
 const UpdateProduct = () => {
+  const [type, setType] = useState("");
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${PagePaths.port}${PagePaths.products}/${id}`)
+      .get(`${PagePaths.port}${PagePaths.updateProduct}/${id}`)
       .then((res) => {
+        setType(res.data.type);
         setName(res.data.name);
-        setDescription(res.data.description);
         setPrice(res.data.price);
         setQuantity(res.data.quantity);
       })
@@ -40,20 +40,19 @@ const UpdateProduct = () => {
         console.log(error);
         navigate(PagePaths.products);
       });
-  }, []);
+  });
 
-  const handleUpdateProduct = () => {
-    const data = {
-      name,
-      description,
-      price,
-      quantity,
-    };
+  const handleUpdateProduct = (event) => {
+    event.preventDefault();
 
     axios
-      .put(`${PagePaths.port}${PagePaths.products}/${id}`, data)
+      .put(`${PagePaths.port}${PagePaths.updateProduct}/${id}`, {
+        type,
+        name,
+        price,
+        quantity,
+      })
       .then(() => {
-        console.log(data);
         navigate(PagePaths.products);
       })
       .catch((error) => {
@@ -63,13 +62,22 @@ const UpdateProduct = () => {
 
   return (
     <>
-      <Section className="flex-column pt-6">
+      <Section className="flex-column pt-6 bg-secondary">
         <div>UpdateProduct</div>
         <button>
           <Link to={PagePaths.products}>Return to Products</Link>
         </button>
 
         <form>
+          <label htmlFor="product-type-id">Type:</label>
+          <input
+            type="text"
+            id="product-type-id"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            required
+          />
+
           <label htmlFor="product-name-id">Name:</label>
           <input
             type="text"
@@ -94,15 +102,6 @@ const UpdateProduct = () => {
             id="product-quantity-id"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            required
-          />
-
-          <label htmlFor="product-description-id">Description:</label>
-          <input
-            type="text"
-            id="product-description-id"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
             required
           />
 

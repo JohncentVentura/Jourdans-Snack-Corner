@@ -3,22 +3,6 @@ import { Link } from "react-router-dom";
 
 export const paddingX = "px-lg-20 px-15";
 
-export function LoginCustomer(){
-  localStorage.setItem("customer acc", "true");
-}
-
-export function LoginAdmin(){
-  localStorage.setItem("admin acc", "true");
-}
-
-export function LogoutCustomer(){
-  localStorage.setItem("customer acc", "false");
-}
-
-export function LogoutAdmin(){
-  localStorage.setItem("admin acc", "false");
-}
-
 export const Section = ({ className, children, ...props }) => {
   return (
     <>
@@ -63,7 +47,7 @@ export const SubTitleDiv = ({ className, children }) => {
 
 export const LinkDiv = ({ className, link, children }) => {
   return (
-    <Link to={link} className={`fs-base ${className}`}>
+    <Link to={link} className={`text-decoration-none fs-base ${className}`}>
       {children}
     </Link>
   );
@@ -73,11 +57,24 @@ export const ButtonDiv = ({ className, onClick, children }) => {
   return (
     <button
       type="button"
-      className={`btn p-2 ${className}`}
+      className={`btn ${className}`}
       onClick={onClick}
     >
       {children}
     </button>
+  );
+};
+
+export const ButtonLinkDiv = ({ className, to, onClick, children }) => {
+  return (
+    <Link
+      type="button"
+      className={`btn ${className}`}
+      to={to}
+      onClick={onClick}
+    >
+      {children}
+    </Link>
   );
 };
 

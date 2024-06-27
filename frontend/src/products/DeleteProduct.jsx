@@ -10,6 +10,8 @@ import {
   TitleDiv,
   SubTitleDiv,
   LinkDiv,
+  ButtonDiv,
+  ButtonLinkDiv,
   CardIconLink,
   CardIcon,
   CardImgOverlay,
@@ -22,20 +24,24 @@ const DeleteProduct = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleDeleteProduct = () => {
+  const handleDeleteProduct = (event) => {
+    //event.preventDefault();
+
     axios
-      .delete(`${PagePaths.port}${PagePaths.products}/${id}`)
+      .delete(`${PagePaths.port}${PagePaths.deleteProduct}/${id}`)
       .then(() => {
+        console.log("DELETED");
         navigate(PagePaths.products);
       })
       .catch((error) => {
+        navigate(PagePaths.products);
         console.log(error);
       });
   };
 
   return (
     <>
-      <Section className="flex-column pt-6">
+      <Section className="flex-column pt-6 bg-secondary">
         <div>Delete Product</div>
         <button>
           <Link to={PagePaths.products}>Return to Products</Link>
@@ -43,10 +49,15 @@ const DeleteProduct = () => {
 
         <br />
         <div>Are You Sure You want to delete this product?</div>
-        <button onClick={handleDeleteProduct}>Yes</button>
-        <button>
-          <Link to={PagePaths.products}>No</Link>
-        </button>
+        <ButtonLinkDiv
+          className="px-2 py-1 btn-primary text-light"
+          onClick={handleDeleteProduct}
+        >
+          Yes
+        </ButtonLinkDiv>
+        <ButtonLinkDiv className="my-3 px-2 py-1 btn-primary text-light" to={PagePaths.products}>
+          No
+        </ButtonLinkDiv>
       </Section>
     </>
   );

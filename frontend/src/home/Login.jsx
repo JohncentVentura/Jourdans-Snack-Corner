@@ -1,15 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { ImagePaths, PagePaths } from "../Paths";
+import { ImagePaths, KeyPaths, PagePaths } from "../Paths";
 import {
-  LoginCustomer,
-  LoginAdmin,
-  LogoutCustomer,
-  LogoutAdmin,
   Section,
   LordIcon,
   SmDiv,
@@ -37,18 +34,20 @@ const Login = () => {
     event.preventDefault();
 
     axios
-      .post(`${PagePaths.port}${PagePaths.login}`, { email, password }) 
+      .post(`${PagePaths.port}${PagePaths.login}`, { email, password })
       .then((res) => {
         console.log(res);
-        if (res.data === "Login Admin") {
-          LoginAdmin();
+        if (res.data.loginStatus === "Login Admin") {
+          localStorage.setItem(KeyPaths.loginID, res.data.user._id);
+          localStorage.setItem(KeyPaths.isAdminLogin, "true");
           navigate(PagePaths.dashboard);
-        } else if (res.data === "Login Customer") {
-          LoginCustomer();
-          navigate(`${PagePaths.cart}`);
-        } else if (res.data === "Incorrect Password") {
+        } else if (res.data.loginStatus === "Login Customer") {
+          localStorage.setItem(KeyPaths.loginID, res.data.user._id);
+          localStorage.setItem(KeyPaths.isCustomerLogin, "true");
+          navigate(`${PagePaths.cart}/${res.data.user._id}`);
+        } else if (res.data.loginStatus === "Incorrect Password") {
           navigate(PagePaths.login);
-        } else if (res.data === "Invalid Email") {
+        } else if (res.data.loginStatus === "Invalid Email") {
           navigate(PagePaths.login);
         }
       })
@@ -59,8 +58,8 @@ const Login = () => {
     <>
       <Section className="flex-column" style={{ height: "100vh" }}>
         <img
-          src={ImagePaths.homeTitle}
-          alt={ImagePaths.homeTitle}
+          src={ImagePaths.bgLogin}
+          alt={ImagePaths.bgLogin}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -95,16 +94,16 @@ const Login = () => {
             required
           />
 
+          <button className="mt-2 w-50 btn btn-secondary" type="submit">
+            <SubTitleDiv className="p-1 text-light">Log In</SubTitleDiv>
+          </button>
+
           <div className="mt-2 w-40 d-flex justify-content-center align-items-center">
             <SmDiv className="me-2 text-light">Don't have an account?</SmDiv>
             <LinkDiv className="text-secondary" link={PagePaths.createAccount}>
               Register Here...
             </LinkDiv>
           </div>
-
-          <button className="mt-2 w-30 btn btn-secondary" type="submit">
-            <SubTitleDiv className="p-1 text-light">Submit</SubTitleDiv>
-          </button>
         </form>
       </Section>
     </>

@@ -6,10 +6,6 @@ import axios from "axios";
 
 import { ImagePaths, PagePaths } from "../Paths";
 import {
-  LoginCustomer,
-  LoginAdmin,
-  LogoutCustomer,
-  LogoutAdmin,
   Section,
   LordIcon,
   SmDiv,
@@ -26,16 +22,20 @@ import {
 } from "../components/Components";
 
 const Register = () => {
-  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [username, setUsername] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     axios
-      .post(`${PagePaths.port}${PagePaths.createAccount}`, { name, email, password })
+      .post(`${PagePaths.port}${PagePaths.createAccount}`, {
+        email,
+        password,
+        username,
+      })
       .then((res) => {
         console.log(res);
         navigate(PagePaths.login);
@@ -49,8 +49,8 @@ const Register = () => {
     <>
       <Section className="flex-column" style={{ height: "100vh" }}>
         <img
-          src={ImagePaths.contact}
-          alt={ImagePaths.contact}
+          src={ImagePaths.bgHomeAbout}
+          alt={ImagePaths.bgHomeAbout}
           className="position-absolute z-n1 object-fit-cover"
         />
         <form
@@ -71,9 +71,9 @@ const Register = () => {
             className="mt-4 p-1 rounded-3 w-50 h-5 fs-lg"
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="Your Username"
             required
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             className="mt-2 p-1 rounded-3 w-50 h-5 fs-lg"

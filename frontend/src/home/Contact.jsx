@@ -22,8 +22,8 @@ const Contact = () => {
     <>
       <Section className="flex-column" style={{ height: "100vh" }}>
         <img
-          src={ImagePaths.contact}
-          alt={ImagePaths.contact}
+          src={ImagePaths.bgHomeTitle}
+          alt={ImagePaths.bgHomeTitle}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -33,7 +33,7 @@ const Contact = () => {
         >
           <LordIcon
             lordIconSrc={"https://cdn.lordicon.com/wzrwaorf.json"}
-            lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
+            lordIconClrs={"primary:#FFFFFF,secondary:#bd3131"}
             lordIconSize={5}
           />
           <TitleDiv className="text-light ff-bubblegum">Get in touch</TitleDiv>

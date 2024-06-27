@@ -43,8 +43,8 @@ const Home = () => {
     <>
       <Section className="flex-row" style={{ height: "75vh" }}>
         <img
-          src={ImagePaths.homeTitle}
-          alt={ImagePaths.homeTitle}
+          src={ImagePaths.bgHomeTitle}
+          alt={ImagePaths.bgHomeTitle}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -123,8 +123,8 @@ const Home = () => {
 
       <Section className="flex-column py-5">
         <img
-          src={ImagePaths.homeAbout}
-          alt={ImagePaths.homeAbout}
+          src={ImagePaths.bgHomeAbout}
+          alt={ImagePaths.bgHomeAbout}
           className="position-absolute z-n1 object-fit-cover"
         />
 

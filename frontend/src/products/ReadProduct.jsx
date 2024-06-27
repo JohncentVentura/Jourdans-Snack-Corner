@@ -26,7 +26,7 @@ const ReadProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`${PagePaths.port}${PagePaths.products}/${id}`)
+      .get(`${PagePaths.port}${PagePaths.readProduct}/${id}`)
       .then((res) => {
         setProduct(res.data);
       })

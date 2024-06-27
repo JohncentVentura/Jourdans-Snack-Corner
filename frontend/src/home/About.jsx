@@ -53,9 +53,9 @@ const About = () => {
           <div className="carousel-inner w-100 h-100">
             <div className="carousel-item w-100 h-100 active">
               <img
-                src={ImagePaths.homeTitle}
+                src={ImagePaths.bgHomeTitle}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.homeTitle}
+                alt={ImagePaths.bgHomeTitle}
               />
               <div className="carousel-caption">
                 <LgDiv>About Us 1</LgDiv>
@@ -66,9 +66,9 @@ const About = () => {
             </div>
             <div className="carousel-item w-100 h-100">
               <img
-                src={ImagePaths.homeTitle}
+                src={ImagePaths.bgHomeTitle}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.homeTitle}
+                alt={ImagePaths.bgHomeTitle}
               />
               <div className="carousel-caption">
                 <LgDiv>About Us 2</LgDiv>
@@ -79,9 +79,9 @@ const About = () => {
             </div>
             <div className="carousel-item w-100 h-100">
               <img
-                src={ImagePaths.homeTitle}
+                src={ImagePaths.bgHomeTitle}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.homeTitle}
+                alt={ImagePaths.bgHomeTitle}
               />
               <div className="carousel-caption">
                 <LgDiv>About Us 3</LgDiv>
