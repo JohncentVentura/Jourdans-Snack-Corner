@@ -2,19 +2,6 @@ import express from "express";
 import { productModel } from "../models/productModel.js";
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  try {
-    const products = await productModel.find({});
-    return res.status(200).json({
-      count: products.length,
-      products: products,
-    });
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send({ message: error.message });
-  }
-});
-
 router.post("/create", async (req, res) => {
   try {
     if (
@@ -32,7 +19,20 @@ router.post("/create", async (req, res) => {
       price: req.body.price,
       quantity: req.body.quantity,
     });
-    return res.status(201).send(product);
+    return res.status(201).json(product);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const products = await productModel.find({});
+    return res.status(200).json({
+      count: products.length,
+      products: products,
+    });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
@@ -63,7 +63,12 @@ router.put("/update/:id", async (req, res) => {
 
     const { id } = req.params;
     const product = await productModel.findByIdAndUpdate(id, req.body);
-    if (!product) return res.status(404).json({ message: "Product not found" });
+
+    if (product) {
+      return res.status(200).json(product);
+    } else {
+      return res.status(404).json({ message: "Product not found" });
+    }
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
@@ -75,7 +80,11 @@ router.delete("/delete/:id", async (req, res) => {
     const { id } = req.params;
     const product = await productModel.findByIdAndDelete(id);
 
-    if (!product) return res.status(404).json({ message: "Product not found" });
+    if (product) {
+      return res.status(200).json(product);
+    } else {
+      return res.status(404).json({ message: "Product not found" });
+    }
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });

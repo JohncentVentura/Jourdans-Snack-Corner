@@ -29,13 +29,13 @@ const DeleteProduct = () => {
 
     axios
       .delete(`${PagePaths.port}${PagePaths.deleteProduct}/${id}`)
-      .then(() => {
-        console.log("DELETED");
+      .then((res) => {
+        console.log(res);
         navigate(PagePaths.products);
       })
       .catch((error) => {
-        navigate(PagePaths.products);
         console.log(error);
+        navigate(PagePaths.products);
       });
   };
 
@@ -43,9 +43,12 @@ const DeleteProduct = () => {
     <>
       <Section className="flex-column pt-6 bg-secondary">
         <div>Delete Product</div>
-        <button>
-          <Link to={PagePaths.products}>Return to Products</Link>
-        </button>
+        <ButtonLinkDiv
+          className="btn-primary text-light"
+          to={PagePaths.products}
+        >
+          Return
+        </ButtonLinkDiv>
 
         <br />
         <div>Are You Sure You want to delete this product?</div>
@@ -55,7 +58,10 @@ const DeleteProduct = () => {
         >
           Yes
         </ButtonLinkDiv>
-        <ButtonLinkDiv className="my-3 px-2 py-1 btn-primary text-light" to={PagePaths.products}>
+        <ButtonLinkDiv
+          className="my-3 px-2 py-1 btn-primary text-light"
+          to={PagePaths.products}
+        >
           No
         </ButtonLinkDiv>
       </Section>

@@ -7,8 +7,8 @@ router.post("/register", async (req, res) => {
   await accountModel
     .create(req.body)
     .then((accounts) => res.status(201).json(accounts))
-    .catch((error) => res.status(500).json(error));
-});
+    .catch((error) => res.status(500).send(error));
+}); 
 
 //For Signing in
 router.post("/login", async (req, res) => {
@@ -18,22 +18,23 @@ router.post("/login", async (req, res) => {
     await accountModel.findOne({ email: email }).then((user) => {
       if (user) {
         if (user.password === password && user.isAdmin) {
-          res.status(200).json({ loginStatus: "Login Admin", user: user });
+          return res.status(200).json({ loginStatus: "Login Admin", user: user });
         } else if (user.password === password && !user.isAdmin) {
-          res.status(200).json({ loginStatus: "Login Customer", user: user });
+          return res.status(200).json({ loginStatus: "Login Customer", user: user });
         } else {
-          res.status(200).json({ loginStatus: "Incorrect Password" });
+          return res.status(401).json({ loginStatus: "Incorrect Password" });
         }
       } else {
-        res.status(200).json({ loginStatus: "Invalid Email" });
+        return res.status(401).json({ loginStatus: "Invalid Email" });
       }
     });
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: error.message });
+    return res.status(500).send({ error: error.message });
   }
 });
 
+//For Cart Page
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -41,7 +42,19 @@ router.get("/:id", async (req, res) => {
     return res.status(200).json(account);
   } catch (error) {
     console.log(error.message);
-    res.status(500).send({ error: error.message });
+    return res.status(500).send({ error: error.message });
+  }
+});
+
+//For Add to Cart
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const account = await accountModel.findById(id);
+    return res.status(200).json(account);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send({ error: error.message });
   }
 });
 

@@ -17,6 +17,7 @@ import {
   CardImgLeftHorizontal,
   CardImgRightHorizontal,
   CardImgButton,
+  ButtonLinkDiv,
 } from "../components/Components";
 
 const CreateProduct = () => {
@@ -27,40 +28,58 @@ const CreateProduct = () => {
   const navigate = useNavigate();
 
   const handleCreateProduct = (event) => {
-    event.preventDefault();
-
-    axios
-      .post(`${PagePaths.port}${PagePaths.createProduct}`, {
-        type,
-        name,
-        price,
-        quantity,
-      })
-      .then(() => {
-        navigate(PagePaths.products);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //event.preventDefault();
+    if (type) {
+      axios
+        .post(`${PagePaths.port}${PagePaths.createProduct}`, {
+          type,
+          name,
+          price,
+          quantity,
+        })
+        .then(() => {
+          console.log({
+            type,
+            name,
+            price,
+            quantity,
+          });
+          navigate(PagePaths.products);
+        })
+        .catch((error) => {
+          console.log(error);
+          navigate(PagePaths.products);
+        });
+    }
   };
 
   return (
     <>
       <Section className="flex-column pt-6 bg-secondary">
-        <div>Create Product</div>
-        <button>
-          <Link to={PagePaths.products}>Return to Products</Link>
-        </button>
+        <TitleDiv className="text-dark">Create Product</TitleDiv>
+        <ButtonLinkDiv
+          className="btn-primary text-light"
+          to={PagePaths.products}
+        >
+          Return
+        </ButtonLinkDiv>
 
-        <form>
+        <form className="d-flex flex-column">
           <label htmlFor="product-type-id">Type:</label>
-          <input
-            type="text"
+          <select
+            className="form-select"
             id="product-type-id"
+            aria-label="Default select example"
             value={type}
             onChange={(e) => setType(e.target.value)}
             required
-          />
+          >
+            <option>Select Type</option>
+            <option value="Meal">Meal</option>
+            <option value="Snack">Snack</option>
+            <option value="Beverage">Beverage</option>
+            <option value="Bundle">Bundle</option>
+          </select>
 
           <label htmlFor="product-name-id">Name:</label>
           <input
@@ -89,9 +108,12 @@ const CreateProduct = () => {
             required
           />
 
-          <button type="submit" onClick={handleCreateProduct}>
+          <ButtonLinkDiv
+            className="mt-10 submit btn-primary text-light"
+            onClick={handleCreateProduct}
+          >
             Add
-          </button>
+          </ButtonLinkDiv>
         </form>
       </Section>
     </>

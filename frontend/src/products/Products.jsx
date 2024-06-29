@@ -42,9 +42,12 @@ const Products = () => {
     <>
       <Section className="flex-column pt-6">
         <TitleDiv className="text-dark">Products</TitleDiv>
-        <button>
-          <Link to={PagePaths.createProduct}>Create Product</Link>
-        </button>
+        <ButtonLinkDiv
+          className="btn-primary text-light"
+          to={PagePaths.createProduct}
+        >
+          Add Item
+        </ButtonLinkDiv>
 
         <ul className="w-100">
           <li>
@@ -53,10 +56,11 @@ const Products = () => {
           </li>
           <li>Name / Price / Quantity / Description</li>
           <br />
+          
           {products.map((product, index) => (
             <li
               key={`${product}-${index}`}
-              className="w-50 d-flex justify-content-evenly"
+              className="mt-1 w-50 d-flex justify-content-evenly"
             >
               <span>{product.type} / </span>
               <span>{product.name} / </span>

@@ -17,6 +17,7 @@ import {
   CardImgLeftHorizontal,
   CardImgRightHorizontal,
   CardImgButton,
+  ButtonLinkDiv,
 } from "../components/Components";
 
 const UpdateProduct = () => {
@@ -40,10 +41,10 @@ const UpdateProduct = () => {
         console.log(error);
         navigate(PagePaths.products);
       });
-  });
+  }, []);
 
   const handleUpdateProduct = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
 
     axios
       .put(`${PagePaths.port}${PagePaths.updateProduct}/${id}`, {
@@ -52,31 +53,42 @@ const UpdateProduct = () => {
         price,
         quantity,
       })
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         navigate(PagePaths.products);
       })
       .catch((error) => {
         console.log(error);
+        navigate(PagePaths.products);
       });
   };
 
   return (
     <>
       <Section className="flex-column pt-6 bg-secondary">
-        <div>UpdateProduct</div>
-        <button>
-          <Link to={PagePaths.products}>Return to Products</Link>
-        </button>
+        <TitleDiv>UpdateProduct</TitleDiv>
+        <ButtonLinkDiv
+          className="btn-primary text-light"
+          to={PagePaths.products}
+        >
+          Return
+        </ButtonLinkDiv>
 
-        <form>
+        <form className="d-flex flex-column">
           <label htmlFor="product-type-id">Type:</label>
-          <input
-            type="text"
+          <select
+            className="form-select"
             id="product-type-id"
+            aria-label="Default select example"
             value={type}
             onChange={(e) => setType(e.target.value)}
             required
-          />
+          >
+            <option value="Meal">Meal</option>
+            <option value="Snack">Snack</option>
+            <option value="Beverage">Beverage</option>
+            <option value="Bundle">Bundle</option>
+          </select>
 
           <label htmlFor="product-name-id">Name:</label>
           <input
@@ -105,9 +117,12 @@ const UpdateProduct = () => {
             required
           />
 
-          <button type="submit" onClick={handleUpdateProduct}>
+          <ButtonLinkDiv  
+            className="mt-10  submit btn-primary text-light"
+            onClick={handleUpdateProduct}
+          >
             Update
-          </button>
+          </ButtonLinkDiv>
         </form>
       </Section>
     </>

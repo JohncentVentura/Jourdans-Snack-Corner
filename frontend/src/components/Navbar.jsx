@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { ImagePaths, PagePaths } from "../Paths";
+import { KeyPaths, ImagePaths, PagePaths } from "../Paths";
 import {
   paddingX,
   Section,
@@ -52,7 +52,14 @@ const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
                 <ListItemLink to={PagePaths.products}>Products</ListItemLink>
                 <ListItemLink to={PagePaths.orders}>Orders</ListItemLink>
                 <ListItemLink to={PagePaths.reports}>Reports</ListItemLink>
-                <ListItemLink to={PagePaths.home}>Logout</ListItemLink>
+                <ListItemLink
+                  onClick={() =>
+                    localStorage.setItem(KeyPaths.isAdminLogin, "false")
+                  }
+                  to={PagePaths.home}
+                >
+                  Logout
+                </ListItemLink>
               </ul>
             ) : (
               <>
@@ -62,7 +69,9 @@ const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
                     <ListItemLink to={PagePaths.about}>About</ListItemLink>
                     <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
                     <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
-                    <ListItemLink to={`${PagePaths.cart}/${loginID}`}>Cart</ListItemLink>
+                    <ListItemLink to={`${PagePaths.cart}/${loginID}`}>
+                      Cart
+                    </ListItemLink>
                   </ul>
                 ) : (
                   <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
@@ -82,7 +91,7 @@ const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
   );
 };
 
-const ListItemLink = ({ to, children }) => {
+const ListItemLink = ({ to, onClick, children }) => {
   const resolvedPath = useResolvedPath(to);
   //useMatch() parameters requires an object that contains the path we want to access, and an optional boolean that tells the entire path must match
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -91,6 +100,7 @@ const ListItemLink = ({ to, children }) => {
     <li className={isActive ? "active nav-item" : "nav-item"}>
       <Link
         to={to}
+        onClick={onClick}
         className="nav-link text-light ff-bubblegum fs-lg-3xl fs-sm-2xl fs-xl"
       >
         {children}

@@ -25,6 +25,7 @@ import {
 const Cart = () => {
   const { id } = useParams();
   const [account, setAccount] = useState({});
+  const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,9 +33,23 @@ const Cart = () => {
       .get(`${PagePaths.port}${PagePaths.cart}/${id}`)
       .then((res) => {
         setAccount(res.data);
+        setOrders(res.data.orders);
       })
       .catch((error) => console.log(error));
-  });
+  }, []); 
+
+  const TableDisplay = ({ ...props }) => {
+    return (
+      <>
+        <tr key={props.index}>
+          <th scope="row">{props.index + 1}</th>
+          <td>{props.order.name}</td>
+          <td>{props.order.quantity}</td>
+          <td>{props.order.priceTotal}</td>
+        </tr>
+      </>
+    );
+  };
 
   return (
     <>
@@ -51,12 +66,9 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Sample</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
+            {orders.map((order, index) => (
+              <TableDisplay key={index} index={index} order={order} />
+            ))}
           </tbody>
         </table>
 
@@ -69,7 +81,6 @@ const Cart = () => {
         >
           Log Out
         </ButtonDiv>
-        
       </Section>
     </>
   );

@@ -3,9 +3,9 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import { accountModel } from "./models/accountModel.js";
 import accountRoutes from "./routes/accountRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import menuRoutes from "./routes/menuRoutes.js";
 
 const { PORT, MONGODBURI } = process.env;
 const app = express();
@@ -14,6 +14,7 @@ app.use(cors());
 
 app.use("/account", accountRoutes);
 app.use("/products", productRoutes);
+app.use("/menu", menuRoutes);
 
 //Checks port & status, status code 234 means the response to the AUTH command when the requested security mechanism is accepted and negotiation of the secured connection can begin
 app.listen(PORT, () => console.log(`App listening to port ${PORT}`));

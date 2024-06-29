@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { ImagePaths, PagePaths } from "../Paths";
+import { KeyPaths, ImagePaths, PagePaths } from "../Paths";
 import {
   Section,
   LordIcon,
@@ -19,23 +19,111 @@ import {
   CardImgLeftHorizontal,
   CardImgRightHorizontal,
   CardImgButton,
+  ButtonDiv,
 } from "../components/Components";
 
 const Menu = () => {
-  const [products, setProducts] = useState([]); //Array of products
   const [productsCount, setProductsCount] = useState();
+  const [products, setProducts] = useState([]);
+  const [meals, setMeals] = useState([]);
+  const [snacks, setSnacks] = useState([]);
+  const [beverages, setBeverages] = useState([]);
+  const [bundles, setBundles] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${PagePaths.port}${PagePaths.products}`)
+      .get(`${PagePaths.port}${PagePaths.menu}`)
       .then((res) => {
         setProductsCount(res.data.count);
-        setProducts(res.data.data);
+        setProducts(res.data.products);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    let productTypes = [];
+
+    products.map((product) => {
+      if (product.type === "Meal") productTypes.push(product);
+    });
+    setMeals(productTypes);
+    productTypes = [];
+
+    products.map((product) => {
+      if (product.type === "Snack") productTypes.push(product);
+    });
+    setSnacks(productTypes);
+    productTypes = [];
+
+    products.map((product) => {
+      if (product.type === "Beverage") productTypes.push(product);
+    });
+    setBeverages(productTypes);
+    productTypes = [];
+
+    products.map((product) => {
+      if (product.type === "Bundle") productTypes.push(product);
+    });
+    setBundles(productTypes);
+    productTypes = [];
+  }, [products]);
+
+  const HandleAddToCart = ({ ...props }) => {
+    return (
+      <>
+        <ButtonDiv
+          className={`${props.btnClr} ${props.className}`}
+          onClick={() => {
+            axios
+              .put(`${PagePaths.port}${PagePaths.menu}`, {
+                loginID: localStorage.getItem(KeyPaths.loginID),
+                name: props.product.name,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }}
+        >
+          <SmDiv>Add to Cart</SmDiv>
+        </ButtonDiv>
+      </>
+    );
+  };
+
+  const MenuListItem = ({ ...props }) => {
+    return (
+      <>
+        <li
+          key={`${props.product}-${props.key}`}
+          className="py-1 w-25 d-flex flex-column justify-content-center align-items-center"
+        >
+          <LgDiv className={`col-12 text-center ${props.textClr}`}>
+            {props.product.name}
+          </LgDiv>
+          <div className="col-12 d-flex">
+            <div className="col-6">
+              <SmDiv
+                className={`${props.textClr}`}
+              >{`₱${props.product.price}.00`}</SmDiv>
+              <SmDiv
+                className={`${props.textClr}`}
+              >{`Stock: ${props.product.quantity}`}</SmDiv>
+            </div>
+            <HandleAddToCart
+              btnClr={props.btnClr}
+              className={"col-6"}
+              product={props.product}
+            />
+          </div>
+        </li>
+      </>
+    );
+  };
 
   return (
     <>
@@ -46,14 +134,13 @@ const Menu = () => {
           lordIconSize={5}
         />
         <TitleDiv className="text-light">Meals</TitleDiv>
-        {products.map((product, index) => (
-          <li
-            key={`${product}-${index}`}
-            className="pb-1 w-25 d-flex justify-content-between align-items-center"
-          >
-            <LgDiv className="text-light">{product.name}</LgDiv>
-            <SmDiv className="text-light">{`₱${product.price}.00`}</SmDiv>
-          </li>
+        {meals.map((product, index) => (
+          <MenuListItem
+            product={product}
+            key={index}
+            textClr={"text-light"}
+            btnClr={"btn-warning"}
+          />
         ))}
       </Section>
 
@@ -64,14 +151,13 @@ const Menu = () => {
           lordIconSize={5}
         />
         <TitleDiv className="text-light">Snacks</TitleDiv>
-        {products.map((product, index) => (
-          <li
-            key={`${product}-${index}`}
-            className="pb-1 w-25 d-flex justify-content-between align-items-center"
-          >
-            <LgDiv className="text-light">{product.name}</LgDiv>
-            <SmDiv className="text-light">{`₱${product.price}.00`}</SmDiv>
-          </li>
+        {snacks.map((product, index) => (
+          <MenuListItem
+            product={product}
+            key={index}
+            textClr={"text-light"}
+            btnClr={"btn-secondary"}
+          />
         ))}
       </Section>
 
@@ -82,14 +168,13 @@ const Menu = () => {
           lordIconSize={5}
         />
         <TitleDiv className="text-dark">Beverages</TitleDiv>
-        {products.map((product, index) => (
-          <li
-            key={`${product}-${index}`}
-            className="pb-1 w-25 d-flex justify-content-between align-items-center"
-          >
-            <LgDiv className="text-dark">{product.name}</LgDiv>
-            <SmDiv className="text-dark">{`₱${product.price}.00`}</SmDiv>
-          </li>
+        {beverages.map((product, index) => (
+          <MenuListItem
+            product={product}
+            key={index}
+            textClr={"text-dark"}
+            btnClr={"btn-dark"}
+          />
         ))}
       </Section>
 
@@ -100,14 +185,13 @@ const Menu = () => {
           lordIconSize={5}
         />
         <TitleDiv className="text-dark">Bundles</TitleDiv>
-        {products.map((product, index) => (
-          <li
-            key={`${product}-${index}`}
-            className="pb-1 w-25 d-flex justify-content-between align-items-center"
-          >
-            <LgDiv className="text-dark">{product.name}</LgDiv>
-            <SmDiv className="text-dark">{`₱${product.price}.00`}</SmDiv>
-          </li>
+        {bundles.map((product, index) => (
+          <MenuListItem
+            product={product}
+            key={index}
+            textClr={"text-dark"}
+            btnClr={"btn-primary"}
+          />
         ))}
       </Section>
     </>

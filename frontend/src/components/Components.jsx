@@ -69,7 +69,7 @@ export const ButtonLinkDiv = ({ className, to, onClick, children }) => {
   return (
     <Link
       type="button"
-      className={`btn ${className}`}
+      className={`btn text-decoration-none text-center fs-base ${className}`}
       to={to}
       onClick={onClick}
     >

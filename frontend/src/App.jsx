@@ -52,7 +52,7 @@ function App() {
       setIsCustomerLogin(false);
       setLoginID("");
     }
-  }, [isCustomerLoginLocal, isAdminLoginLocal]);
+  }, [isCustomerLoginLocal, isAdminLoginLocal, loginID]);
 
   return (
     <>
