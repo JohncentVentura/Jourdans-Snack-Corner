@@ -18,8 +18,24 @@ const accountSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phoneNumber: {
+      type: Number,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
     orders: {
       type: Array,
+      required: true,
+    },
+    orderTotal: {
+      type: Number,
+      required: true,
+    },
+    snackPoints: {
+      type: Number,
       required: true,
     },
   },

@@ -29,11 +29,10 @@ function App() {
   //PrintBreakPoint();
   ScrollToTop(); //Scroll to top when navigating pages
   const location = useLocation();
-
   const isCustomerLoginLocal = localStorage.getItem(KeyPaths.isCustomerLogin);
   const isAdminLoginLocal = localStorage.getItem(KeyPaths.isAdminLogin);
-  const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [isAdminLogin, setIsAdminLogin] = useState();
+  const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [loginID, setLoginID] = useState();
 
   //Handles states when customer login
@@ -64,7 +63,10 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path={PagePaths.home} element={<Home />}></Route>
         <Route path={PagePaths.about} element={<About />}></Route>
-        <Route path={PagePaths.menu} element={<Menu />}></Route>
+        <Route
+          path={PagePaths.menu}
+          element={<Menu loginID={loginID} />}
+        ></Route>
         <Route path={PagePaths.contact} element={<Contact />}></Route>
         <Route path={PagePaths.login} element={<Login />}></Route>
 

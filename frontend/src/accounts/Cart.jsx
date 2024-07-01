@@ -36,16 +36,77 @@ const Cart = () => {
         setOrders(res.data.orders);
       })
       .catch((error) => console.log(error));
-  }, []); 
+  }, []);
 
   const TableDisplay = ({ ...props }) => {
     return (
       <>
         <tr key={props.index}>
-          <th scope="row">{props.index + 1}</th>
-          <td>{props.order.name}</td>
-          <td>{props.order.quantity}</td>
-          <td>{props.order.priceTotal}</td>
+          <td>
+            <SmDiv className="text-start text-dark">{props.order.name}</SmDiv>
+          </td>
+          <td>
+            <SmDiv className="text-start text-dark">
+              {props.order.quantity}
+            </SmDiv>
+          </td>
+          <td>
+            <SmDiv className="text-start text-dark">{`₱${props.order.price}`}</SmDiv>
+          </td>
+          <td>
+            <ButtonDiv
+              className="ms-2 btn-dark"
+              onClick={() => {
+                axios
+                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
+                    product: props.order,
+                    action: "add",
+                  })
+                  .then((res) => {
+                    console.log(res);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }}
+            >
+              <SmDiv className="text-light">+</SmDiv>
+            </ButtonDiv>
+            <ButtonDiv
+              className="ms-2 btn-dark"
+              onClick={() => {
+                axios
+                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
+                    action: "subtract",
+                  })
+                  .then((res) => {
+                    console.log(res);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }}
+            >
+              <SmDiv className="text-light">-</SmDiv>
+            </ButtonDiv>
+            <ButtonDiv
+              className="ms-2 btn-dark"
+              onClick={() => {
+                axios
+                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
+                    action: "delete",
+                  })
+                  .then((res) => {
+                    console.log(res);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }}
+            >
+              <SmDiv className="text-light">Delete</SmDiv>
+            </ButtonDiv>
+          </td>
         </tr>
       </>
     );
@@ -59,10 +120,10 @@ const Cart = () => {
         <table className="table table-secondary table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Quantity</th>
-              <th scope="col">Price Total</th>
+              <th scope="col">Price</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -72,15 +133,28 @@ const Cart = () => {
           </tbody>
         </table>
 
-        <ButtonDiv
-          className="btn-primary"
-          onClick={() => {
-            localStorage.setItem(KeyPaths.isCustomerLogin, "false");
-            navigate(PagePaths.login);
-          }}
-        >
-          Log Out
-        </ButtonDiv>
+        <div className="w-100 d-flex flex-column justify-content-center align-items-start">
+          <LgDiv className="text-dark">{`Total: ${account.orderTotal}`}</LgDiv>
+          <ButtonDiv
+            className="mt-2 btn-primary"
+            onClick={() => {
+              localStorage.setItem(KeyPaths.isCustomerLogin, "false");
+              navigate(PagePaths.login);
+            }}
+          >
+            Check Out
+          </ButtonDiv>
+
+          <ButtonDiv
+            className="mt-2 btn-primary"
+            onClick={() => {
+              localStorage.setItem(KeyPaths.isCustomerLogin, "false");
+              navigate(PagePaths.login);
+            }}
+          >
+            Log Out
+          </ButtonDiv>
+        </div>
       </Section>
     </>
   );

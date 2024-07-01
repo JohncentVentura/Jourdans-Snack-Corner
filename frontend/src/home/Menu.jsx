@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { KeyPaths, ImagePaths, PagePaths } from "../Paths";
@@ -22,13 +22,14 @@ import {
   ButtonDiv,
 } from "../components/Components";
 
-const Menu = () => {
+const Menu = ({ loginID }) => {
   const [productsCount, setProductsCount] = useState();
   const [products, setProducts] = useState([]);
   const [meals, setMeals] = useState([]);
   const [snacks, setSnacks] = useState([]);
   const [beverages, setBeverages] = useState([]);
   const [bundles, setBundles] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -76,17 +77,21 @@ const Menu = () => {
         <ButtonDiv
           className={`${props.btnClr} ${props.className}`}
           onClick={() => {
-            axios
-              .put(`${PagePaths.port}${PagePaths.menu}`, {
-                loginID: localStorage.getItem(KeyPaths.loginID),
-                name: props.product.name,
-              })
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
+            if (loginID) {
+              axios
+                .put(`${PagePaths.port}${PagePaths.menu}`, {
+                  loginID: loginID,
+                  product: props.product,
+                })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            } else {
+              navigate(PagePaths.login)
+            }
           }}
         >
           <SmDiv>Add to Cart</SmDiv>

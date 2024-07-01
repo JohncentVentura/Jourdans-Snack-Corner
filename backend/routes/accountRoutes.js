@@ -8,7 +8,7 @@ router.post("/register", async (req, res) => {
     .create(req.body)
     .then((accounts) => res.status(201).json(accounts))
     .catch((error) => res.status(500).send(error));
-}); 
+});
 
 //For Signing in
 router.post("/login", async (req, res) => {
@@ -18,9 +18,13 @@ router.post("/login", async (req, res) => {
     await accountModel.findOne({ email: email }).then((user) => {
       if (user) {
         if (user.password === password && user.isAdmin) {
-          return res.status(200).json({ loginStatus: "Login Admin", user: user });
+          return res
+            .status(200)
+            .json({ loginStatus: "Login Admin", user: user });
         } else if (user.password === password && !user.isAdmin) {
-          return res.status(200).json({ loginStatus: "Login Customer", user: user });
+          return res
+            .status(200)
+            .json({ loginStatus: "Login Customer", user: user });
         } else {
           return res.status(401).json({ loginStatus: "Incorrect Password" });
         }
@@ -34,7 +38,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//For Cart Page
+//For setting the account in Cart Page
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,14 +50,25 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//For Add to Cart
-router.get("/:id", async (req, res) => {
+//For increasing quantity of an item in the cart
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const account = await accountModel.findById(id);
-    return res.status(200).json(account);
+    const action = req.body.action;
+    const product = req.body.product;
+
+    if (action === "add") {
+
+    } else if (action === "subtract") {
+
+    } else if (action === "delete") {
+
+    }
+
+    const updatedAccount = await accountModel.findByIdAndUpdate(id);
+    return res.status(200).json(updatedAccount);
   } catch (error) {
-    console.log(error.message);
     return res.status(500).send({ error: error.message });
   }
 });
