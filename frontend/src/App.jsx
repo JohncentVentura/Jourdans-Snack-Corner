@@ -51,7 +51,7 @@ function App() {
       setIsCustomerLogin(false);
       setLoginID("");
     }
-  }, [isCustomerLoginLocal, isAdminLoginLocal, loginID]);
+  }, [isCustomerLoginLocal, isAdminLoginLocal]);
 
   return (
     <>

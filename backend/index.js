@@ -19,7 +19,7 @@ app.use("/menu", menuRoutes);
 //Checks port & status, status code 234 means the response to the AUTH command when the requested security mechanism is accepted and negotiation of the secured connection can begin
 app.listen(PORT, () => console.log(`App listening to port ${PORT}`));
 app.get("/", (req, res) =>
-  res.status(234).send("Jourdan's Snack Corner Status: 234")
+  res.status(234).send("Jourdan's Snack Corner Server is now online")
 );
 
 mongoose

@@ -15,43 +15,49 @@ router.get("/", async (req, res) => {
   }
 });
 
+//For adding product to cart, product(s) in cart are called order(s)
 router.put("/", async (req, res) => {
   try {
-    if (!req.body.loginID || !req.body.product) {
-      return res.status(400).send({
-        message: `loginID: ${req.body.loginID} / product: ${req.body.product}`,
-      });
-    }
-
     const account = await accountModel.findById(req.body.loginID);
-    const product = req.body.product;
+    const product = await productModel.findById(req.body.product._id)
 
     account.orders.forEach((order, index) => {
       if (order.name === product.name) {
         account.orders[index].quantity++;
-        account.orders[index].price += product.price;
+        account.orders[index].priceTotal += product.price;
+
+        product.quantity--;
       }
     });
 
     if (!account.orders.find((element) => element.name === product.name)) {
       account.orders.push({
+        id: product.id,
         type: product.type,
         name: product.name,
         quantity: 1,
         price: product.price,
+        priceTotal: product.price
       });
+
+      product.quantity--;
     }
 
     account.orderTotal = 0;
     account.orders.forEach((order, index) => {
-      account.orderTotal += order.price;
+      account.orderTotal += order.priceTotal;
     });
 
     const updatedAccount = await accountModel.findByIdAndUpdate(
       req.body.loginID,
       account
     );
-    return res.status(200).json(updatedAccount);
+
+    const updatedProduct = await productModel.findByIdAndUpdate(
+      req.body.product._id,
+      product
+    );
+    return res.status(200).json({updatedAccount, updatedProduct});
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });

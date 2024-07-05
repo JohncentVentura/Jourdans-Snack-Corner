@@ -50,27 +50,38 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//For increasing quantity of an item in the cart
+//For changing quantity of an item in the cart
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const account = await accountModel.findById(id);
+    const order = req.body.order;
     const action = req.body.action;
-    const product = req.body.product;
 
-    if (action === "add") {
+    account.orders.forEach((accOrder, index) => {
+      if (accOrder.name === order.name) {
+        if (action === "add") {
+          account.orders[index].quantity++;
+          account.orders[index].priceTotal += order.price;
+          account.orderTotal += order.price;
+        } else if (action === "subtract") {
+          account.orders[index].quantity--;
+          account.orders[index].priceTotal -= order.price;
+          account.orderTotal -= order.price;
+        } else if (action === "delete") {
+          account.orderTotal -= account.orders[index].priceTotal;
+          account.orders.splice(index, 1);
+        }
+      }
+    });
 
-    } else if (action === "subtract") {
-
-    } else if (action === "delete") {
-
-    }
-
-    const updatedAccount = await accountModel.findByIdAndUpdate(id);
+    const updatedAccount = await accountModel.findByIdAndUpdate(id, account);
     return res.status(200).json(updatedAccount);
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
 });
+
+
 
 export default router;

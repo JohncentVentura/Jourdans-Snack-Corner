@@ -23,7 +23,6 @@ import {
 } from "../components/Components";
 
 const Menu = ({ loginID }) => {
-  const [productsCount, setProductsCount] = useState();
   const [products, setProducts] = useState([]);
   const [meals, setMeals] = useState([]);
   const [snacks, setSnacks] = useState([]);
@@ -35,7 +34,6 @@ const Menu = ({ loginID }) => {
     axios
       .get(`${PagePaths.port}${PagePaths.menu}`)
       .then((res) => {
-        setProductsCount(res.data.count);
         setProducts(res.data.products);
       })
       .catch((error) => {
@@ -43,35 +41,40 @@ const Menu = ({ loginID }) => {
       });
   }, []);
 
+  //Sort products by type and store each type in an array
   useEffect(() => {
     let productTypes = [];
 
     products.map((product) => {
-      if (product.type === "Meal") productTypes.push(product);
+      if (product.type === "Meal" && product.quantity != 0)
+        productTypes.push(product);
     });
     setMeals(productTypes);
     productTypes = [];
 
     products.map((product) => {
-      if (product.type === "Snack") productTypes.push(product);
+      if (product.type === "Snack" && product.quantity != 0)
+        productTypes.push(product);
     });
     setSnacks(productTypes);
     productTypes = [];
 
     products.map((product) => {
-      if (product.type === "Beverage") productTypes.push(product);
+      if (product.type === "Beverage" && product.quantity != 0)
+        productTypes.push(product);
     });
     setBeverages(productTypes);
     productTypes = [];
 
     products.map((product) => {
-      if (product.type === "Bundle") productTypes.push(product);
+      if (product.type === "Bundle" && product.quantity != 0)
+        productTypes.push(product);
     });
     setBundles(productTypes);
     productTypes = [];
   }, [products]);
 
-  const HandleAddToCart = ({ ...props }) => {
+  const AddToCartButton = ({ ...props }) => {
     return (
       <>
         <ButtonDiv
@@ -85,12 +88,14 @@ const Menu = ({ loginID }) => {
                 })
                 .then((res) => {
                   console.log(res);
+                  setProducts(res.data.products);
+                  window.location.reload();
                 })
                 .catch((error) => {
                   console.log(error);
                 });
             } else {
-              navigate(PagePaths.login)
+              navigate(PagePaths.login);
             }
           }}
         >
@@ -119,7 +124,7 @@ const Menu = ({ loginID }) => {
                 className={`${props.textClr}`}
               >{`Stock: ${props.product.quantity}`}</SmDiv>
             </div>
-            <HandleAddToCart
+            <AddToCartButton
               btnClr={props.btnClr}
               className={"col-6"}
               product={props.product}

@@ -43,71 +43,66 @@ const Cart = () => {
       <>
         <tr key={props.index}>
           <td>
-            <SmDiv className="text-start text-dark">{props.order.name}</SmDiv>
+            <SmDiv className="text-center text-dark">{props.order.name}</SmDiv>
+          </td>
+          <td className="d-flex justify-content-evenly align-items-center">
+            <TableDisplayButton order={props.order} action={"add"}>
+              +
+            </TableDisplayButton>
+            <SmDiv className="text-center text-dark">
+              {props.order.quantity}
+            </SmDiv>
+            <TableDisplayButton order={props.order} action={"subtract"}>
+              -
+            </TableDisplayButton>
           </td>
           <td>
-            <SmDiv className="text-start text-dark">
-              {props.order.quantity}
+            <SmDiv className="text-center text-dark">
+              ₱{props.order.price}
             </SmDiv>
           </td>
           <td>
-            <SmDiv className="text-start text-dark">{`₱${props.order.price}`}</SmDiv>
+            <SmDiv className="text-center text-dark">{`₱${props.order.priceTotal}`}</SmDiv>
           </td>
           <td>
-            <ButtonDiv
-              className="ms-2 btn-dark"
-              onClick={() => {
-                axios
-                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
-                    product: props.order,
-                    action: "add",
-                  })
-                  .then((res) => {
-                    console.log(res);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              }}
-            >
-              <SmDiv className="text-light">+</SmDiv>
-            </ButtonDiv>
-            <ButtonDiv
-              className="ms-2 btn-dark"
-              onClick={() => {
-                axios
-                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
-                    action: "subtract",
-                  })
-                  .then((res) => {
-                    console.log(res);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              }}
-            >
-              <SmDiv className="text-light">-</SmDiv>
-            </ButtonDiv>
-            <ButtonDiv
-              className="ms-2 btn-dark"
-              onClick={() => {
-                axios
-                  .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
-                    action: "delete",
-                  })
-                  .then((res) => {
-                    console.log(res);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              }}
-            >
-              <SmDiv className="text-light">Delete</SmDiv>
-            </ButtonDiv>
+            <TableDisplayButton order={props.order} action={"delete"}>
+              Delete
+            </TableDisplayButton>
           </td>
         </tr>
+      </>
+    );
+  };
+
+  const TableDisplayButton = ({ children, ...props }) => {
+    return (
+      <>
+        <ButtonDiv
+          className={
+            (props.order.quantity >= 20 && props.action === "add") ||
+            (props.order.quantity <= 1 && props.action === "subtract")
+              ? "btn-dark disabled"
+              : "btn-dark"
+          }
+          onClick={() => {
+            axios
+              .put(`${PagePaths.port}${PagePaths.cart}/${id}`, {
+                order: props.order,
+                action: props.action,
+              })
+              .then((res) => {
+                console.log(res);
+                setAccount(res.data);
+                setOrders(res.data.orders);
+                window.location.reload();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }}
+        >
+          <SmDiv className="text-light">{children}</SmDiv>
+        </ButtonDiv>
       </>
     );
   };
@@ -120,10 +115,19 @@ const Cart = () => {
         <table className="table table-secondary table-hover">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col"></th>
+              <th scope="col" className="text-center text-dark">
+                Name
+              </th>
+              <th scope="col" className="text-center text-dark">
+                Quantity
+              </th>
+              <th scope="col" className="text-center text-dark">
+                Price
+              </th>
+              <th scope="col" className="text-center text-dark">
+                Total
+              </th>
+              <th scope="col" className="text-center text-dark"></th>
             </tr>
           </thead>
           <tbody>
@@ -134,7 +138,9 @@ const Cart = () => {
         </table>
 
         <div className="w-100 d-flex flex-column justify-content-center align-items-start">
-          <LgDiv className="text-dark">{`Total: ${account.orderTotal}`}</LgDiv>
+          <LgDiv className="text-dark">{`Total: ₱${
+            account.orderTotal || 0
+          }`}</LgDiv>
           <ButtonDiv
             className="mt-2 btn-primary"
             onClick={() => {
