@@ -20,7 +20,8 @@ export const ImagePaths = {
 }
 
 export const PagePaths = {
-    port: "https://jourdans-snack-corner.onrender.com" || "http://localhost:3000",
+    //port: "http://localhost:3000", //For test enviroment
+    port: "https://jourdans-snack-corner.onrender.com", //For production enviroment
     
     //home pages
     home: "/",

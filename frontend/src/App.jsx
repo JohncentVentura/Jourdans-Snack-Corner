@@ -24,10 +24,13 @@ import CreateProduct from "./products/CreateProduct";
 import ReadProduct from "./products/ReadProduct";
 import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
+import axios from "axios";
+import { TitleDiv } from "./components/Components";
 
 function App() {
   //PrintBreakPoint();
   ScrollToTop(); //Scroll to top when navigating pages
+  const [isServerOnline, setIsServerOnline] = useState(false);
   const location = useLocation();
   const isCustomerLoginLocal = localStorage.getItem(KeyPaths.isCustomerLogin);
   const isAdminLoginLocal = localStorage.getItem(KeyPaths.isAdminLogin);
@@ -35,7 +38,18 @@ function App() {
   const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [loginID, setLoginID] = useState();
 
-  
+  useEffect(() => {
+    axios
+      .get(`${PagePaths.port}`)
+      .then((res) => {
+        setIsServerOnline(true);
+        console.log("isServerOnline:", isServerOnline);
+      })
+      .catch((error) => {
+        setIsServerOnline(false);
+        console.log("isServerOnline:", isServerOnline);
+      });
+  });
 
   //Handles variables when customer login
   useEffect(() => {
@@ -57,45 +71,59 @@ function App() {
 
   return (
     <>
-      <Navbar
-        isCustomerLogin={isCustomerLogin}
-        isAdminLogin={isAdminLogin}
-        loginID={loginID}
-      />
-      <Routes location={location} key={location.pathname}>
-        <Route path={PagePaths.home} element={<Home />}></Route>
-        <Route path={PagePaths.about} element={<About />}></Route>
-        <Route
-          path={PagePaths.menu}
-          element={<Menu loginID={loginID} />}
-        ></Route>
-        <Route path={PagePaths.contact} element={<Contact />}></Route>
-        <Route path={PagePaths.login} element={<Login />}></Route>
+      {!isServerOnline ? (
+        <div
+          className="bg-primary d-flex justify-content-center align-items-center"
+          style={{ width: "100vw", height: "100vh" }}
+        >
+          <TitleDiv className="text-dark">LOADING...</TitleDiv>
+        </div>
+      ) : (
+        <>
+          <Navbar
+            isCustomerLogin={isCustomerLogin}
+            isAdminLogin={isAdminLogin}
+            loginID={loginID}
+          />
+          <Routes location={location} key={location.pathname}>
+            <Route path={PagePaths.home} element={<Home />}></Route>
+            <Route path={PagePaths.about} element={<About />}></Route>
+            <Route
+              path={PagePaths.menu}
+              element={<Menu loginID={loginID} />}
+            ></Route>
+            <Route path={PagePaths.contact} element={<Contact />}></Route>
+            <Route path={PagePaths.login} element={<Login />}></Route>
 
-        <Route path={PagePaths.createAccount} element={<Register />}></Route>
-        <Route path={`${PagePaths.cart}`} element={<Cart />}></Route>
-        <Route path={`${PagePaths.cart}/:id`} element={<Cart />}></Route>
+            <Route
+              path={PagePaths.createAccount}
+              element={<Register />}
+            ></Route>
+            <Route path={`${PagePaths.cart}`} element={<Cart />}></Route>
+            <Route path={`${PagePaths.cart}/:id`} element={<Cart />}></Route>
 
-        <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
-        <Route path={PagePaths.products} element={<Products />}></Route>
-        <Route
-          path={PagePaths.createProduct}
-          element={<CreateProduct />}
-        ></Route>
-        <Route
-          path={`${PagePaths.readProduct}/:id`}
-          element={<ReadProduct />}
-        ></Route>
-        <Route
-          path={`${PagePaths.updateProduct}/:id`}
-          element={<UpdateProduct />}
-        ></Route>
-        <Route
-          path={`${PagePaths.deleteProduct}/:id`}
-          element={<DeleteProduct />}
-        ></Route>
-      </Routes>
-      <Footer />
+            <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
+            <Route path={PagePaths.products} element={<Products />}></Route>
+            <Route
+              path={PagePaths.createProduct}
+              element={<CreateProduct />}
+            ></Route>
+            <Route
+              path={`${PagePaths.readProduct}/:id`}
+              element={<ReadProduct />}
+            ></Route>
+            <Route
+              path={`${PagePaths.updateProduct}/:id`}
+              element={<UpdateProduct />}
+            ></Route>
+            <Route
+              path={`${PagePaths.deleteProduct}/:id`}
+              element={<DeleteProduct />}
+            ></Route>
+          </Routes>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
