@@ -35,7 +35,9 @@ function App() {
   const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [loginID, setLoginID] = useState();
 
-  //Handles states when customer login
+  
+
+  //Handles variables when customer login
   useEffect(() => {
     if (localStorage.getItem(KeyPaths.isAdminLogin) === "true") {
       setLoginID(localStorage.getItem(KeyPaths.loginID));
