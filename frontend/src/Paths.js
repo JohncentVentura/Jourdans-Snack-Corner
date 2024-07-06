@@ -20,8 +20,8 @@ export const ImagePaths = {
 }
 
 export const PagePaths = {
-    //port: "http://localhost:3000", //For test enviroment
-    port: "https://jourdans-snack-corner.onrender.com", //For production enviroment
+    port: "http://localhost:3000", //For test environment
+    //port: "https://jourdans-snack-corner.onrender.com", //For production environment
     
     //home pages
     home: "/",
@@ -36,24 +36,18 @@ export const PagePaths = {
     
     //admin pages
     dashboard: "/dashboard",
+
+    customers: "/customers",
+    updateCustomers: "/customers/update",
+    deleteCustomers: "/customers/delete",
+
     products: "/products",
     createProduct: "/products/create",
     readProduct: "/products/read",
     updateProduct: "/products/update",
     deleteProduct: "/products/delete",
-    customers: "/customers",
-    createCustomer: "/customers/create",
-    readCustomer: "/customers/read",
-    updateCustomer: "/customers/update",
-    deleteCustomer: "/customers/delete",
+
     orders: "/orders",
-    createOrders: "/orders/create",
-    readOrders: "/orders/read",
     updateOrders: "/orders/update",
     deleteOrders: "/orders/delete",
-    reports: "/reports",
-    createReport: "/reports/create",
-    readReport: "/reports/read",
-    updateReport: "/reports/update",
-    deleteReport: "/reports/delete",
 }

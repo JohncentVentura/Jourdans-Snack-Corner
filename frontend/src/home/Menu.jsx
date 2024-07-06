@@ -41,7 +41,7 @@ const Menu = ({ loginID }) => {
       });
   }, []);
 
-  //Sort products by type and store each type in an array
+  //Sort products by type and store each product of same type in an array
   useEffect(() => {
     let productTypes = [];
 

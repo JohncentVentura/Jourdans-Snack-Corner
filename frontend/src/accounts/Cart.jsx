@@ -97,6 +97,7 @@ const Cart = () => {
                 window.location.reload();
               })
               .catch((error) => {
+                console.log(props.order.id);
                 console.log(error);
               });
           }}
@@ -111,6 +112,7 @@ const Cart = () => {
     <>
       <Section className="flex-column pt-6 pb-50">
         <TitleDiv>Welcome {account.username}</TitleDiv>
+        <SubTitleDiv className="text-dark">Your Cart</SubTitleDiv>
 
         <table className="table table-secondary table-hover">
           <thead>
@@ -142,15 +144,33 @@ const Cart = () => {
             account.orderTotal || 0
           }`}</LgDiv>
           <ButtonDiv
-            className="mt-2 btn-primary"
+            className={(account.orderTotal <= 0) ? (
+              "mt-2 btn-primary disabled"
+            ):(
+              "mt-2 btn-primary"
+            )}
             onClick={() => {
-              localStorage.setItem(KeyPaths.isCustomerLogin, "false");
-              navigate(PagePaths.login);
+              //localStorage.setItem(KeyPaths.isCustomerLogin, "false");
+              //navigate(PagePaths.login);
+
+              axios
+                .post(`${PagePaths.port}${PagePaths.cart}/${id}`, {
+                  account: account,
+                })
+                .then((res) => {
+                  console.log(res);
+                  window.location.reload();
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
             }}
           >
-            Check Out
+            Place Order
           </ButtonDiv>
 
+          <SubTitleDiv className="text-dark">Your Placed Order</SubTitleDiv>
+          
           <ButtonDiv
             className="mt-2 btn-primary"
             onClick={() => {

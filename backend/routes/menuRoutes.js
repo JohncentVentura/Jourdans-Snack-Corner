@@ -25,7 +25,6 @@ router.put("/", async (req, res) => {
       if (order.name === product.name) {
         account.orders[index].quantity++;
         account.orders[index].priceTotal += product.price;
-
         product.quantity--;
       }
     });
@@ -39,7 +38,6 @@ router.put("/", async (req, res) => {
         price: product.price,
         priceTotal: product.price
       });
-
       product.quantity--;
     }
 
@@ -57,6 +55,7 @@ router.put("/", async (req, res) => {
       req.body.product._id,
       product
     );
+    
     return res.status(200).json({updatedAccount, updatedProduct});
   } catch (error) {
     console.log(error.message);

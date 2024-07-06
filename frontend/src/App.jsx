@@ -18,12 +18,19 @@ import Contact from "./home/Contact";
 import Login from "./home/Login";
 import Register from "./accounts/Register";
 import Cart from "./accounts/Cart";
+
 import Dashboard from "./components/Dashboard";
+import Customers from "./customers/Customers";
+import UpdateCustomers from "./customers/UpdateCustomers";
+import DeleteCustomers from "./customers/DeleteCustomers";
 import Products from "./products/Products";
 import CreateProduct from "./products/CreateProduct";
 import ReadProduct from "./products/ReadProduct";
 import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
+import Orders from "./orders/Orders";
+import UpdateOrders from "./orders/UpdateOrders";
+import DeleteOrders from "./orders/DeleteOrders";
 import axios from "axios";
 import { TitleDiv } from "./components/Components";
 
@@ -38,6 +45,7 @@ function App() {
   const [isCustomerLogin, setIsCustomerLogin] = useState();
   const [loginID, setLoginID] = useState();
 
+  //Checks if server is online or offline
   useEffect(() => {
     axios
       .get(`${PagePaths.port}`)
@@ -103,6 +111,19 @@ function App() {
             <Route path={`${PagePaths.cart}/:id`} element={<Cart />}></Route>
 
             <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
+            <Route
+              path={`${PagePaths.customers}`}
+              element={<Customers />}
+            ></Route>
+            <Route
+              path={`${PagePaths.updateCustomers}`}
+              element={<UpdateCustomers />}
+            ></Route>
+            <Route
+              path={`${PagePaths.deleteCustomers}`}
+              element={<DeleteCustomers />}
+            ></Route>
+
             <Route path={PagePaths.products} element={<Products />}></Route>
             <Route
               path={PagePaths.createProduct}
@@ -119,6 +140,16 @@ function App() {
             <Route
               path={`${PagePaths.deleteProduct}/:id`}
               element={<DeleteProduct />}
+            ></Route>
+
+            <Route path={`${PagePaths.orders}`} element={<Orders />}></Route>
+            <Route
+              path={`${PagePaths.updateOrders}`}
+              element={<UpdateOrders />}
+            ></Route>
+            <Route
+              path={`${PagePaths.deleteOrders}`}
+              element={<DeleteOrders />}
             ></Route>
           </Routes>
           <Footer />

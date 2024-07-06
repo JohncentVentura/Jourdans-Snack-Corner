@@ -49,9 +49,9 @@ const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
             {isAdminLogin && !isCustomerLogin ? (
               <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
                 <ListItemLink to={PagePaths.dashboard}>Dashboard</ListItemLink>
+                <ListItemLink to={PagePaths.customers}>Customers</ListItemLink>
                 <ListItemLink to={PagePaths.products}>Products</ListItemLink>
                 <ListItemLink to={PagePaths.orders}>Orders</ListItemLink>
-                <ListItemLink to={PagePaths.reports}>Reports</ListItemLink>
                 <ListItemLink
                   onClick={() =>
                     localStorage.setItem(KeyPaths.isAdminLogin, "false")
