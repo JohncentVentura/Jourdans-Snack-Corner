@@ -104,6 +104,9 @@ router.post("/:id", async (req, res) => {
 
     const placeOrder = await placeOrderModel.create({
       customerId: account.id,
+      customerName: account.username,
+      customerNumber: account.phoneNumber,
+      customerAddress: account.address,
       orders: account.orders,
       orderTotal: account.orderTotal,
     });

@@ -6,6 +6,18 @@ const placeOrderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    customerName: {
+      type: String,
+      required: true,
+    },
+    customerNumber: {
+      type: Number,
+      required: true,
+    },
+    customerAddress: {
+      type: String,
+      required: true,
+    },
     orders: {
       type: Array,
       required: true,
