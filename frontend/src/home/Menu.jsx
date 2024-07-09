@@ -74,37 +74,6 @@ const Menu = ({ loginID }) => {
     productTypes = [];
   }, [products]);
 
-  const AddToCartButton = ({ ...props }) => {
-    return (
-      <>
-        <ButtonDiv
-          className={`${props.btnClr} ${props.className}`}
-          onClick={() => {
-            if (loginID) {
-              axios
-                .put(`${PagePaths.port}${PagePaths.menu}`, {
-                  loginID: loginID,
-                  product: props.product,
-                })
-                .then((res) => {
-                  console.log(res);
-                  setProducts(res.data.products);
-                  window.location.reload();
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            } else {
-              navigate(PagePaths.login);
-            }
-          }}
-        >
-          <SmDiv>Add to Cart</SmDiv>
-        </ButtonDiv>
-      </>
-    );
-  };
-
   const MenuListItem = ({ ...props }) => {
     return (
       <>
@@ -116,19 +85,12 @@ const Menu = ({ loginID }) => {
             {props.product.name}
           </LgDiv>
           <div className="col-12 d-flex">
-            <div className="col-6">
-              <SmDiv
-                className={`${props.textClr}`}
-              >{`₱${props.product.price}.00`}</SmDiv>
-              <SmDiv
-                className={`${props.textClr}`}
-              >{`Stock: ${props.product.quantity}`}</SmDiv>
-            </div>
-            <AddToCartButton
-              btnClr={props.btnClr}
-              className={"col-6"}
-              product={props.product}
-            />
+            <SmDiv
+              className={`col-6 text-center ${props.textClr}`}
+            >{`₱${props.product.price}.00`}</SmDiv>
+            <SmDiv
+              className={`col-6 text-center ${props.textClr}`}
+            >{`Stock: ${props.product.quantity}`}</SmDiv>
           </div>
         </li>
       </>

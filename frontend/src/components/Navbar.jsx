@@ -46,43 +46,22 @@ const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
             className="collapse navbar-collapse flex-grow-0"
             id="navbarToggler"
           >
-            {isAdminLogin && !isCustomerLogin ? (
+            {isAdminLogin ? (
               <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
-                <ListItemLink to={PagePaths.dashboard}>Dashboard</ListItemLink>
-                <ListItemLink to={PagePaths.customers}>Customers</ListItemLink>
-                <ListItemLink to={PagePaths.products}>Products</ListItemLink>
-                <ListItemLink to={PagePaths.orders}>Orders</ListItemLink>
-                <ListItemLink
-                  onClick={() =>
-                    localStorage.setItem(KeyPaths.isAdminLogin, "false")
-                  }
-                  to={PagePaths.home}
-                >
-                  Logout
-                </ListItemLink>
+                <ListItemLink to={PagePaths.home}>Home</ListItemLink>
+                <ListItemLink to={PagePaths.about}>About</ListItemLink>
+                <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
+                <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
+                <ListItemLink to={PagePaths.products}>Dashboard</ListItemLink>
               </ul>
             ) : (
-              <>
-                {!isAdminLogin && isCustomerLogin ? (
-                  <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
-                    <ListItemLink to={PagePaths.home}>Home</ListItemLink>
-                    <ListItemLink to={PagePaths.about}>About</ListItemLink>
-                    <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
-                    <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
-                    <ListItemLink to={`${PagePaths.cart}/${loginID}`}>
-                      Cart
-                    </ListItemLink>
-                  </ul>
-                ) : (
-                  <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
-                    <ListItemLink to={PagePaths.home}>Home</ListItemLink>
-                    <ListItemLink to={PagePaths.about}>About</ListItemLink>
-                    <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
-                    <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
-                    <ListItemLink to={PagePaths.login}>Login</ListItemLink>
-                  </ul>
-                )}
-              </>
+              <ul className="navbar-nav mt-lg-0 mt-5 nav-underline">
+                <ListItemLink to={PagePaths.home}>Home</ListItemLink>
+                <ListItemLink to={PagePaths.about}>About</ListItemLink>
+                <ListItemLink to={PagePaths.menu}>Menu</ListItemLink>
+                <ListItemLink to={PagePaths.contact}>Contact</ListItemLink>
+                <ListItemLink to={PagePaths.login}>Login</ListItemLink>
+              </ul>
             )}
           </div>
         </div>

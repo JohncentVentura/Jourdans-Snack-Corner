@@ -40,11 +40,7 @@ const Login = () => {
         if (res.data.loginStatus === "Login Admin") {
           localStorage.setItem(KeyPaths.loginID, res.data.user._id);
           localStorage.setItem(KeyPaths.isAdminLogin, "true");
-          navigate(PagePaths.dashboard);
-        } else if (res.data.loginStatus === "Login Customer") {
-          localStorage.setItem(KeyPaths.loginID, res.data.user._id);
-          localStorage.setItem(KeyPaths.isCustomerLogin, "true");
-          navigate(`${PagePaths.cart}/${res.data.user._id}`);
+          navigate(PagePaths.products);
         } else if (res.data.loginStatus === "Incorrect Password") {
           navigate(PagePaths.login);
         } else if (res.data.loginStatus === "Invalid Email") {
@@ -72,9 +68,9 @@ const Login = () => {
             lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
             lordIconSize={5}
           />
-          <TitleDiv className="text-light">Sign In</TitleDiv>
+          <TitleDiv className="text-light">Login</TitleDiv>
           <SubTitleDiv className="text-light">
-            Sign in with your email and password
+            Authorized Personnels Only
           </SubTitleDiv>
 
           <input
@@ -97,13 +93,6 @@ const Login = () => {
           <button className="mt-2 w-50 btn btn-secondary" type="submit">
             <SubTitleDiv className="p-1 text-light">Log In</SubTitleDiv>
           </button>
-
-          <div className="mt-2 w-40 d-flex justify-content-center align-items-center">
-            <SmDiv className="me-2 text-light">Don't have an account?</SmDiv>
-            <LinkDiv className="text-secondary" link={PagePaths.createAccount}>
-              Register Here...
-            </LinkDiv>
-          </div>
         </form>
       </Section>
     </>

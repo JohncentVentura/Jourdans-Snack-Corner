@@ -28,26 +28,12 @@ export const PagePaths = {
     about: "/about-us",
     menu: "/menu",
     contact: "/contact",
-
-    //account pages
     login: "/account/login",
-    cart: "/account",
-    createAccount: "/account/register",
-    
+
     //admin pages
-    dashboard: "/dashboard",
-
-    customers: "/customers",
-    updateCustomers: "/customers/update",
-    deleteCustomers: "/customers/delete",
-
     products: "/products",
     createProduct: "/products/create",
     readProduct: "/products/read",
     updateProduct: "/products/update",
     deleteProduct: "/products/delete",
-
-    orders: "/orders",
-    updateOrders: "/orders/update",
-    deleteOrders: "/orders/delete",
 }

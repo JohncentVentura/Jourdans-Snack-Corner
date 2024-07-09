@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const accountSchema = new mongoose.Schema(
   {
-    isAdmin: {
-      type: Boolean,
-      required: false,
-    },
     email: {
       type: String,
       required: true,
@@ -24,14 +20,6 @@ const accountSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
-    },
-    orders: {
-      type: Array,
-      required: true,
-    },
-    orderTotal: {
-      type: Number,
       required: true,
     },
   },

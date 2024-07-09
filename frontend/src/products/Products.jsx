@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ImagePaths, PagePaths } from "../Paths";
+import { KeyPaths, ImagePaths, PagePaths } from "../Paths";
 import {
   Section,
   LordIcon,
@@ -48,6 +48,13 @@ const Products = () => {
         >
           Add Item
         </ButtonLinkDiv>
+        <ButtonLinkDiv
+          className="btn-primary text-light"
+          onClick={() => localStorage.setItem(KeyPaths.isAdminLogin, "false")}
+          to={PagePaths.home}
+        >
+          logOut
+        </ButtonLinkDiv>
 
         <ul className="w-100">
           <li>
@@ -56,7 +63,7 @@ const Products = () => {
           </li>
           <li>Name / Price / Quantity / Description</li>
           <br />
-          
+
           {products.map((product, index) => (
             <li
               key={`${product}-${index}`}

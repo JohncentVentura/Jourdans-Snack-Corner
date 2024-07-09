@@ -16,34 +16,22 @@ import About from "./home/About";
 import Menu from "./home/Menu";
 import Contact from "./home/Contact";
 import Login from "./home/Login";
-import Register from "./accounts/Register";
-import Cart from "./accounts/Cart";
-
-import Dashboard from "./components/Dashboard";
-import Customers from "./customers/Customers";
-import UpdateCustomers from "./customers/UpdateCustomers";
-import DeleteCustomers from "./customers/DeleteCustomers";
 import Products from "./products/Products";
 import CreateProduct from "./products/CreateProduct";
 import ReadProduct from "./products/ReadProduct";
 import UpdateProduct from "./products/UpdateProduct";
 import DeleteProduct from "./products/DeleteProduct";
-import Orders from "./orders/Orders";
-import UpdateOrders from "./orders/UpdateOrders";
-import DeleteOrders from "./orders/DeleteOrders";
+
 import axios from "axios";
 import { TitleDiv } from "./components/Components";
 
 function App() {
   //PrintBreakPoint();
   ScrollToTop(); //Scroll to top when navigating pages
-  const [isServerOnline, setIsServerOnline] = useState(false);
   const location = useLocation();
-  const isCustomerLoginLocal = localStorage.getItem(KeyPaths.isCustomerLogin);
   const isAdminLoginLocal = localStorage.getItem(KeyPaths.isAdminLogin);
+  const [isServerOnline, setIsServerOnline] = useState(false);
   const [isAdminLogin, setIsAdminLogin] = useState();
-  const [isCustomerLogin, setIsCustomerLogin] = useState();
-  const [loginID, setLoginID] = useState();
 
   //Checks if server is online or offline
   useEffect(() => {
@@ -62,20 +50,14 @@ function App() {
   //Handles variables when customer login
   useEffect(() => {
     if (localStorage.getItem(KeyPaths.isAdminLogin) === "true") {
-      setLoginID(localStorage.getItem(KeyPaths.loginID));
       setIsAdminLogin(true);
-    } else if (localStorage.getItem(KeyPaths.isCustomerLogin) === "true") {
-      setLoginID(localStorage.getItem(KeyPaths.loginID));
-      setIsCustomerLogin(true);
     } else if (
       localStorage.getItem(KeyPaths.isAdminLogin) === "false" ||
       localStorage.getItem(KeyPaths.isCustomerLogin) === "false"
     ) {
       setIsAdminLogin(false);
-      setIsCustomerLogin(false);
-      setLoginID("");
     }
-  }, [isCustomerLoginLocal, isAdminLoginLocal]);
+  }, [isAdminLoginLocal]);
 
   return (
     <>
@@ -88,41 +70,13 @@ function App() {
         </div>
       ) : (
         <>
-          <Navbar
-            isCustomerLogin={isCustomerLogin}
-            isAdminLogin={isAdminLogin}
-            loginID={loginID}
-          />
+          <Navbar isAdminLogin={isAdminLogin} />
           <Routes location={location} key={location.pathname}>
             <Route path={PagePaths.home} element={<Home />}></Route>
             <Route path={PagePaths.about} element={<About />}></Route>
-            <Route
-              path={PagePaths.menu}
-              element={<Menu loginID={loginID} />}
-            ></Route>
+            <Route path={PagePaths.menu} element={<Menu />}></Route>
             <Route path={PagePaths.contact} element={<Contact />}></Route>
             <Route path={PagePaths.login} element={<Login />}></Route>
-
-            <Route
-              path={PagePaths.createAccount}
-              element={<Register />}
-            ></Route>
-            <Route path={`${PagePaths.cart}`} element={<Cart />}></Route>
-            <Route path={`${PagePaths.cart}/:id`} element={<Cart />}></Route>
-
-            <Route path={PagePaths.dashboard} element={<Dashboard />}></Route>
-            <Route
-              path={`${PagePaths.customers}`}
-              element={<Customers />}
-            ></Route>
-            <Route
-              path={`${PagePaths.updateCustomers}`}
-              element={<UpdateCustomers />}
-            ></Route>
-            <Route
-              path={`${PagePaths.deleteCustomers}`}
-              element={<DeleteCustomers />}
-            ></Route>
 
             <Route path={PagePaths.products} element={<Products />}></Route>
             <Route
@@ -140,16 +94,6 @@ function App() {
             <Route
               path={`${PagePaths.deleteProduct}/:id`}
               element={<DeleteProduct />}
-            ></Route>
-
-            <Route path={`${PagePaths.orders}`} element={<Orders />}></Route>
-            <Route
-              path={`${PagePaths.updateOrders}`}
-              element={<UpdateOrders />}
-            ></Route>
-            <Route
-              path={`${PagePaths.deleteOrders}`}
-              element={<DeleteOrders />}
             ></Route>
           </Routes>
           <Footer />
