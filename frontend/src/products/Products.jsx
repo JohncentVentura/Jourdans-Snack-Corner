@@ -41,7 +41,7 @@ const Products = () => {
   return (
     <>
       <Section className="flex-column pt-6">
-        <TitleDiv className="text-dark">Products</TitleDiv>
+        <TitleDiv className="text-dark">Dashboard</TitleDiv>
         <ButtonLinkDiv
           className="btn-primary text-light"
           to={PagePaths.createProduct}
@@ -61,7 +61,7 @@ const Products = () => {
             <span>Number of Products: </span>
             <span>{productsCount}</span>
           </li>
-          <li>Name / Price / Quantity / Description</li>
+          <li>Type / Name / Price / Quantity </li>
           <br />
 
           {products.map((product, index) => (
