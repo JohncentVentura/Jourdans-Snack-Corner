@@ -1,5 +1,5 @@
 export const KeyPaths = {
-    accessKey: "",
+    accessKey: "5044eee6-f4dd-4ac0-89d4-f9cdce92bef7",
     isAdminLogin: "admin login",
 };
 
