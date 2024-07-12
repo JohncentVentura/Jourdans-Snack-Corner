@@ -11,6 +11,7 @@ import {
   TitleDiv,
   SubTitleDiv,
   LinkDiv,
+  ButtonDiv,
   CardIconLink,
   CardIcon,
   CardImgOverlay,
@@ -19,7 +20,7 @@ import {
   CardImgButton,
 } from "../components/Components";
 
-const Navbar = ({ isCustomerLogin, isAdminLogin, loginID }) => {
+const Navbar = ({ isAdminLogin }) => {
   return (
     <>
       <nav

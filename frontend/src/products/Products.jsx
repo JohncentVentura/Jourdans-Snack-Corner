@@ -40,8 +40,9 @@ const Products = () => {
 
   return (
     <>
-      <Section className="flex-column pt-6">
+      <Section className="flex-column pt-8">
         <TitleDiv className="text-dark">Dashboard</TitleDiv>
+        <div className="w-100 d-flex justify-content-between align-items-center">
         <ButtonLinkDiv
           className="btn-primary text-light"
           to={PagePaths.createProduct}
@@ -53,44 +54,48 @@ const Products = () => {
           onClick={() => localStorage.setItem(KeyPaths.isAdminLogin, "false")}
           to={PagePaths.home}
         >
-          logOut
+          Logout
         </ButtonLinkDiv>
+        </div>
 
-        <ul className="w-100">
-          <li>
-            <span>Number of Products: </span>
-            <span>{productsCount}</span>
-          </li>
-          <li>Type / Name / Price / Quantity </li>
-          <br />
+        <table className="table mt-4 w-100">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Type</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={`${product}-${index}`} className="">
+                <th className="fs-xl-base fs-md-sm fs-xs" scope="row">{index + 1}</th>
+                <td className="fs-xl-base fs-md-sm fs-xs">{product.type}</td>
+                <td className="fs-xl-base fs-md-sm fs-xs">{product.name}</td>
+                <td className="fs-xl-base fs-md-sm fs-xs">{`₱${product.price}.00`}</td>
+                <td className="fs-xl-base fs-md-sm fs-xs">{product.quantity}</td>
+                <td className="d-flex">
+                  <ButtonLinkDiv
+                    to={`${PagePaths.updateProduct}/${product._id}`}
+                    className="btn-primary text-light"
+                  >
+                    Edit
+                  </ButtonLinkDiv>
 
-          {products.map((product, index) => (
-            <li
-              key={`${product}-${index}`}
-              className="mt-1 w-50 d-flex justify-content-evenly"
-            >
-              <span>{product.type} / </span>
-              <span>{product.name} / </span>
-              <span>{product.price} / </span>
-              <span>{product.quantity}</span>
-              <div className="d-flex">
-                <ButtonLinkDiv
-                  to={`${PagePaths.updateProduct}/${product._id}`}
-                  className="btn-primary text-light"
-                >
-                  Edit
-                </ButtonLinkDiv>
-
-                <ButtonLinkDiv
-                  to={`${PagePaths.deleteProduct}/${product._id}`}
-                  className="ms-5 btn-primary text-light"
-                >
-                  Delete
-                </ButtonLinkDiv>
-              </div>
-            </li>
-          ))}
-        </ul>
+                  <ButtonLinkDiv
+                    to={`${PagePaths.deleteProduct}/${product._id}`}
+                    className="ms-5 btn-primary text-light"
+                  >
+                    Delete
+                  </ButtonLinkDiv>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </Section>
     </>
   );

@@ -41,25 +41,24 @@ const DeleteProduct = () => {
 
   return (
     <>
-      <Section className="flex-column pt-6 bg-secondary">
-        <div>Delete Product</div>
+      <Section className="flex-column pt-6 bg-primary">
+        <TitleDiv>Delete Product</TitleDiv>
         <ButtonLinkDiv
-          className="btn-primary text-light"
+          className="btn-warning text-dark"
           to={PagePaths.products}
         >
           Return
         </ButtonLinkDiv>
 
-        <br />
-        <div>Are You Sure You want to delete this product?</div>
+        <SubTitleDiv className="mt-6">Are You Sure You want to delete this product?</SubTitleDiv>
         <ButtonLinkDiv
-          className="px-2 py-1 btn-primary text-light"
+          className="mt-2 px-2 py-1 btn-warning text-dark"
           onClick={handleDeleteProduct}
         >
           Yes
         </ButtonLinkDiv>
         <ButtonLinkDiv
-          className="my-3 px-2 py-1 btn-primary text-light"
+          className="my-2 px-2 py-1 btn-warning text-dark"
           to={PagePaths.products}
         >
           No

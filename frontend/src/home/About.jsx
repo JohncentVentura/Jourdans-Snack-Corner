@@ -14,15 +14,25 @@ import {
   CardImgOverlay,
   CardImgLeftHorizontal,
   CardImgRightHorizontal,
-  CardImgButton
+  CardImgButton,
 } from "../components/Components";
 
-const titles = ["Our Shop", "Our Food", "Our Work"];
+const testimonialsTitles = ["Facebook", "Facebook", "Facebook"];
+const testimonialsImages = [
+  ImagePaths.testimonials1,
+  ImagePaths.testimonials2,
+  ImagePaths.testimonials3,
+];
+const testimonialsLinks = [
+  "https://www.facebook.com/photo/?fbid=7185067278198768&set=pcb.7185137581525071",
+  "https://www.facebook.com/photo/?fbid=2116255002043907&set=pcb.2116255128710561",
+  "https://www.facebook.com/photo/?fbid=2486325351551694&set=pcb.2486325511551678",
+];
 
 const About = () => {
   return (
     <>
-      <Section className="flex-row" style={{height: "75vh", }}>
+      <Section className="flex-row" style={{ height: "76vh" }}>
         <div
           id="carouselExampleCaptions"
           className="carousel slide position-absolute w-100 h-100"
@@ -53,40 +63,49 @@ const About = () => {
           <div className="carousel-inner w-100 h-100">
             <div className="carousel-item w-100 h-100 active">
               <img
-                src={ImagePaths.bgHomeTitle}
+                src={ImagePaths.bg4}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.bgHomeTitle}
+                alt={ImagePaths.bg4}
               />
               <div className="carousel-caption">
-                <LgDiv>About Us 1</LgDiv>
+                <LgDiv>Our Shop</LgDiv>
                 <SmDiv>
-                  Some representative placeholder content for the first slide.
+                  Welcome to our humble local snack business! We specialize in
+                  delicious snacks delivered right to your doorstep. Whether you
+                  are craving sweet treats, savory delights, or sale bundles, we
+                  have something for everyone.
                 </SmDiv>
               </div>
             </div>
             <div className="carousel-item w-100 h-100">
               <img
-                src={ImagePaths.bgHomeTitle}
+                src={ImagePaths.bg5}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.bgHomeTitle}
+                alt={ImagePaths.bg5}
               />
               <div className="carousel-caption">
-                <LgDiv>About Us 2</LgDiv>
+                <LgDiv>Our Food</LgDiv>
                 <SmDiv>
-                  Some representative placeholder content for the second slide.
+                  We believe that fast food should be fresh, flavorful, and fun.
+                  That is why we are committed to using only the finest
+                  ingredients, sourced locally whenever possible, to create
+                  mouthwatering dishes that leave you craving more.
                 </SmDiv>
               </div>
             </div>
             <div className="carousel-item w-100 h-100">
               <img
-                src={ImagePaths.bgHomeTitle}
+                src={ImagePaths.bg3}
                 className="d-block object-fit-cover"
-                alt={ImagePaths.bgHomeTitle}
+                alt={ImagePaths.bg3}
               />
               <div className="carousel-caption">
-                <LgDiv>About Us 3</LgDiv>
+                <LgDiv>Our Work</LgDiv>
                 <SmDiv>
-                  Some representative placeholder content for the third slide.
+                  Each item is made to order with care and attention, ensuring
+                  that every bite is a burst of deliciousness. Thank you for
+                  choosing Jourdans Snack Corner, we can not wait to welcome you
+                  in and show you why we are your new favorite fast food joint!
                 </SmDiv>
               </div>
             </div>
@@ -119,40 +138,46 @@ const About = () => {
         </div>
       </Section>
 
-      <Section className="flex-column py-5 bg-light">
+      <Section className="flex-column py-6 bg-light">
         <TitleDiv className="text-dark ff-bubblegum">
           Customer Testimonials
         </TitleDiv>
-        <SubTitleDiv className="text-dark">Our customers love working with us</SubTitleDiv>
+        <SubTitleDiv className="text-dark">
+          Our customers love working with us
+        </SubTitleDiv>
 
-        <div className="pt-5 px-5 d-flex justify-content-center align-items-start">
-          {titles.map((title, key) => (
+        <div className="pt-6 px-6 d-flex flex-lg-row flex-column justify-content-center align-items-center">
+          {testimonialsImages.map((title, index) => (
             <CardImgButton
-              key={`${title}-${key}`}
-              className={`col-4 mx-2 p-1 bg-light-subtle`}
-              imgSrc={ImagePaths.testimonials1}
-              cardTitle={title}
-              cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
-              cardLink={`/`}
+              key={`${title}-${index}`}
+              className={`col-lg-4 col-10 m-2 p-2 bg-light-subtle`}
+              imgSrc={testimonialsImages[index]}
+              cardTitle={testimonialsTitles[index]}
+              cardText={`View our customers testimonials by viewing their posts in social media`}
+              cardLink={testimonialsLinks[index]}
               cardLinkText={`View Post`}
             />
           ))}
         </div>
       </Section>
 
-      <Section className="flex-column py-5 bg-secondary">
-        <TitleDiv className="text-light ff-bubblegum">Commercial Bldg. Project</TitleDiv>
+      <Section className="flex-column py-6 bg-secondary">
+        <TitleDiv className="text-light ff-bubblegum">
+          Commercial Bldg. Project
+        </TitleDiv>
         <SubTitleDiv className="text-light">Coming Soon...</SubTitleDiv>
 
         <CardImgRightHorizontal
-          className="mt-4 col-12"
-          imgSrc={ImagePaths.delivery}
-          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
-          lordIconClrs={"primary:#000000,secondary:#35aa90"}
-          lordIconSize={5}
-          cardTitle={`We are currently able to deliver around Pozorrubio, Pangasinan.`}
-          cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
-          cardLink={`/`}
+          className="mt-4 col-lg-12 col-10"
+          imgSrc={ImagePaths.bldg}
+          lordIconSrc={"https://cdn.lordicon.com/surcxhka.json"}
+          lordIconClrs={"primary:#000000,secondary:#36aa90"}
+          lordIconSize={6}
+          cardTitle={`We are currently planning to build our own shop`}
+          cardText={`Further details are subjective to change.`}
+          cardLink={
+            "https://www.google.com/maps/place/SONIC+PRINT+SHOP/@16.1106293,120.5415025,17z/data=!3m1!4b1!4m6!3m5!1s0x339113441ea5fd3b:0x898d955fde706c87!8m2!3d16.1106242!4d120.5440774!16s%2Fg%2F11stytk36h?entry=ttu"
+          }
           cardLinkText={`Get Direction`}
         />
       </Section>

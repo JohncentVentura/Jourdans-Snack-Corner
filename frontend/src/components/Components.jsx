@@ -30,24 +30,24 @@ export const LordIcon = ({ lordIconSrc, lordIconClrs, lordIconSize }) => {
 };
 
 export const SmDiv = ({ className, children }) => {
-  return <div className={`fs-base ${className}`}>{children}</div>;
+  return <div className={`fs-xl-base fs-md-sm fs-xs ${className}`}>{children}</div>;
 };
 
 export const LgDiv = ({ className, children }) => {
-  return <div className={`ff-bubblegum fs-3xl ${className}`}>{children}</div>;
+  return <div className={`ff-bubblegum fs-xxl-3xl fs-lg-2xl fs-sm-xl fs-lg ${className}`}>{children}</div>;
 };
 
 export const TitleDiv = ({ className, children }) => {
-  return <div className={`ff-bubblegum fs-5xl ${className}`}>{children}</div>;
+  return <div className={`ff-bubblegum fs-xxl-5xl fs-lg-4xl fs-sm-2xl fs-xl ${className}`}>{children}</div>;
 };
 
 export const SubTitleDiv = ({ className, children }) => {
-  return <div className={`fs-2xl ${className}`}>{children}</div>;
+  return <div className={`fs-xxl-2xl fs-lg-xl fs-sm-lg fs-base ${className}`}>{children}</div>;
 };
 
 export const LinkDiv = ({ className, link, children }) => {
   return (
-    <Link to={link} className={`text-decoration-none fs-base ${className}`}>
+    <Link to={link} className={`text-decoration-none fs-xl-base fs-md-sm fs-xs ${className}`}>
       {children}
     </Link>
   );
@@ -57,7 +57,7 @@ export const ButtonDiv = ({ className, onClick, children }) => {
   return (
     <button
       type="button"
-      className={`btn ${className}`}
+      className={`btn ${className} fs-xl-base fs-md-sm fs-xs`}
       onClick={onClick}
     >
       {children}
@@ -69,7 +69,7 @@ export const ButtonLinkDiv = ({ className, to, onClick, children }) => {
   return (
     <Link
       type="button"
-      className={`btn text-decoration-none text-center fs-base ${className}`}
+      className={`btn text-decoration-none text-center fs-xl-base fs-md-sm fs-xs ${className}`}
       to={to}
       onClick={onClick}
     >
@@ -98,38 +98,10 @@ export const CardIconLink = ({
             lordIconSize={lordIconSize}
           />
           <LgDiv className="card-title ff-bubblegum">{cardTitle}</LgDiv>
-          <SmDiv className="card-text mb-3">{cardText}</SmDiv>
+          <SmDiv className="card-text mb-2">{cardText}</SmDiv>
           <LinkDiv className="card-link text-primary" link={cardLink}>
             {cardLinkText}
           </LinkDiv>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export const CardIcon = ({
-  className,
-  lordIconSrc,
-  lordIconClrs,
-  lordIconSize,
-  cardTitle,
-  cardText,
-}) => {
-  return (
-    <>
-      <div className={`card ${className}`}>
-        <div className="col-2">
-          <LordIcon
-            lordIconSrc={lordIconSrc}
-            lordIconClrs={lordIconClrs}
-            lordIconSize={lordIconSize}
-          />
-        </div>
-        <div className="col-1"></div>
-        <div className="card-body col-10">
-          <LgDiv className="card-title">{cardTitle}</LgDiv>
-          <SmDiv className="card-text">{cardText}</SmDiv>
         </div>
       </div>
     </>
@@ -156,84 +128,28 @@ export const CardImgOverlay = ({
   );
 };
 
-export const CardImgLeftHorizontal = ({
+export const CardIcon = ({
   className,
-  imgSrc,
   lordIconSrc,
   lordIconClrs,
   lordIconSize,
   cardTitle,
   cardText,
-  cardLink,
-  cardLinkText,
 }) => {
   return (
     <>
       <div className={`card ${className}`}>
-        <div className="row g-0">
-          <div className="col-6">
-            <img
-              src={imgSrc}
-              alt={imgSrc}
-              className="img-fluid rounded-start"
-            />
-          </div>
-          <div className="col-6">
-            <div className="card-body">
-              <LgDiv className="card-title">{cardTitle}</LgDiv>
-              <SmDiv className="card-text mb-2">{cardText}</SmDiv>
-              <LordIcon
-                lordIconSrc={lordIconSrc}
-                lordIconClrs={lordIconClrs}
-                lordIconSize={lordIconSize}
-              />
-              <LinkDiv className="card-link" link={cardLink}>
-                {cardLinkText}
-              </LinkDiv>
-            </div>
-          </div>
+        <div className="col-2 d-flex justify-content-center align-items-center">
+          <LordIcon
+            lordIconSrc={lordIconSrc}
+            lordIconClrs={lordIconClrs}
+            lordIconSize={lordIconSize}
+          />
         </div>
-      </div>
-    </>
-  );
-};
-
-export const CardImgRightHorizontal = ({
-  className,
-  imgSrc,
-  lordIconSrc,
-  lordIconClrs,
-  lordIconSize,
-  cardTitle,
-  cardText,
-  cardLink,
-  cardLinkText,
-}) => {
-  return (
-    <>
-      <div className={`card ${className}`}>
-        <div className="row g-0">
-          <div className="col-6">
-            <div className="card-body">
-              <LordIcon
-                lordIconSrc={lordIconSrc}
-                lordIconClrs={lordIconClrs}
-                lordIconSize={lordIconSize}
-              />
-              <LgDiv className="card-title">{cardTitle}</LgDiv>
-              <SmDiv className="card-text">{cardText}</SmDiv>
-              <LinkDiv className="card-link" link={cardLink}>
-                {cardLinkText}
-              </LinkDiv>
-            </div>
-          </div>
-          <div className="col-6">
-            <img
-              src={imgSrc}
-              alt={imgSrc}
-              className="img-fluid rounded-start"
-            />
-          </div>
+        <div className="col-1"></div>
+        <div className="card-body col-10 mt-lg-4 mt-0 p-0">
+          <LgDiv className="m-0 card-title">{cardTitle}</LgDiv>
+          <SmDiv className="card-text">{cardText}</SmDiv>
         </div>
       </div>
     </>
@@ -263,3 +179,89 @@ export const CardImgButton = ({
     </>
   );
 };
+
+export const CardImgLeftHorizontal = ({
+  className,
+  imgSrc,
+  lordIconSrc,
+  lordIconClrs,
+  lordIconSize,
+  cardTitle,
+  cardText,
+  cardLink,
+  cardLinkText,
+}) => {
+  return (
+    <>
+      <div className={`card ${className}`}>
+        <div className="row g-0 d-flex flex-lg-row flex-column justify-content-center align-items-center">
+          <div className="col-lg-6 col-12">
+            <img
+              src={imgSrc}
+              alt={imgSrc}
+              className="img-fluid rounded-start"
+            />
+          </div>
+          <div className="col-lg-6 col-12">
+            <div className="card-body">
+              <SubTitleDiv className="card-title ff-bubblegum">{cardTitle}</SubTitleDiv>
+              <SmDiv className="card-text mb-2">{cardText}</SmDiv>
+              <LordIcon
+                lordIconSrc={lordIconSrc}
+                lordIconClrs={lordIconClrs}
+                lordIconSize={lordIconSize}
+              />
+              <ButtonLinkDiv className="card-link btn-dark" to={cardLink}>
+                {cardLinkText}
+              </ButtonLinkDiv>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const CardImgRightHorizontal = ({
+  className,
+  imgSrc,
+  lordIconSrc,
+  lordIconClrs,
+  lordIconSize,
+  cardTitle,
+  cardText,
+  cardLink,
+  cardLinkText,
+}) => {
+  return (
+    <>
+      <div className={`card ${className}`}>
+      <div className="row g-0 d-flex flex-lg-row flex-column justify-content-center align-items-center">
+          <div className="col-lg-6 col-12">
+            <div className="card-body">
+              <LordIcon
+                lordIconSrc={lordIconSrc}
+                lordIconClrs={lordIconClrs}
+                lordIconSize={lordIconSize}
+              />
+              <LgDiv className="card-title">{cardTitle}</LgDiv>
+              <SmDiv className="card-text">{cardText}</SmDiv>
+              <ButtonLinkDiv className="mt-6 card-link btn-dark" to={cardLink}>
+                {cardLinkText}
+              </ButtonLinkDiv>
+            </div>
+          </div>
+          <div className="col-lg-6 col-12">
+            <img
+              src={imgSrc}
+              alt={imgSrc}
+              className="img-fluid rounded-start"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+

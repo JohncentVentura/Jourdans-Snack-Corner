@@ -79,7 +79,7 @@ const Menu = ({ loginID }) => {
       <>
         <li
           key={`${props.product}-${props.key}`}
-          className="py-1 w-25 d-flex flex-column justify-content-center align-items-center"
+          className="py-2 w-lg-30 w-sm-40 w-50 d-flex flex-column justify-content-center align-items-center"
         >
           <LgDiv className={`col-12 text-center ${props.textClr}`}>
             {props.product.name}
@@ -101,11 +101,11 @@ const Menu = ({ loginID }) => {
     <>
       <Section className="pt-8 pb-4 flex-column bg-primary">
         <LordIcon
-          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
+          lordIconSrc={"https://cdn.lordicon.com/bchxwwag.json"}
           lordIconClrs={"primary:#FFFFFF,secondary:#FFFFFF"}
           lordIconSize={5}
         />
-        <TitleDiv className="text-light">Meals</TitleDiv>
+        <TitleDiv className="text-light border-bottom border-light">Meals</TitleDiv>
         {meals.map((product, index) => (
           <MenuListItem
             product={product}
@@ -118,11 +118,11 @@ const Menu = ({ loginID }) => {
 
       <Section className="py-4 flex-column bg-dark">
         <LordIcon
-          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
+          lordIconSrc={"https://cdn.lordicon.com/ozzqxurw.json"}
           lordIconClrs={"primary:#FFFFFF,secondary:#FFFFFF"}
           lordIconSize={5}
         />
-        <TitleDiv className="text-light">Snacks</TitleDiv>
+        <TitleDiv className="text-light border-bottom border-light">Snacks</TitleDiv>
         {snacks.map((product, index) => (
           <MenuListItem
             product={product}
@@ -135,11 +135,11 @@ const Menu = ({ loginID }) => {
 
       <Section className="py-4 flex-column bg-secondary">
         <LordIcon
-          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
+          lordIconSrc={"https://cdn.lordicon.com/pqeabrsi.json"}
           lordIconClrs={"primary:#000000,secondary:#000000"}
           lordIconSize={5}
         />
-        <TitleDiv className="text-dark">Beverages</TitleDiv>
+        <TitleDiv className="text-dark border-bottom border-dark">Beverages</TitleDiv>
         {beverages.map((product, index) => (
           <MenuListItem
             product={product}
@@ -152,11 +152,11 @@ const Menu = ({ loginID }) => {
 
       <Section className="py-4 flex-column bg-light">
         <LordIcon
-          lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
+          lordIconSrc={"https://cdn.lordicon.com/ssoifezn.json"}
           lordIconClrs={"primary:#000000,secondary:#000000"}
           lordIconSize={5}
         />
-        <TitleDiv className="text-dark">Bundles</TitleDiv>
+        <TitleDiv className="text-dark border-bottom border-dark">Bundles</TitleDiv>
         {bundles.map((product, index) => (
           <MenuListItem
             product={product}

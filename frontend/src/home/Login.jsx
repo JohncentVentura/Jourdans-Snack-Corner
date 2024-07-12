@@ -54,8 +54,8 @@ const Login = () => {
     <>
       <Section className="flex-column" style={{ height: "100vh" }}>
         <img
-          src={ImagePaths.bgLogin}
-          alt={ImagePaths.bgLogin}
+          src={ImagePaths.bg3}
+          alt={ImagePaths.bg3}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -74,7 +74,7 @@ const Login = () => {
           </SubTitleDiv>
 
           <input
-            className="input-email mt-4 p-1 rounded-3 w-50 h-5 fs-lg"
+            className="input-email mt-4 p-2 rounded-3 w-xl-50 w-md-65 w-80 h-5 fs-lg"
             type="email"
             name="email"
             placeholder="Enter Email"
@@ -82,7 +82,7 @@ const Login = () => {
             required
           />
           <input
-            className="input-password mt-2 p-1 rounded-3 w-50 h-5 fs-lg"
+            className="input-password mt-xl-2 mt-4 p-2 rounded-3 w-xl-50 w-md-65 w-80 h-5 fs-lg"
             type="password"
             name="password"
             placeholder="Enter Password"
@@ -90,8 +90,8 @@ const Login = () => {
             required
           />
 
-          <button className="mt-2 w-50 btn btn-secondary" type="submit">
-            <SubTitleDiv className="p-1 text-light">Log In</SubTitleDiv>
+          <button className="mt-xl-2 mt-4 w-xl-50 w-md-65 w-80 btn btn-secondary" type="submit">
+            <SubTitleDiv className="p-2 text-light">Log In</SubTitleDiv>
           </button>
         </form>
       </Section>

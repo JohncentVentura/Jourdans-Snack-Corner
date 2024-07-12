@@ -22,8 +22,8 @@ const Contact = () => {
     <>
       <Section className="flex-column" style={{ height: "100vh" }}>
         <img
-          src={ImagePaths.bgHomeTitle}
-          alt={ImagePaths.bgHomeTitle}
+          src={ImagePaths.bg5}
+          alt={ImagePaths.bg5}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -42,27 +42,27 @@ const Contact = () => {
           </SubTitleDiv>
 
           <input
-            className="mt-4 p-1 rounded-3 w-65 h-5 fs-lg"
+            className="mt-4 p-2 rounded-3 w-xl-65 w-md-75 w-85 h-5 fs-lg"
             type="text"
             name="name"
             placeholder="Full Name"
             required
           />
           <input
-            className="mt-2 p-1 rounded-3 w-65 h-5 fs-lg"
+            className="mt-lg-2 mt-4 p-2 rounded-3 w-xl-65 w-md-75 w-85 h-5 fs-lg"
             type="email"
             name="email"
             placeholder="Email Address"
             required
           />
           <textarea
-            className="mt-2 rounded-3 p-1 w-65 fs-lg"
+            className="mt-lg-2 mt-4 rounded-3 p-2 w-xl-65 w-md-75 w-85 fs-lg"
             name="message"
             placeholder="Message"
             required
           />
           <button
-            className="contact-btn mt-2 py-1 w-65 btn btn-primary"
+            className="contact-btn mt-lg-2 mt-4 py-2 w-xl-65 w-md-75 w-85 btn btn-primary"
             type="submit"
           >
             <SubTitleDiv>Submit</SubTitleDiv>

@@ -54,7 +54,7 @@ const UpdateProduct = () => {
         quantity,
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         navigate(PagePaths.products);
       })
       .catch((error) => {
@@ -66,18 +66,18 @@ const UpdateProduct = () => {
   return (
     <>
       <Section className="flex-column pt-6 bg-secondary">
-        <TitleDiv>UpdateProduct</TitleDiv>
+        <TitleDiv>Update Product</TitleDiv>
         <ButtonLinkDiv
-          className="btn-primary text-light"
+          className="btn-dark text-light"
           to={PagePaths.products}
         >
           Return
         </ButtonLinkDiv>
 
-        <form className="d-flex flex-column">
+        <form className="mt-6 w-100 d-flex flex-column justify-content-center align-items-center">
           <label htmlFor="product-type-id">Type:</label>
           <select
-            className="form-select"
+            className="form-select w-50 p-2"
             id="product-type-id"
             aria-label="Default select example"
             value={type}
@@ -92,6 +92,7 @@ const UpdateProduct = () => {
 
           <label htmlFor="product-name-id">Name:</label>
           <input
+            className="w-50 p-2"
             type="text"
             id="product-name-id"
             value={name}
@@ -101,6 +102,7 @@ const UpdateProduct = () => {
 
           <label htmlFor="product-price-id">Price:</label>
           <input
+            className="w-50 p-2"
             type="number"
             id="product-price-id"
             value={price}
@@ -110,6 +112,7 @@ const UpdateProduct = () => {
 
           <label htmlFor="product-quantity-id">Quantity:</label>
           <input
+            className="w-50 p-2"
             type="number"
             id="product-quantity-id"
             value={quantity}
@@ -117,8 +120,8 @@ const UpdateProduct = () => {
             required
           />
 
-          <ButtonLinkDiv  
-            className="mt-10  submit btn-primary text-light"
+          <ButtonLinkDiv
+            className="my-4 w-50 p-2 submit btn-dark text-light"
             onClick={handleUpdateProduct}
           >
             Update

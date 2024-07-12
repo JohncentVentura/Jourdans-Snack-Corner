@@ -47,7 +47,7 @@ function App() {
       });
   });
 
-  //Handles variables when customer login
+  //Handles variables when logging in
   useEffect(() => {
     if (localStorage.getItem(KeyPaths.isAdminLogin) === "true") {
       setIsAdminLogin(true);

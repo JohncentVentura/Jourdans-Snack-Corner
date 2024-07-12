@@ -11,6 +11,7 @@ import {
   SubTitleDiv,
   LinkDiv,
   ButtonDiv,
+  ButtonLinkDiv,
   CardIconLink,
   CardIcon,
   CardImgOverlay,
@@ -18,8 +19,6 @@ import {
   CardImgRightHorizontal,
   CardImgButton,
 } from "../components/Components";
-
-const titles = ["Our Shop", "Our Food", "Our Work"];
 
 const ourTitles = ["Our Shop", "Our Food", "Our Work"];
 const ourIconSrcs = [
@@ -35,16 +34,25 @@ const ourTexts = [
   `Each item is made to order with care and attention, ensuring that every bite is a burst of deliciousness. Thank you
     for choosing Jourdans Snack Corner, we can not wait to welcome you in and show you why we are your new favorite fast food joint!`,
 ];
-const ourLinks = [PagePaths.about, PagePaths.menu, PagePaths.contact];
-const ourLinkTexts = ["About Us...", "View Menu...", "Contact Us..."];
+
+const featuredMenuTitles = [
+  "Burger & Chips",
+  "Chicken Teriyaki",
+  "Dumplings Bundle",
+];
+const featuredMenuImages = [
+  ImagePaths.featuredMenuItem1,
+  ImagePaths.featuredMenuItem2,
+  ImagePaths.featuredMenuItem3,
+];
 
 const Home = () => {
   return (
     <>
       <Section className="flex-row" style={{ height: "75vh" }}>
         <img
-          src={ImagePaths.bgHomeTitle}
-          alt={ImagePaths.bgHomeTitle}
+          src={ImagePaths.bg1}
+          alt={ImagePaths.bg1}
           className="position-absolute z-n1 object-fit-cover"
         />
 
@@ -52,7 +60,7 @@ const Home = () => {
           <img
             src={ImagePaths.logo3}
             alt={ImagePaths.logo3}
-            className="col-xxl-8 col-11 mt-5 d-lg-block d-none object-fit-contain"
+            className="col-xxl-8 col-11 mt-6 d-lg-block d-none object-fit-contain"
           />
           <img
             src={ImagePaths.logo1}
@@ -62,108 +70,102 @@ const Home = () => {
           <img
             src={ImagePaths.logo2}
             alt={ImagePaths.logo2}
-            className="col-sm-6 col-10 d-lg-none d-block object-fit-contain"
+            className="col-sm-6 col-11 d-lg-none d-block object-fit-contain"
           />
 
-          <div className="text-light ff-bubblegum fs-xxl-5xl fs-lg-4xl fs-sm-2xl fs-xl">
+          <TitleDiv className="text-light ff-bubblegum ">
             Delivering Deliciousness in a Dash
-          </div>
+          </TitleDiv>
 
-          <div className="mt-1 w-50 d-flex justify-content-between align-items-center">
-            <button type="button" className="btn btn-primary px-3 py-1">
-              <SubTitleDiv>Order Now</SubTitleDiv>
-            </button>
-            <button type="button" className="btn btn-outline-light px-3 py-1">
-              <SubTitleDiv>Learn More</SubTitleDiv>
-            </button>
-          </div>
+          <ButtonLinkDiv
+            className="btn btn-primary mt-2 px-2"
+            to={PagePaths.about}
+          >
+            <SubTitleDiv>Learn More</SubTitleDiv>
+          </ButtonLinkDiv>
         </div>
       </Section>
 
-      <Section className="flex-row py-5 bg-light-subtle">
+      <Section className="flex-lg-row flex-column py-6 bg-light-subtle">
         {ourTitles.map((title, index) => (
           <CardIconLink
             key={`${title}-${index}`}
-            className={`col-4 px-2 border-0 bg-light-subtle`}
+            className={`col-lg-4 col-12 mt-2 px-2 border-0 bg-light-subtle`}
             lordIconSrc={ourIconSrcs[index]}
             lordIconClrs={"primary:#000000,secondary:#35aa90"}
             lordIconSize={5}
             cardTitle={title}
             cardText={ourTexts[index]}
-            //cardLink={ourLinks[index]}
-            //cardLinkText={ourLinkTexts[index]}
           />
         ))}
       </Section>
 
-      <Section className="flex-column py-5 bg-primary">
+      <Section className="flex-column py-6 bg-primary">
         <TitleDiv className="text-light">Featured Menu Items</TitleDiv>
         <SubTitleDiv className="text-light">
           Dishes being served and delivered
         </SubTitleDiv>
 
-        <div className="mt-3 px-5 d-flex justify-content-center align-items-start">
-          {titles.map((title, key) => (
+        <div className="mt-4 px-6 d-flex flex-md-row flex-column justify-content-center align-items-start">
+          {featuredMenuTitles.map((title, index) => (
             <CardImgOverlay
-              key={`${title}-${key}`}
-              className={`col-4 mx-2 text-light `}
-              cardLink={`/`}
-              imgSrc={ImagePaths.snacks}
-              cardTitle={title}
+              key={`${title}-${index}`}
+              className={`col-md-4 col-11 my-4 mx-2 text-light `}
+              cardLink={PagePaths.menu}
+              imgSrc={featuredMenuImages[index]}
+              cardTitle={featuredMenuTitles[index]}
             />
           ))}
         </div>
 
-        <ButtonDiv className="mt-3 btn-warning">
-          <Link link={PagePaths.menu} className="text-decoration-none">
-            <SubTitleDiv className="text-dark">View Menu</SubTitleDiv>
-          </Link>
-        </ButtonDiv>
+        <ButtonLinkDiv className="mt-4 btn-warning" to={PagePaths.menu}>
+          <SubTitleDiv className="text-dark">View Menu</SubTitleDiv>
+        </ButtonLinkDiv>
       </Section>
 
-      <Section className="flex-column py-5">
+      <Section className="flex-column py-6">
         <img
-          src={ImagePaths.bgHomeAbout}
-          alt={ImagePaths.bgHomeAbout}
+          src={ImagePaths.bg2}
+          alt={ImagePaths.bg2}
           className="position-absolute z-n1 object-fit-cover"
         />
 
         <TitleDiv className="text-light">Open 8am to 4pm</TitleDiv>
         <CardIcon
-          className="border-0 w-50 bg-transparent text-light d-flex flex-row justify-content-center align-items-center"
+          className="border-0 w-100 bg-transparent text-light d-flex flex-column justify-content-center align-items-center"
           lordIconSrc={"https://cdn.lordicon.com/qvyppzqz.json"}
           lordIconClrs={"primary:#FFFFFF,secondary:#bd3131"}
           lordIconSize={7}
           cardText={`Our working hours and delivery service operates everyday, except for regular holidays or urgent emergencies.`}
         />
 
-        <TitleDiv className="mt-5 text-light">Payment Methods</TitleDiv>
+        <TitleDiv className="mt-6 text-light">Payment Methods</TitleDiv>
         <CardIcon
-          className="border-0 w-50 bg-transparent text-light text-end d-flex flex-row-reverse justify-content-center align-items-center"
+          className="border-0 w-100 bg-transparent text-light d-flex flex-column justify-content-center align-items-center"
           lordIconSrc={"https://cdn.lordicon.com/kndkiwmf.json"}
           lordIconClrs={"primary:#FFFFFF,secondary:#e3bf39"}
           lordIconSize={7}
           cardText={`Customers can pay their orders either through G-Cash or Cash on Delivery, strictly no owing (utang).`}
         />
 
-        <TitleDiv className="mt-5 text-light">Pickup Address</TitleDiv>
+        <TitleDiv className="mt-6 text-light">Pickup Address</TitleDiv>
         <CardIcon
-          className="border-0 w-50 bg-transparent text-light d-flex flex-row justify-content-center align-items-center"
+          className="border-0 w-100 bg-transparent text-light d-flex flex-column justify-content-center align-items-center"
           lordIconSrc={"https://cdn.lordicon.com/surcxhka.json"}
           lordIconClrs={"primary:#FFFFFF,secondary:#35aa90"}
           lordIconSize={7}
-          cardText={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore beatae consectetur ipsum rerum ratione!`}
+          cardText={`You can also manually pickup your order in Brgy. Inoman, Pozorrubio, Pangasinan.`}
         />
       </Section>
 
-      <Section className="flex-column py-5 bg-secondary">
+      <Section className="flex-column py-6 bg-secondary">
         <TitleDiv className="text-light">Delivering Areas</TitleDiv>
         <SubTitleDiv className="text-light">
-          Our customers love working with us
+          Expanding our service one town at a time
         </SubTitleDiv>
 
         <CardImgLeftHorizontal
-          className="mt-3 col-12"
+          className="mt-4 col-lg-12 col-10"
           imgSrc={ImagePaths.delivery}
           lordIconSrc={"https://cdn.lordicon.com/qqvulgky.json"}
           lordIconClrs={"primary:#000000,secondary:#35aa90"}
@@ -204,7 +206,7 @@ const Home = () => {
                 ○ Tulnac
                 ○ Villegas
             `}
-          cardLink={`/`}
+          cardLink={"https://www.google.com/maps/place/SONIC+PRINT+SHOP/@16.1106293,120.5415025,17z/data=!3m1!4b1!4m6!3m5!1s0x339113441ea5fd3b:0x898d955fde706c87!8m2!3d16.1106242!4d120.5440774!16s%2Fg%2F11stytk36h?entry=ttu"}
           cardLinkText={`Get Direction`}
         />
       </Section>
