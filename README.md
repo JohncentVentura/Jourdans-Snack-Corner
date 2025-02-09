@@ -1,4 +1,2 @@
-* Jourdan's Snack Corner
-A local food business located in my hometown, created the website for free as support for local businesses in my area.
-
-* Might Refernish it someday using TailwindCSS, i dont know, still depress & burnt out 
+# Jourdan's Snack Corner
+Status Update: Client business ended due to bankruptcy and pursuing his goal to work abroad.
